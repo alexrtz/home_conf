@@ -1,0 +1,18 @@
+; http://www.cslab.pepperdine.edu/warford/BatchIndentationEmacs.html
+(defun emacs-format-function ()
+   "Format the whole buffer."
+	(setq indent-tabs-mode t)
+	(setq default-tab-width 2)
+;	(c-set-offset 'inline-open '+)
+	(c-set-offset 'substatement-open '0)
+	(c-set-offset 'brace-list-open '0)
+	(c-set-offset 'statement-case-open '0)
+	(c-set-offset 'case-label '+)
+;	(c-set-offset 'statement-case-intro '+)
+	(c-set-offset 'arglist-intro '++)
+	(c-set-offset 'arglist-cont '0)
+	(c-set-offset 'arglist-close '+)
+;  (c-set-offset 'innamespace '0)
+	 (indent-region (point-min) (point-max) nil)
+	 (save-buffer)
+)

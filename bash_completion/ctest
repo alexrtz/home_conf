@@ -1,0 +1,35 @@
+_ctest() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-D -R -E"
+
+    case "${prev}" in
+	-D)
+	    local running="Continuous
+Continuous(Start|Update|Configure|Build)
+Continuous(Test|Coverage|MemCheck|Submit)
+Experimental
+Experimental(Start|Update|Configure|Build)
+Experimental(Test|Coverage|MemCheck|Submit)
+Nightly
+Nightly(Start|Update|Configure|Build)
+Nightly(Test|Coverage|MemCheck|Submit)
+NightlyMemoryCheck"
+	    COMPREPLY=( $(compgen -W "${running}" -- ${cur}) )
+            return 0
+            ;;
+        *)
+        ;;
+    esac
+
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+
+complete -F _ctest ctest

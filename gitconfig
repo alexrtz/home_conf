@@ -1,0 +1,97 @@
+[user]
+ email = hvagabond@gmail.com
+ name = Alexandre Ortiz
+
+[core]
+ pager = less -FRSX
+ whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+ editor = vim
+# excludesfile = ~/.gitignore
+
+[color]
+ diff = auto
+ status = auto
+ branch = auto
+ interactive = auto
+ ui = true
+ pager = false
+
+[color "branch"]
+ current = yellow reverse
+ local = yellow
+ remote = green
+
+[color "diff"]
+ meta = yellow bold
+ frag = magenta bold
+ old = red bold
+ new = green bold
+
+[color "status"]
+ added = yellow
+ changed = green
+ untracked = cyan
+
+[alias]
+ a = add
+ # add all changed (but not new) files to stage (index):
+ au = add -u
+
+ b = branch -t
+
+ ci = commit
+
+ cleanall = clean -f -d
+
+ co = checkout
+
+ d = diff
+ ds = diff --staged
+
+ info = remote show origin
+
+ # New Branch
+ nb = checkout -b
+
+ # Track the branch by default
+ push = push -u
+
+ # Clean remote deleted branches
+ rdb = remote prune origin
+
+ # Show Branches
+ sb = branch -a
+
+ st = status -s
+
+ # stash
+ s = stash
+ sp = stash pop
+ sl = stash list
+ sd = stash drop
+
+ w = whatchanged
+ graph = log --graph --oneline --decorate
+
+
+
+ # number
+ n=number
+ na=number add
+
+ lol = log --pretty=oneline --abbrev-commit --graph --decorate
+ ll = log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(bold blue)%d%C(reset)%C(white)%s%C(reset) %C(green)%an %C(bold red)%cr%C(reset)' --abbrev-commit
+ ll5 = log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(bold blue)%d%C(reset)%C(white)%s%C(reset) %C(green)%an %C(bold red)%cr%C(reset)' --abbrev-commit -5
+ sup = submodule update
+ oops = reset --soft "HEAD^"
+ unadd = reset HEAD
+# lol = log --graph --pretty=format:'%C(red)%h%C(reset) %C(yellow)%d%C(reset)%s %C(green)%an %C(bold black)%cr%C(reset)' --abbrev-commit --date=relative
+
+[push]
+ default=upstream
+
+[http]
+ sslVerify = no
+
+#[include]
+# path = /users/alexorti/.specific_gitconfig
