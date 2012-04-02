@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002, 2003, 2004, 2007 Richard Kim
 
-;; Author: vagabond <vagabond@Erna>
-;; Created: 2011-12-29 22:35:10+0100
+;; Author:  <vagabond@Erna>
+;; Created: 2012-04-02 23:00:11+0200
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

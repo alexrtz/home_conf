@@ -1,6 +1,92 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
 
+; C/C++ stuff
+
+(load-file "~/.emacs.d/cedet/common/cedet.el")
+(global-ede-mode t)
+(semantic-load-enable-excessive-code-helpers)
+(require 'semantic-ia)
+(require 'semantic-gcc)
+;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source" 'c++-mode)
+;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source/CTest" 'c++-mode)
+(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
+;;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+(require 'semanticdb)
+(global-semanticdb-minor-mode 1)
+(require 'semanticdb-global)
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+(semantic-load-enable-primary-exuberent-ctags-support)
+
+(defun my-cedet-hook ()
+	(local-set-key [(control return)] 'semantic-ia-complete-symbol)
+	(local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
+	(local-set-key "\C-c>" 'semantic-complete-analyze-inline)
+	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+;	(local-set-key "." 'semantic-complete-self-insert)
+;	(local-set-key ">" 'semantic-complete-self-insert)
+	(local-set-key [f12] 'semantic-complete-jump)
+	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
+(add-hook 'c++-mode-common-hook 'my-cedet-hook)
+(add-hook 'c-mode-common-hook 'my-cedet-hook)
+
+(if (file-exists-p "~/.ede-projects")
+    (load-file "~/.ede-projects"))
+
+
+(cogre-uml-enable-unicode)
+
+(add-to-list 'load-path "~/.emacs.d/ecb")
+(require 'ecb)
+(require 'ecb-autoloads)
+(setq ecb-auto-activate nil)
+(setq ecb-tip-of-the-day nil)
+(setq ecb-windows-width 0.2)
+
+; Enabling this hook makes emacs less responsive and it can be annoying on a "little" machine
+;(defun my-c-mode-cedet-hook ()
+; (local-set-key "." 'semantic-complete-self-insert)
+; (local-set-key ">" 'semantic-complete-self-insert))
+;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+;(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
+
+
+(defun my-c-mode-hook()
+	(defun insert-parentheses () "insert parentheses and go between them" (interactive)
+		(insert "()" )
+		(backward-char 1))
+	(defun insert-brackets () "insert brackets and go between them" (interactive)
+		(insert "[]" )
+		(backward-char 1))
+	(defun insert-braces () "insert curly braces and go between them" (interactive)
+		(insert "{}" )
+		(backward-char 1))
+	(defun insert-quotes () "insert quotes and go between them" (interactive)
+		(insert "\"\"" )
+		(backward-char 1))
+	 ;  (setq c-basic-offset 2)
+	(setq indent-tabs-mode t)
+	(setq tab-width 2)
+;	(c-set-offset 'inline-open '+)
+	(c-set-offset 'substatement-open '0)
+	(c-set-offset 'brace-list-open '0)
+	(c-set-offset 'statement-case-open '0)
+	(c-set-offset 'case-label '+)
+;	(c-set-offset 'statement-case-intro '+)
+	(c-set-offset 'arglist-intro '++)
+	(c-set-offset 'arglist-cont '0)
+	(c-set-offset 'arglist-close '+)
+;  (c-set-offset 'innamespace '0)
+	)
+
+
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
+
 
 (defun fullscreen (&optional f)
        (interactive)
@@ -259,7 +345,6 @@ This is a wrapper around `orig-yes-or-no'."
 ; Disables vc-git
 (delete 'Git vc-handled-backends)
 
-; TODO: add the egg repository as a git submodule
 (load-file "~/.emacs.d/egg/egg.el")
 (require 'egg)
 
@@ -345,93 +430,6 @@ This is a wrapper around `orig-yes-or-no'."
 (global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
 ;(setq compilation-window-height 15)
 
-
-
-; C/C++ stuff
-
-(load-file "~/.emacs.d/cedet/common/cedet.el")
-(global-ede-mode t)
-(semantic-load-enable-excessive-code-helpers)
-(require 'semantic-ia)
-(require 'semantic-gcc)
-;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source" 'c++-mode)
-;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source/CTest" 'c++-mode)
-(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
-;;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
-(require 'semanticdb)
-(global-semanticdb-minor-mode 1)
-(require 'semanticdb-global)
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
-(semantic-load-enable-primary-exuberent-ctags-support)
-
-(defun my-cedet-hook ()
-	(local-set-key [(control return)] 'semantic-ia-complete-symbol)
-	(local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
-	(local-set-key "\C-c>" 'semantic-complete-analyze-inline)
-	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-;	(local-set-key "." 'semantic-complete-self-insert)
-;	(local-set-key ">" 'semantic-complete-self-insert)
-	(local-set-key [f12] 'semantic-complete-jump)
-	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
-(add-hook 'c++-mode-common-hook 'my-cedet-hook)
-(add-hook 'c-mode-common-hook 'my-cedet-hook)
-
-(if (file-exists-p "~/.ede-projects")
-    (load-file "~/.ede-projects"))
-
-
-(cogre-uml-enable-unicode)
-
-(add-to-list 'load-path "~/.emacs.d/ecb")
-(require 'ecb)
-(require 'ecb-autoloads)
-(setq ecb-auto-activate nil)
-(setq ecb-tip-of-the-day nil)
-(setq ecb-windows-width 0.2)
-
-; Enabling this hook makes emacs less responsive and it can be annoying on a "little" machine
-;(defun my-c-mode-cedet-hook ()
-; (local-set-key "." 'semantic-complete-self-insert)
-; (local-set-key ">" 'semantic-complete-self-insert))
-;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-;(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
-
-
-(defun my-c-mode-hook()
-	(defun insert-parentheses () "insert parentheses and go between them" (interactive)
-		(insert "()" )
-		(backward-char 1))
-	(defun insert-brackets () "insert brackets and go between them" (interactive)
-		(insert "[]" )
-		(backward-char 1))
-	(defun insert-braces () "insert curly braces and go between them" (interactive)
-		(insert "{}" )
-		(backward-char 1))
-	(defun insert-quotes () "insert quotes and go between them" (interactive)
-		(insert "\"\"" )
-		(backward-char 1))
-	 ;  (setq c-basic-offset 2)
-	(setq indent-tabs-mode t)
-	(setq tab-width 2)
-;	(c-set-offset 'inline-open '+)
-	(c-set-offset 'substatement-open '0)
-	(c-set-offset 'brace-list-open '0)
-	(c-set-offset 'statement-case-open '0)
-	(c-set-offset 'case-label '+)
-;	(c-set-offset 'statement-case-intro '+)
-	(c-set-offset 'arglist-intro '++)
-	(c-set-offset 'arglist-cont '0)
-	(c-set-offset 'arglist-close '+)
-;  (c-set-offset 'innamespace '0)
-	)
-
-
-(add-hook 'c-mode-hook 'my-c-mode-hook)
-(add-hook 'c++-mode-hook 'my-c-mode-hook)
-
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
 
 
 

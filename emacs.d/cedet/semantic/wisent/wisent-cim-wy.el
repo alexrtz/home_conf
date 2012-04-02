@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002 David Ponce
 
-;; Author: vagabond <vagabond@Erna>
-;; Created: 2011-12-29 22:35:04+0100
+;; Author:  <vagabond@Erna>
+;; Created: 2012-04-02 23:00:08+0200
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2003, 2004, 2009 Eric M. Ludlam
 
-;; Author: vagabond <vagabond@Erna>
-;; Created: 2011-12-29 22:37:07+0100
+;; Author:  <vagabond@Erna>
+;; Created: 2012-04-02 23:00:16+0200
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
