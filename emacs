@@ -149,6 +149,7 @@
 (load-file "~/.emacs.d/markdown-mode.el")
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;(load-file "~/.emacs.d/plantuml-mode.el")
 ;(require 'plantuml-mode)
@@ -418,16 +419,20 @@ This is a wrapper around `orig-yes-or-no'."
 (require 'gprof)
 (setq auto-mode-alist (cons '("\\.gprof\\w?" . gprof-mode) auto-mode-alist))
 
-(require 'smart-compile)
-
 (require 'cmake-mode)
 (setq auto-mode-alist (cons '("\\CMakeLists.txt\\w?" . cmake-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.cmake\\w?" . cmake-mode) auto-mode-alist))
 
-(setq compile-command "make")
+(setq compile-command "LC_MESSAGES=C make")
 (setq compilation-read-command nil)
+
+(require 'smart-compile)
+
 (global-set-key [f6] 'smart-compile)
-(global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
+(global-set-key [f7] 'next-error)
+
+;(global-set-key [f6] 'smart-compile)
+;(global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
 ;(setq compilation-window-height 15)
 
 
