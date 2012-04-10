@@ -78,6 +78,7 @@
 	(c-set-offset 'arglist-cont '0)
 	(c-set-offset 'arglist-close '+)
 ;  (c-set-offset 'innamespace '0)
+	(setq show-trailing-whitespace t)
 	)
 
 
@@ -150,6 +151,11 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(defun my-markdown-hook ()
+  (setq show-trailing-whitespace t)
+  )
+(add-hook 'markdown-mode-hook 'my-markdown-hook)
 
 ;(load-file "~/.emacs.d/plantuml-mode.el")
 ;(require 'plantuml-mode)
@@ -359,6 +365,9 @@ This is a wrapper around `orig-yes-or-no'."
 
 (visual-line-mode t)
 (setq line-move-visual t)
+
+; Don't know why this does not work...
+;(setq show-trailing-whitespace t)
 
 ;(setq tab-always-indent 'complete)
 
