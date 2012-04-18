@@ -37,11 +37,13 @@
 
 (cogre-uml-enable-unicode)
 
+
 (add-to-list 'load-path "~/.emacs.d/ecb")
 (require 'ecb)
-(require 'ecb-autoloads)
+;(require 'ecb-autoloads)
 (setq ecb-auto-activate nil)
 (setq ecb-tip-of-the-day nil)
+(setq ecb-display-news-for-upgrade nil)
 (setq ecb-windows-width 0.2)
 
 ; Enabling this hook makes emacs less responsive and it can be annoying on a "little" machine
@@ -79,6 +81,7 @@
 	(c-set-offset 'arglist-close '+)
 ;  (c-set-offset 'innamespace '0)
 	(setq show-trailing-whitespace t)
+	(add-hook 'before-save-hook 'delete-trailing-whitespace)
 	)
 
 
@@ -107,10 +110,10 @@
   (lambda() (interactive)
     (anything
      :prompt "Switch to: "
-     :candidate-number-limit 10                 ;; up to 10 of each 
+     :candidate-number-limit 10                 ;; up to 10 of each
      :sources
-     '( anything-c-source-buffers               ;; buffers 
-        anything-c-source-recentf               ;; recent files 
+     '( anything-c-source-buffers               ;; buffers
+        anything-c-source-recentf               ;; recent files
         anything-c-source-bookmarks             ;; bookmarks
         anything-c-source-files-in-current-dir+ ;; current dir
         anything-c-source-locate))))            ;; use 'locate'
@@ -152,10 +155,17 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-(defun my-markdown-hook ()
+(defun trailing-whitespaces-hook ()
   (setq show-trailing-whitespace t)
   )
-(add-hook 'markdown-mode-hook 'my-markdown-hook)
+
+(add-hook 'markdown-mode-hook 'trailing-whitespaces-hook)
+
+(defun my-nany-hook ()
+  (setq show-trailing-whitespace t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  )
+(add-hook 'nany-mode-hook 'my-nany-hook)
 
 ;(load-file "~/.emacs.d/plantuml-mode.el")
 ;(require 'plantuml-mode)
@@ -229,7 +239,7 @@ This is a wrapper around `orig-yes-or-no'."
 ;;     ;; line and column
 ;;     "(" ;; '%02' to set to 2 chars at least; prevents flickering
 ;;       (propertize "%02l" 'face 'font-lock-type-face) ","
-;;       (propertize "%02c" 'face 'font-lock-type-face) 
+;;       (propertize "%02c" 'face 'font-lock-type-face)
 ;;     ") "
 
 ;;     ;; relative position, size of file
@@ -263,7 +273,7 @@ This is a wrapper around `orig-yes-or-no'."
 ;;     '(:eval (when buffer-read-only
 ;;               (concat ","  (propertize "RO"
 ;;                              'face 'font-lock-type-face
-;;                              'help-echo "Buffer is read-only"))))  
+;;                              'help-echo "Buffer is read-only"))))
 ;;     "] "
 
 ;;     ;; add the time, with the date and the emacs uptime in the tooltip
@@ -382,7 +392,7 @@ This is a wrapper around `orig-yes-or-no'."
 (put 'autopair-newline 'delete-selection t)
 
 ; TODO AOR: find why this does not work
-(require 'rainbow-delimiters) 
+(require 'rainbow-delimiters)
 (add-hook 'c++-mode-common-hook 'rainbow-delimiters-mode)
 
 (setq
@@ -400,6 +410,10 @@ This is a wrapper around `orig-yes-or-no'."
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-f") 'isearch-forward)
 (global-set-key "\C-x\C-b" 'buffer-menu)
+(global-set-key "\C-l" 'goto-line)
+(global-set-key "\C-xk" 'kill-this-buffer)
+
+
 
 (global-set-key [C-f5] 'gud-cont)
 (global-set-key [C-f9] 'gud-break)

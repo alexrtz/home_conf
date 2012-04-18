@@ -1583,11 +1583,11 @@ If ECB detects a problem it is reported and then an error is thrown."
 
         ;; if we activate ECB first time then we display the node "First steps" of
         ;; the online-manual
-        (ignore-errors
-          (when (null ecb-source-path)
-            (let ((ecb-show-help-format 'info))
-              (ecb-show-help)
-              (Info-goto-node "First steps"))))
+;        (ignore-errors
+;          (when (null ecb-source-path)
+;            (let ((ecb-show-help-format 'info))
+;              (ecb-show-help)
+;              (Info-goto-node "First steps"))))
 
         ;; display tip of the day if `ecb-tip-of-the-day' is not nil
         (ignore-errors
