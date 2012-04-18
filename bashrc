@@ -60,6 +60,7 @@ alias v="vim"
 alias e="emacs"
 alias g="git"
 alias gk="gitk"
+alias ackcpp="ack --cpp"
 
 
 # alias gitarch="git archive master --format=tar --prefix=`pwd | sed -e 's/\// /g' |awk '{print $NF}'`/ | gzip >`pwd | sed -e 's/\// /g' |awk '{print $NF}'`.tgz"
