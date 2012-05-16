@@ -54,8 +54,8 @@ alias bc="bc -l"
 alias dfr="df -Ph | grep LOCAL | cut -d' ' -f '9'"
 alias dpump="pump make -j 6"
 alias dcmake="rm -f CMakeCache.txt; cmake . -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++"
-alias cmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_BUILD_TYPE:STRING=RELEASE"
-alias dcmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ -DCMAKE_BUILD_TYPE:STRING=RELEASE"
+alias cmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_BUILD_TYPE:STRING=release"
+alias dcmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ -DCMAKE_BUILD_TYPE:STRING=release"
 alias v="vim"
 alias e="emacs"
 alias g="git"
@@ -75,3 +75,5 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/usr/local/lib
 
 export PATH
 export LD_LIBRARY_PATH
+
+[ -s "/users/alexorti/.scm_breeze/scm_breeze.sh" ] && source "/users/alexorti/.scm_breeze/scm_breeze.sh"
