@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
+(add-to-list 'load-path "~/.emacs.d/yaml-mode")
 
 ; C/C++ stuff
 
@@ -538,8 +539,6 @@ This is a wrapper around `orig-yes-or-no'."
 	scroll-preserve-screen-position 1)
 
 
-
-
 (global-set-key [C-tab] 'dabbrev-expand)
 (global-set-key "\C-s" 'save-buffer)
 (global-set-key "\C-o" 'find-file)
@@ -595,8 +594,38 @@ This is a wrapper around `orig-yes-or-no'."
 ;(global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
 ;(setq compilation-window-height 15)
 
+(setq compilation-finish-function
+      (lambda (buf str)
+
+        (if (string-match "exited abnormally" str)
+
+            ;;there were errors
+            (message "compilation errors, press C-x ` to visit")
+
+          ;;no errors, make the compilation window go away in 0.5 seconds
+          (run-at-time 0.5 nil 'delete-windows-on buf)
+          (message "NO COMPILATION ERRORS!"))))
 
 
+;; (defun bury-compile-buffer-if-successful (buffer string)
+;;   "Bury a compilation buffer if succeeded without warnings "
+;;   (if (and
+;;        (with-current-buffer buffer
+;;           (search-forward "xcolor" nil t))
+;;        (not
+;;         (with-current-buffer buffer
+;;           (search-forward "wazaaabi" nil t))))
+;;       (run-with-timer 1 nil
+;;                       (lambda (buf)
+;;                         (bury-buffer buf)
+;;                         (switch-to-prev-buffer (get-buffer-window buf) 'kill))
+;;                       buffer)))
+;; (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+
+
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 
 ; PERL stuff
