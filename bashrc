@@ -71,9 +71,16 @@ if [ -f ~/.bash_specific_config ]; then
 fi
 
 PATH=$MYPATH:/usr/sbin:/var/lib/gems/1.8/bin/:/opt/usr/bin:$PATH
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/usr/local/lib
+LD_LIBRARY_PATH=$MY_LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+LIBRARY_PATH=$MY_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LIBRARY_PATH
+PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH
 
 export PATH
 export LD_LIBRARY_PATH
+export PKG_CONFIG_PATH
 
 [ -s "/users/alexorti/.scm_breeze/scm_breeze.sh" ] && source "/users/alexorti/.scm_breeze/scm_breeze.sh"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
