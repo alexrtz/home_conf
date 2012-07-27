@@ -3,7 +3,10 @@
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
 
 ; C/C++ stuff
-
+; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
+; but requires 1”, which can be suppressed by adding (setq byte-compile-warnings nil) in your
+; .emacs file before CEDET is loaded
+;(setq byte-compile-warnings nil)
 (load-file "~/.emacs.d/cedet/common/cedet.el")
 (global-ede-mode t)
 (semantic-load-enable-excessive-code-helpers)
@@ -56,34 +59,34 @@
 
 
 (defun my-c-mode-hook()
-	(defun insert-parentheses () "insert parentheses and go between them" (interactive)
-		(insert "()" )
-		(backward-char 1))
-	(defun insert-brackets () "insert brackets and go between them" (interactive)
-		(insert "[]" )
-		(backward-char 1))
-	(defun insert-braces () "insert curly braces and go between them" (interactive)
-		(insert "{}" )
-		(backward-char 1))
-	(defun insert-quotes () "insert quotes and go between them" (interactive)
-		(insert "\"\"" )
-		(backward-char 1))
-	 ;  (setq c-basic-offset 2)
-	(setq indent-tabs-mode t)
-	(setq tab-width 2)
-;	(c-set-offset 'inline-open '+)
-	(c-set-offset 'substatement-open '0)
-	(c-set-offset 'brace-list-open '0)
-	(c-set-offset 'statement-case-open '0)
-	(c-set-offset 'case-label '+)
-;	(c-set-offset 'statement-case-intro '+)
-	(c-set-offset 'arglist-intro '++)
-	(c-set-offset 'arglist-cont '0)
-	(c-set-offset 'arglist-close '+)
-;  (c-set-offset 'innamespace '0)
-	(setq show-trailing-whitespace t)
-	(add-hook 'before-save-hook 'delete-trailing-whitespace)
-	)
+  (defun insert-parentheses () "insert parentheses and go between them" (interactive)
+    (insert "()" )
+    (backward-char 1))
+  (defun insert-brackets () "insert brackets and go between them" (interactive)
+    (insert "[]" )
+    (backward-char 1))
+  (defun insert-braces () "insert curly braces and go between them" (interactive)
+    (insert "{}" )
+    (backward-char 1))
+  (defun insert-quotes () "insert quotes and go between them" (interactive)
+    (insert "\"\"" )
+    (backward-char 1))
+					;  (setq c-basic-offset 2)
+  (setq indent-tabs-mode t)
+  (setq tab-width 2)
+					;	(c-set-offset 'inline-open '+)
+  (c-set-offset 'substatement-open '0)
+  (c-set-offset 'brace-list-open '0)
+  (c-set-offset 'statement-case-open '0)
+  (c-set-offset 'case-label '+)
+					;	(c-set-offset 'statement-case-intro '+)
+  (c-set-offset 'arglist-intro '++)
+  (c-set-offset 'arglist-cont '0)
+  (c-set-offset 'arglist-close '+)
+					;  (c-set-offset 'innamespace '0)
+  (setq show-trailing-whitespace t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+)
 
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
@@ -92,6 +95,13 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
 
+
+(defun my-nany-mode-hook()
+  (setq indent-tabs-mode t)
+  (setq tab-width 2)
+)
+
+(add-hook 'nany-mode-hook 'my-nany-mode-hook)
 
 (defun fullscreen (&optional f)
        (interactive)
@@ -548,6 +558,7 @@ This is a wrapper around `orig-yes-or-no'."
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key "\C-l" 'goto-line)
 (global-set-key "\C-xk" 'kill-this-buffer)
+(global-set-key "\C-b" 'iswitchb-buffer)
 
 
 
@@ -560,6 +571,8 @@ This is a wrapper around `orig-yes-or-no'."
 (add-to-list 'iswitchb-buffer-ignore "*Scratch*")
 (add-to-list 'iswitchb-buffer-ignore "*Messages*")
 (add-to-list 'iswitchb-buffer-ignore "*Completions")
+(add-to-list 'iswitchb-buffer-ignore "*CEDET Global")
+(add-to-list 'iswitchb-buffer-ignore "*Egg:Select Action*")
 (add-to-list 'iswitchb-buffer-ignore "*ftp ")
 (add-to-list 'iswitchb-buffer-ignore "^[tT][aA][gG][sS]$")
 
@@ -643,6 +656,14 @@ This is a wrapper around `orig-yes-or-no'."
 ;)
 
 (add-hook 'cperl-mode-hook 'my-cperl-mode-hook)
+
+
+(add-to-list 'load-path
+              "~/.emacs.d/yasnippet")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippet/snippets")
+
 
 ; ---- language-env DON'T MODIFY THIS LINE!
 ;(if (>= emacs-major-version 21)
