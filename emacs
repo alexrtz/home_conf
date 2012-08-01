@@ -573,6 +573,7 @@ This is a wrapper around `orig-yes-or-no'."
 (add-to-list 'iswitchb-buffer-ignore "*Completions")
 (add-to-list 'iswitchb-buffer-ignore "*CEDET Global")
 (add-to-list 'iswitchb-buffer-ignore "*Egg:Select Action*")
+(add-to-list 'iswitchb-buffer-ignore "*anything")
 (add-to-list 'iswitchb-buffer-ignore "*ftp ")
 (add-to-list 'iswitchb-buffer-ignore "^[tT][aA][gG][sS]$")
 
@@ -594,6 +595,27 @@ This is a wrapper around `orig-yes-or-no'."
 (require 'cmake-mode)
 (setq auto-mode-alist (cons '("\\CMakeLists.txt\\w?" . cmake-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.cmake\\w?" . cmake-mode) auto-mode-alist))
+
+(defun my-cmake-mode-hook()
+  ;;  (setq c-basic-offset 2)
+  (setq indent-tabs-mode t)
+  (setq tab-width 2)
+  ;;	(c-set-offset 'inline-open '+)
+  ;;(c-set-offset 'substatement-open '0)
+  ;;(c-set-offset 'brace-list-open '0)
+  ;;(c-set-offset 'statement-case-open '0)
+  ;;(c-set-offset 'case-label '+)
+  ;;	(c-set-offset 'statement-case-intro '+)
+  ;;(c-set-offset 'arglist-intro '++)
+  ;;(c-set-offset 'arglist-cont '0)
+  ;;(c-set-offset 'arglist-close '+)
+  ;;  (c-set-offset 'innamespace '0)
+  (setq show-trailing-whitespace t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+)
+
+
+(add-hook 'cmake-mode-hook 'my-cmake-mode-hook)
 
 (setq compile-command "LC_MESSAGES=C make")
 (setq compilation-read-command nil)
