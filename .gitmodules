@@ -4,3 +4,6 @@
 [submodule "emacs.d/yaml-mode"]
 	path = emacs.d/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "emacs.d/highlight-indentation"]
+	path = emacs.d/highlight-indentation
+	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
