@@ -1,9 +1,10 @@
 ;; Emacs major mode for Nany language. Written by the Yuni project team.
 ;; Free to use, redistribute, and modify freely.
+;; No implied warranty of any kind.
 ;;
 ;; You may add the following to your init.el :
 ;; (autoload 'nany-mode "/path/to/nany-mode.el" "Major mode for editing Nany source code." t)
-;; (setq auto-mode-alist (append '(("\\.nany$" . nany-mode)) auto-mode-alist))
+;; (setq auto-mode-alist (append '(("\\.ny$" . nany-mode)) auto-mode-alist))
 
 
 (defgroup nany nil
@@ -18,7 +19,7 @@
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.ny\\'" . nany-mode))
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.nany\\'" . nany-mode))
+(add-to-list 'auto-mode-alist '("\\.pny\\'" . nany-mode))
 
 (defvar nany-mode-abbrev-table nil
   "Abbrev table in use in nany-mode buffers.")
@@ -43,7 +44,7 @@
 
 ;; Keywords
 (defconst nany-keywords
-  '("allow" "and" "as" "async" "break" "catch" "check" "class" "clone" "const" "continue" "default" "do" "else" "every" "for" "forbid" "foreach" "function" "if" "immutable" "in" "is" "method" "new" "not" "notify" "on" "operator" "or" "persistent" "predicate" "private" "property" "protected" "public" "published" "read" "ref" "return" "self" "shared" "stable" "state" "states" "sync" "then" "threadunsafe" "timeout" "transitions" "type" "typeof" "var" "variadic" "when" "while" "workflow" "write" "xor" "yield")
+  '("abstract" "allow" "and" "as" "break" "case" "class" "const" "continue" "default" "do" "each" "enum" "else" "final" "for" "forbid" "function" "if" "immutable" "in" "is" "method" "mod" "new" "not" "on" "operator" "or" "private" "property" "protected" "public" "published" "read" "ref" "return" "self" "stable" "state" "states" "switch" "then" "threadunsafe" "transitions" "typedef" "typeof" "unify" "var" "view" "while" "workflow" "write" "xor")
   "Nany keywords"
 )
 ;; Regexped version
@@ -51,7 +52,7 @@
 
 ;; File-level keywords
 (defconst nany-file-keywords
-  '("program" "unit" "library" "uses")
+  '("uses")
   "Nany file-level keywords"
 )
 ;; Regexped version
@@ -59,7 +60,7 @@
 
 ;; Built-in Types
 (defconst nany-builtin-types
-  '("int" "int8" "int16" "int32" "int64" "uint" "uint8" "uint16" "uint32" "uint64" "char" "bool" "float" "double" "string" "any")
+  '("int" "int8" "int16" "int32" "int64" "uint" "uint8" "uint16" "uint32" "uint64" "char" "bool" "float" "double" "string" "any" "unify" "void")
   "Nany builtin types"
 )
 ;; Regexped version
@@ -76,7 +77,7 @@
 
 ;; Special operators for Multi-threading need to appear clearly
 (defconst nany-special-operators
-  '("[|&]")
+  '("&")
   "Nany special operators"
 )
 
@@ -93,60 +94,43 @@
 
 
 ;; Syntax highlighting
-(defvar nany-font-lock-keywords-1
+(defvar nany-font-lock-keywords
   `(
 	;; All sorts of comments :
 	;; //!
-	("\\(//!\\)\\(.*\\)$"  (1 font-lock-comment-delimiter-face) (2 font-lock-doc-face))
+	("\\(//!\\)\\(.*\\)$" (1 font-lock-comment-delimiter-face) (2 font-lock-doc-face))
 	;; /* */
 ;	("/\\*" ".*\\*/" 0 font-lock-comment-face)
 	;; //
-	("//.*$"  . font-lock-comment-face)
+	("//.*$" . font-lock-comment-face)
 	;; #!
-	("\\(#!\\)\\(.*\\)$"  (1 font-lock-comment-delimiter-face) (2 font-lock-doc-face))
+	("\\(#!\\)\\(.*\\)$" (1 font-lock-comment-delimiter-face) (2 font-lock-doc-face))
 	;; #* *#
 ;	("#\\*" ".*\\*#" 0 font-lock-comment-face)
 	;; #
 	("#.*$" . font-lock-comment-face)
+	("\".*\"" 0 font-lock-string-face)
+	("\'.\'" 0 font-lock-string-face)
 	(,nany-keywords-regexp . font-lock-keyword-face)
 	(,nany-file-keywords-regexp . font-lock-preprocessor-face)
 	(,nany-constants-regexp . font-lock-constant-face)
+	(,nany-builtin-types-regexp . font-lock-type-face)
+	(,nany-operators-regexp . font-lock-reference-face)
+	(,nany-special-operators-regexp . font-lock-warning-face)
+	;; Type names
+	(":[ \t]*\\([A-Za-z][A-Za-z0-9_]*\\)" 1 font-lock-type-face)
+	("\\(new\\|class\\|enum\\|workflow\\|predicate\\)[ \t]+\\([A-Za-z][A-Za-z0-9_]*\\)" 2 font-lock-type-face)
+	;; Variables and attributes
+	("\\(var\\|property\\)[ \t]+\\([A-Za-z][A-Za-z0-9_]*\\)" 2 font-lock-variable-name-face)
+	("\\([A-Za-z][A-Za-z0-9_]*\\)[ \t]*:=" 1 font-lock-variable-name-face)
+	;; Method prototype
+	("\\(method\\|function\\)[ \t]+\\([A-Za-z][A-Za-z0-9_]*\\)" (2 font-lock-function-name-face))
+	;; Function calls
+	("\\.?\\([A-Za-z][A-Za-z0-9_]*\\)[ \t]*(" (1 font-lock-function-name-face))
   )
-  "Level-1 (subdued) syntax highlighting in Nany mode"
+  "Syntax highlighting in Nany mode"
 )
 
-(defvar nany-font-lock-keywords-2
-  (append
-    nany-font-lock-keywords-1
-    `(
-      (,nany-builtin-types-regexp . font-lock-type-face)
-      (,nany-operators-regexp . font-lock-reference-face)
-	  (,nany-special-operators . font-lock-warning-face)
-	  ("\"" ".*\"" 0 font-lock-string-face)
-	  ("\'.\'" 0 font-lock-string-face)
-     )
-  )
-  "Level-2 (medium) syntax highlighting in Nany mode"
-)
-
-(defvar nany-font-lock-keywords-3
-  (append
-    nany-font-lock-keywords-2
-	`(
-	  ;; Method prototype
-	  ("[^ \t]*\\(method\\|function\\)[ \t]+\\([A-Za-z][A-Za-z0-9_]*\\)" (2 font-lock-function-name-face))
-	  ;; Function calls
-	  ("\\.*\\([A-Za-z][A-Za-z0-9_]*\\)[ \t]*(" (1 font-lock-function-name-face))
-	  ;; Class names
-	  ("\\.*\\(new\\|class\\|workflow\\|predicate\\)[ \t]*\\([A-Za-z][A-Za-z0-9_]*\\)" 2 font-lock-type-face)
-	  ;; Variables and attributes
-	  ("\\.*\\([A-Za-z][A-Za-z0-9_]*\\)[ \t]*:=" (1 font-lock-variable-name-face))
-    )
-  )
-  "Level-3 (gaudy) syntax highlighting in Nany mode"
-)
-
-(defvar nany-font-lock-keywords (append nany-font-lock-keywords-1 nany-font-lock-keywords-2 nany-font-lock-keywords-3))
 
 
 (defcustom nany-indent-level 4
