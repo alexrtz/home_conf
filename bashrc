@@ -66,9 +66,78 @@ alias ackcpp="ack --cpp"
 # alias gitarch="git archive master --format=tar --prefix=`pwd | sed -e 's/\// /g' |awk '{print $NF}'`/ | gzip >`pwd | sed -e 's/\// /g' |awk '{print $NF}'`.tgz"
 
 
-if [ -f ~/.bash_specific_config ]; then
-   . ~/.bash_specific_config
+BASH_USERNAME=`whoami`
+
+[ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
+
+# https://github.com/nicolargo/dotfiles/blob/master/_bashrc.d/bashrc_prompt
+
+# Colors
+
+Yellow="\033[01;33m"
+Cyan="\033[01;36m"
+Green="\033[0;32m"
+Red="\033[0;31m"
+NoColor="\033[0m"
+
+# Chars
+RootPrompt="\#"
+NonRootPrompt="\$"
+
+# Contextual prompt
+prompt() {
+
+    USERNAME=$BASH_USERNAME
+    HOSTNAME=`hostname -s`
+#CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
+
+# Change the Window title
+    WINDOWTITLE="$USERNAME@$HOSTNAME"
+    echo -ne "\033]0;$WINDOWTITLE\007"
+
+# Change the dynamic prompt
+#LEFTPROMPT="$Yellow$CURRENTPATH"
+    LEFTPROMPT="\[$Yellow\]$USERNAME@$HOSTNAME \[$Cyan\]\W"
+
+    BRANCH=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [ $? -eq 0 ]; then
+	LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
+    fi
+
+    LineEnding="\n"
+
+    [ ${#LEFT_PROMPT}  -lt 30 ] && LineEnding=" "
+
+    if [ $EUID -ne 0 ]; then
+	PS1=$LEFTPROMPT"\[$Cyan\] "$NonRootPrompt"\[$NoColor\]"$LineEnding
+    else
+	PS1=$LEFTPROMPT"\[$Red\] "$RootPrompt$LineEnding
+    fi
+
+# echo -e -n $LEFTPROMPT
+}
+
+# Define PROMPT_COMMAND if not already defined (fix: Modifying title on SSH connections)
+if [ -z "$PROMPT_COMMAND" ]; then
+    case $TERM in
+	xterm*)
+	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+	    ;;
+	screen)
+	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+	    ;;
+    esac
 fi
+
+# Main prompt
+PROMPT_COMMAND="prompt;$PROMPT_COMMAND"
+
+if [ $EUID -ne 0 ]; then
+    PS1=$NonRootPrompt" "
+else
+    PS1=$RootPrompt" "
+fi
+
 
 PATH=$MYPATH:/usr/sbin:/var/lib/gems/1.8/bin/:/opt/usr/bin:$PATH
 LD_LIBRARY_PATH=$MY_LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
@@ -78,6 +147,10 @@ PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH
 export PATH
 export LD_LIBRARY_PATH
 export PKG_CONFIG_PATH
+
+# On CentOS at work a dialog opens when git asks for a password.
+# I do not like this behaviour and this line fixes it.
+unset SSH_ASKPASS
 
 [ -s "/users/alexorti/.scm_breeze/scm_breeze.sh" ] && source "/users/alexorti/.scm_breeze/scm_breeze.sh"
 
