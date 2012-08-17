@@ -1,6 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
-(add-to-list 'load-path "~/.emacs.d/yaml-mode")
 (add-to-list 'load-path "~/.emacs.d/highlight-indentation")
 
 ; C/C++ stuff
