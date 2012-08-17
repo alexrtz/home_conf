@@ -1,15 +1,15 @@
 [user]
- email = hvagabond@gmail.com
+ email = 
  name = Alexandre Ortiz
 
 [core]
  pager = less -FRSX
  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
- editor = vim
+ editor = emacs -q -nw
 # excludesfile = ~/.gitignore
 
 [color]
- diff = auto
+ diff = true
  status = auto
  branch = auto
  interactive = auto
@@ -92,6 +92,3 @@
 
 [http]
  sslVerify = no
-
-#[include]
-# path = /users/alexorti/.specific_gitconfig
