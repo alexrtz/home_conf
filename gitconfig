@@ -1,5 +1,5 @@
 [user]
- email = 
+ email = hvagabond@ŋmail.com
  name = Alexandre Ortiz
 
 [core]
@@ -9,12 +9,12 @@
 # excludesfile = ~/.gitignore
 
 [color]
- diff = true
+ diff = auto
  status = auto
  branch = auto
  interactive = auto
  ui = true
- pager = false
+ pager = true
 
 [color "branch"]
  current = yellow reverse

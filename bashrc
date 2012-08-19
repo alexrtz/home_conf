@@ -11,13 +11,11 @@ HISTSIZE=2048
 HISTFILESIZE=1048576
 HISTCONTROL=ignoredups
 
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+[ -f /etc/bash_completion ] && . /etc/bash_completion
 
-if [ -f ~/.bash_completion/ctest ]; then
-    . ~/.bash_completion/ctest
-fi
+[ -f /etc/profile.d/bash_completion.sh ] && /etc/profile.d/bash_completion.sh
+
+[ -f ~/.bash_completion/ctest ] && . ~/.bash_completion/ctest
 
 if [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
@@ -25,6 +23,18 @@ if [ -f /etc/bash_completion.d/git ]; then
 -        || complete -o default -o nospace -F _git g
 fi
 
+
+if [ -f /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
+     complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
+-        || complete -o default -o nospace -F _git g
+fi
+
+if [ -f /usr/share/bash-completion/git ]; then
+    . /usr/share/bash-completion/git
+     complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
+-        || complete -o default -o nospace -F _git g
+fi
 
 
 EDITOR=emacs
