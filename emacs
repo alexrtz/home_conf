@@ -177,11 +177,13 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-(defun trailing-whitespaces-hook ()
+(defun my-markdown-hook ()
   (setq show-trailing-whitespace t)
+  (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq indent-tabs-mode nil)
   )
 
-(add-hook 'markdown-mode-hook 'trailing-whitespaces-hook)
+(add-hook 'markdown-mode-hook 'my-markdown-hook)
 
 (defun my-nany-hook ()
   (setq show-trailing-whitespace t)
