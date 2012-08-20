@@ -37,7 +37,7 @@ if [ -f /usr/share/bash-completion/git ]; then
 fi
 
 
-EDITOR=emacs
+EDITOR="emacs -nw -q"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -162,8 +162,31 @@ export PKG_CONFIG_PATH
 # I do not like this behaviour and this line fixes it.
 unset SSH_ASKPASS
 
-[ -s "/users/alexorti/.scm_breeze/scm_breeze.sh" ] && source "/users/alexorti/.scm_breeze/scm_breeze.sh"
+if [ -f /usr/bin/ssh-agent ]; then
+    NB_AGENTS=`ps x | grep ssh-agent$ | wc -l`
+
+    [ $NB_AGENTS -eq 0 ] && rm -f ~/.ssh/sock
+
+    if [ ! -f ~/.ssh/sock  ]; then
+	killall ssh-agent &> /dev/null
+	ssh-agent > ~/.ssh/tmp
+	. ~/.ssh/tmp
+	cat ~/.ssh/tmp | grep SOCK | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/sock
+	cat ~/.ssh/tmp | grep PID | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/pid
+	rm -f .ssh/tmp
+	ssh-add ~/.ssh/id_rsa
+    else
+	SSH_AUTH_SOCK=`cat ~/.ssh/sock`
+	export SSH_AUTH_SOCK
+	SSH_AGENT_PID=`cat ~/.ssh/pid`
+	export SSH_AGENT_PID
+    fi
+fi
+
+
+alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
