@@ -1963,6 +1963,9 @@ Calls `markdown-cycle' with argument t."
 (defun markdown (&optional output-buffer-name)
   "Run `markdown' on current buffer and insert output in buffer BUFFER-OUTPUT."
   (interactive)
+; TODO AOR: externalize this line
+  (setq my-current-buffer (buffer-name))
+
   (let ((title (buffer-name))
         (begin-region)
         (end-region))
@@ -1997,6 +2000,9 @@ Calls `markdown-cycle' with argument t."
     ;; Ensure buffer gets raised, even with short command output
     (switch-to-buffer-other-window output-buffer-name)
     )
+
+; TODO AOR: externalize this line
+  (switch-to-buffer-other-window my-current-buffer)
   )
 
 (defun markdown-output-standalone-p ()
