@@ -110,6 +110,10 @@
   (set-face-background 'highlight-indentation-face "#23664f")
   (set-face-background 'highlight-indentation-current-column-face "#24a076")
   (highlight-indentation-mode)
+;  (setq indent-tabs-mode t)
+;  (setq tab-width 2)
+;  (setq show-trailing-whitespace t)
+;  (setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
@@ -253,6 +257,8 @@ This is a wrapper around `orig-yes-or-no'."
 							(abbreviate-file-name (buffer-file-name))
 						      "%b")) " [%*]"))
 
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 
 ;; (setq mode-line-format
 ;;   (list
@@ -365,6 +371,34 @@ This is a wrapper around `orig-yes-or-no'."
 ;(autoload 'ack "full-ack" nil t)
 ;(autoload 'ack-find-same-file "full-ack" nil t)
 ;(autoload 'ack-find-file "full-ack" nil t)
+
+
+; http://www.emacswiki.org/emacs/IncrementNumber
+
+(defun my-increment-number-decimal (&optional arg)
+  "Increment the number forward from point by 'arg'."
+  (interactive "p*")
+  (save-excursion
+    (save-match-data
+      (let (inc-by field-width answer)
+        (setq inc-by (if arg arg 1))
+        (skip-chars-backward "0123456789")
+        (when (re-search-forward "[0-9]+" nil t)
+          (setq field-width (- (match-end 0) (match-beginning 0)))
+          (setq answer (+ (string-to-number (match-string 0) 10) inc-by))
+          (when (< answer 0)
+            (setq answer (+ (expt 10 field-width) answer)))
+          (replace-match (format (concat "%0" (int-to-string field-width) "d")
+                                 answer)))))))
+
+
+(defun my-decrement-number-decimal (&optional arg)
+  (interactive "p*")
+  (my-increment-number-decimal (if arg (- arg) -1)))
+
+; TODO AOR: bindings does not work
+(global-set-key (kbd "C-+") 'my-increment-number-decimal)
+(global-set-key (kbd "C--") 'my-decrement-number-decimal)
 
 
 (require 'org-install)
