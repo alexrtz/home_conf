@@ -1,6 +1,6 @@
 [submodule "emacs.d/egg"]
 	path = emacs.d/egg
-	url = git://github.com/byplayer/egg.git
+	url = https://github.com/bogolisk/egg.git
 [submodule "emacs.d/highlight-indentation"]
 	path = emacs.d/highlight-indentation
 	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
