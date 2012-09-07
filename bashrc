@@ -13,7 +13,7 @@ HISTCONTROL=ignoredups
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-[ -f /etc/profile.d/bash_completion.sh ] && /etc/profile.d/bash_completion.sh
+[ -f /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
 
 [ -f ~/.bash_completion/ctest ] && . ~/.bash_completion/ctest
 
