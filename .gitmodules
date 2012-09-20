@@ -4,3 +4,9 @@
 [submodule "emacs.d/highlight-indentation"]
 	path = emacs.d/highlight-indentation
 	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
+[submodule "emacs.d/auto-complete"]
+	path = emacs.d/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "emacs.d/emacs-clang-complete-async"]
+	path = emacs.d/emacs-clang-complete-async
+	url = https://github.com/Golevka/emacs-clang-complete-async.git

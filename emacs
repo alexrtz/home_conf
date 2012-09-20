@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
 (add-to-list 'load-path "~/.emacs.d/highlight-indentation")
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -12,20 +14,20 @@
 (semantic-load-enable-excessive-code-helpers)
 (require 'semantic-ia)
 (require 'semantic-gcc)
-;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source" 'c++-mode)
-;(semantic-add-system-include "/home/alexandre/Documents/Programmes/cmake/Source/CTest" 'c++-mode)
 (semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
-;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+(semantic-add-system-include "/usr/include/boost" 'c++-mode)
 (require 'semanticdb)
 (global-semanticdb-minor-mode 1)
+(global-semantic-idle-completions-mode)
 (require 'semanticdb-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 (semantic-load-enable-primary-exuberent-ctags-support)
 
+
 (defun my-cedet-hook ()
 	(local-set-key [(control return)] 'semantic-ia-complete-symbol)
-	(local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
+	(local-set-key [backtab] 'semantic-ia-complete-symbol-menu)
 	(local-set-key "\C-c>" 'semantic-complete-analyze-inline)
 	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
 ;	(local-set-key "." 'semantic-complete-self-insert)
@@ -93,6 +95,33 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
+(defun inside-class-enum-p (pos)
+  "Checks if POS is within the braces of a C++ \"enum class\"."
+  (ignore-errors
+    (save-excursion
+      (goto-char pos)
+      (up-list -1)
+      (backward-sexp 1)
+      (looking-back "enum[ \t]+class[ \t]+[^}]+"))))
+
+(defun align-enum-class (langelem)
+  (if (inside-class-enum-p (c-langelem-pos langelem))
+      0
+    (c-lineup-topmost-intro-cont langelem)))
+
+(defun align-enum-class-closing-brace (langelem)
+  (if (inside-class-enum-p (c-langelem-pos langelem))
+      '-
+    '+))
+
+(defun fix-enum-class ()
+  "Setup `c++-mode' to better handle \"class enum\"."
+  (add-to-list 'c-offsets-alist '(topmost-intro-cont . align-enum-class))
+  (add-to-list 'c-offsets-alist
+               '(statement-cont . align-enum-class-closing-brace)))
+
+(add-hook 'c++-mode-hook 'fix-enum-class)
+
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
 
@@ -103,6 +132,12 @@
 )
 
 (add-hook 'nany-mode-hook 'my-nany-mode-hook)
+
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+(ac-set-trigger-key nil)
+
 
 (require 'highlight-indentation)
 

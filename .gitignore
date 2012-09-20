@@ -1,3 +1,7 @@
 *~
 bash_profile
 *.rte
+*.elc
+emacs.d/ac-comphist.dat
+emacs.d/ac-dict
+emacs.d/ede-projects
