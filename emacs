@@ -1,6 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
 (add-to-list 'load-path "~/.emacs.d/highlight-indentation")
+(add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
 
@@ -132,11 +133,22 @@
 )
 
 (add-hook 'nany-mode-hook 'my-nany-mode-hook)
+(add-to-list 'auto-mode-alist '("\\.opc\\'" . nany-mode))
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 (ac-set-trigger-key nil)
+
+
+(defun my-lisp-mode-hook()
+  (setq indent-tabs-mode t)
+  (setq tab-width 2)
+  )
+
+(add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
+(add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
+
 
 
 (require 'highlight-indentation)
@@ -164,7 +176,7 @@
 
 
 ; anything
-
+(require 'anything-match-plugin)
 (require 'anything-config)
 
 (global-set-key (kbd "C-x w")
@@ -606,6 +618,7 @@ This is a wrapper around `orig-yes-or-no'."
 (global-font-lock-mode t)
 (setq visible-bell 'top-bottom)
 (delete-selection-mode t)
+(setq debug-on-error t)
 
 (visual-line-mode t)
 (setq line-move-visual t)
