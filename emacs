@@ -58,8 +58,8 @@
 ;(defun my-c-mode-cedet-hook ()
 ; (local-set-key "." 'semantic-complete-self-insert)
 ; (local-set-key ">" 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
+;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+;(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
 
 
 (defun my-c-mode-hook()
