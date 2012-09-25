@@ -31,8 +31,8 @@
 	(local-set-key [backtab] 'semantic-ia-complete-symbol-menu)
 	(local-set-key "\C-c>" 'semantic-complete-analyze-inline)
 	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-;	(local-set-key "." 'semantic-complete-self-insert)
-;	(local-set-key ">" 'semantic-complete-self-insert)
+	;;(local-set-key "." 'semantic-complete-self-insert)
+	;;(local-set-key ">" 'semantic-complete-self-insert)
 	(local-set-key [f12] 'semantic-complete-jump)
 	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
 )
@@ -58,8 +58,8 @@
 ;(defun my-c-mode-cedet-hook ()
 ; (local-set-key "." 'semantic-complete-self-insert)
 ; (local-set-key ">" 'semantic-complete-self-insert))
-;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-;(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
+(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
 
 
 (defun my-c-mode-hook()
@@ -75,26 +75,42 @@
   (defun insert-quotes () "insert quotes and go between them" (interactive)
     (insert "\"\"" )
     (backward-char 1))
-					;  (setq c-basic-offset 2)
+	(setq c-basic-offset 2)
   (setq indent-tabs-mode t)
   (setq tab-width 2)
-					;	(c-set-offset 'inline-open '+)
+	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
   (c-set-offset 'brace-list-open '0)
   (c-set-offset 'statement-case-open '0)
   (c-set-offset 'case-label '+)
-					;	(c-set-offset 'statement-case-intro '+)
-  (c-set-offset 'arglist-intro '++)
-  (c-set-offset 'arglist-cont '0)
-  (c-set-offset 'arglist-close '+)
-					;  (c-set-offset 'innamespace '0)
+	;;(c-set-offset 'statement-case-intro '+)
+	;;(c-set-offset 'arglist-intro '+)
+	;; (c-set-offset 'arglist-cont '0)
+	;; (c-set-offset 'arglist-close '+)
+	;;(c-set-offset 'innamespace '0)
   (setq show-trailing-whitespace t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;	(flyspell-prog-mode)
 )
 
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+;(defun c-lineup-arglist-ofono (langelem)
+; )
+
+;(defconst ofono-c-style
+;  '("linux" (c-offsets-alist
+;						 (arglist-cont-nonempty
+;							c-lineup-gcc-asm-reg
+;							c-lineup-arglist-ofono)))
+;  "C Style for oFono.")
+
+;(c-add-style "ofono" ofono-c-style)
+
+
+
 
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
@@ -142,8 +158,7 @@
 
 
 (defun my-lisp-mode-hook()
-  (setq indent-tabs-mode t)
-  (setq tab-width 2)
+  (setq indent-tabs-mode nil)
   )
 
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
@@ -157,10 +172,10 @@
   (set-face-background 'highlight-indentation-face "#23664f")
   (set-face-background 'highlight-indentation-current-column-face "#24a076")
   (highlight-indentation-mode)
-;  (setq indent-tabs-mode t)
-;  (setq tab-width 2)
-;  (setq show-trailing-whitespace t)
-;  (setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
+	;;(setq indent-tabs-mode t)
+	;;(setq tab-width 2)
+	;;(setq show-trailing-whitespace t)
+	;;(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
@@ -235,6 +250,38 @@
   )
 
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+
+
+;; easy spell check
+(global-set-key (kbd "<f8>") 'ispell-word)
+(global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
+;(global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
+(global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
+(defun flyspell-check-next-highlighted-word ()
+ "Custom function to spell check next highlighted word"
+ (interactive)
+ (flyspell-goto-next-error)
+ (ispell-word)
+ )
+(global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
+(setq ispell-dictionary "american")
+
+(let ((langs '("american" "francais")))
+	(setq lang-ring (make-ring (length langs)))
+	(dolist (elem langs) (ring-insert lang-ring elem)))
+
+(defun cycle-ispell-languages ()
+	(interactive)
+	(let ((lang (ring-ref lang-ring -1)))
+		(ring-insert lang-ring lang)
+		(ispell-change-dictionary lang)))
+
+(global-set-key [f9] 'cycle-ispell-languages)
+
+
 
 (defun my-nany-hook ()
   (setq show-trailing-whitespace t)
@@ -297,7 +344,13 @@ This is a wrapper around `orig-yes-or-no'."
 
 (transient-mark-mode t)
 (tool-bar-mode nil)
-(show-paren-mode)
+(show-paren-mode t)
+(setq show-paren-delay 0)           ; how long to wait?
+(setq show-paren-style 'expression) ; alternatives are 'parenthesis' and 'mixed'
+
+(set-face-background 'show-paren-match-face "#002b36")
+(set-face-attribute 'show-paren-match-face nil
+        :weight 'bold :underline nil :overline nil :slant 'normal)
 
 (setq frame-title-format
       '("emacs%@" (:eval (system-name)) ": " (:eval (if (buffer-file-name)
@@ -618,7 +671,7 @@ This is a wrapper around `orig-yes-or-no'."
 (global-font-lock-mode t)
 (setq visible-bell 'top-bottom)
 (delete-selection-mode t)
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 (visual-line-mode t)
 (setq line-move-visual t)
@@ -789,22 +842,25 @@ This is a wrapper around `orig-yes-or-no'."
 (defvar mode-line-cleaner-alist
   `((auto-complete-mode . " α")
     (yas/minor-mode . " υ")
+    (egg-minor-mode . " ɣ")
     (paredit-mode . " π")
     (eldoc-mode . "")
     (abbrev-mode . "")
+    (flyspell-mode . " φ")
     ;; Major modes
     (lisp-interaction-mode . "λ")
     (hi-lock-mode . "")
     (python-mode . "Py")
+    (ruby-mode . "Rb")
     (emacs-lisp-mode . "EL")
     (nxhtml-mode . "nx"))
   "Alist for `clean-mode-line'.
- 
+
 When you add a new element to the alist, keep in mind that you
 must pass the correct minor/major mode symbol and a string you
 want to use in the modeline *in lieu of* the original.")
- 
- 
+
+
 (defun clean-mode-line ()
   (interactive)
   (loop for cleaner in mode-line-cleaner-alist
@@ -816,10 +872,10 @@ want to use in the modeline *in lieu of* the original.")
                ;; major mode
              (when (eq mode major-mode)
                (setq mode-name mode-str)))))
- 
- 
+
+
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
- 
+
 ;;; alias the new `flymake-report-status-slim' to
 ;;; `flymake-report-status'
 (defalias 'flymake-report-status 'flymake-report-status-slim)
