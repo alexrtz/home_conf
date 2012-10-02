@@ -48,8 +48,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/ecb")
 (require 'ecb)
-;(require 'ecb-autoloads)
-(setq ecb-auto-activate nil)
+(require 'ecb-autoloads)
+(setq ecb-auto-activate t)
 (setq ecb-tip-of-the-day nil)
 (setq ecb-display-news-for-upgrade nil)
 (setq ecb-windows-width 0.2)
@@ -251,6 +251,7 @@
 
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
+
 
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
@@ -837,6 +838,28 @@ This is a wrapper around `orig-yes-or-no'."
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/yasnippet/snippets")
 
+
+(require 'iedit)
+
+(defun iedit-dwim (arg)
+  "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
+  (interactive "P")
+  (if arg
+      (iedit-mode)
+    (save-excursion
+      (save-restriction
+        (widen)
+        ;; this function determines the scope of `iedit-start'.
+        (narrow-to-defun)
+        (if iedit-mode
+            (iedit-done)
+          ;; `current-word' can of course be replaced by other
+          ;; functions.
+          (iedit-start (current-word)))))))
+
+(global-set-key (kbd "C-;") 'iedit-mode)
+
+
 ; Clean mode line
 
 (defvar mode-line-cleaner-alist
@@ -847,6 +870,7 @@ This is a wrapper around `orig-yes-or-no'."
     (eldoc-mode . "")
     (abbrev-mode . "")
     (flyspell-mode . " φ")
+    (iedit-mode . " ι")
     ;; Major modes
     (lisp-interaction-mode . "λ")
     (hi-lock-mode . "")
