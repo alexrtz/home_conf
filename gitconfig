@@ -3,7 +3,7 @@
  name = Alexandre Ortiz
 
 [core]
- pager = less -FRSX
+ pager = less -FRSX -x4
  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
  editor = emacs -q -nw
 # excludesfile = ~/.gitignore
@@ -45,7 +45,11 @@
 
  co = checkout
 
+ cp = cherry-pick
+
  d = diff
+ dif = diff --ignore-all-space
+ dn = diff --name-only
  ds = diff --staged
 
  info = remote show origin
@@ -55,6 +59,8 @@
 
  # Track the branch by default
  push = push -u
+ # push current branch
+ pushc = push origin HEAD
 
  # Clean remote deleted branches
  rdb = remote prune origin
@@ -69,8 +75,11 @@
  sp = stash pop
  sl = stash list
  sd = stash drop
+ ss = stash show -p
 
+ unmerged = branch --no-merge
  w = whatchanged
+ whatbranch = branch --contains
  graph = log --graph --oneline --decorate
 
 
@@ -87,8 +96,9 @@
  unadd = reset HEAD
 # lol = log --graph --pretty=format:'%C(red)%h%C(reset) %C(yellow)%d%C(reset)%s %C(green)%an %C(bold black)%cr%C(reset)' --abbrev-commit --date=relative
 
-[push]
- default=current
+[rerere]
+enabled = true
 
 [http]
  sslVerify = no
+
