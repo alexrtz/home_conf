@@ -49,7 +49,7 @@
 (add-to-list 'load-path "~/.emacs.d/ecb")
 (require 'ecb)
 (require 'ecb-autoloads)
-(setq ecb-auto-activate t)
+;(setq ecb-auto-activate t)
 (setq ecb-tip-of-the-day nil)
 (setq ecb-display-news-for-upgrade nil)
 (setq ecb-windows-width 0.2)
@@ -468,10 +468,15 @@ This is a wrapper around `orig-yes-or-no'."
 (define-key ctl-x-map "S" 'save-current-configuration)
 (define-key ctl-x-map "F" 'resume)
 
-;(autoload 'ack-same "full-ack" nil t)
-;(autoload 'ack "full-ack" nil t)
-;(autoload 'ack-find-same-file "full-ack" nil t)
-;(autoload 'ack-find-file "full-ack" nil t)
+
+;; https://github.com/jhelwig/ack-and-a-half
+(add-to-list 'load-path "~/.emacs.d/ack-and-a-half/")
+(require 'ack-and-a-half)
+;; Create shorter aliases
+(defalias 'ack 'ack-and-a-half)
+(defalias 'ack-same 'ack-and-a-half-same)
+(defalias 'ack-find-file 'ack-and-a-half-find-file)
+(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
@@ -769,7 +774,7 @@ This is a wrapper around `orig-yes-or-no'."
 
 (add-hook 'cmake-mode-hook 'my-cmake-mode-hook)
 
-(setq compile-command "LC_MESSAGES=C make")
+(setq compile-command "LC_MESSAGES=C make -j9")
 (setq compilation-read-command nil)
 
 (require 'smart-compile)
@@ -790,7 +795,8 @@ This is a wrapper around `orig-yes-or-no'."
             (message "compilation errors, press C-x ` to visit")
 
           ;;no errors, make the compilation window go away in 0.5 seconds
-          (run-at-time 0.5 nil 'delete-windows-on buf)
+;          (run-at-time 0.5 nil 'delete-windows-on buf)
+          (run-at-time 0.5 nil 'kill-buffer buf)
           (message "NO COMPILATION ERRORS!"))))
 
 

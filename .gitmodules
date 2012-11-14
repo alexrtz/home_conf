@@ -13,3 +13,6 @@
 [submodule "emacs.d/popup"]
 	path = emacs.d/popup
 	url = https://github.com/auto-complete/popup-el.git
+[submodule "emacs.d/ack-and-a-half"]
+	path = emacs.d/ack-and-a-half
+	url = https://github.com/jhelwig/ack-and-a-half.git
