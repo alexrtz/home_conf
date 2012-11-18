@@ -31,7 +31,7 @@
 
 ;;; Code:
 
-(require 'semantic-analyze)
+;(require 'semantic-analyze)
 (require 'ecb-layout)
 (require 'ecb-common-browser)
 (require 'ecb-method-browser)
