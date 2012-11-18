@@ -1,4 +1,4 @@
-;;; ecb.el --- a code browser for Emacs
+;; ecb.el --- a code browser for Emacs
 
 ;; Copyright (C) 2000 - 2005 Jesper Nordenberg,
 ;;                           Klaus Berndl,

@@ -16,3 +16,6 @@
 [submodule "emacs.d/ack-and-a-half"]
 	path = emacs.d/ack-and-a-half
 	url = https://github.com/jhelwig/ack-and-a-half.git
+[submodule "emacs.d/cedet"]
+	path = emacs.d/cedet
+	url = https://github.com/emacsmirror/cedet

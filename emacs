@@ -10,21 +10,35 @@
 ; but requires 1”, which can be suppressed by adding (setq byte-compile-warnings nil) in your
 ; .emacs file before CEDET is loaded
 ;(setq byte-compile-warnings nil)
-(load-file "~/.emacs.d/cedet/common/cedet.el")
+(load-file "~/.emacs.d/cedet/cedet-devel-load.el")
+(semantic-mode 1)
 (global-ede-mode t)
 (semantic-load-enable-excessive-code-helpers)
-(require 'semantic-ia)
-(require 'semantic-gcc)
-(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
-(semantic-add-system-include "/usr/include/boost" 'c++-mode)
-(require 'semanticdb)
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
+;(require 'semantic-gcc)
+;(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
+;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+;(require 'semanticdb)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-completions-mode)
-(require 'semanticdb-global)
+;(require 'semanticdb-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
-(semantic-load-enable-primary-exuberent-ctags-support)
+;(semantic-load-enable-primary-exuberent-ctags-support)
 
+
+
+(defun my-semantic-hook ()
+  (imenu-add-to-menubar "TAGS"))
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+;(when (cedet-gnu-global-version-check t)
+;  (semanticdb-enable-gnu-global-databases 'c-mode)
+;  (semanticdb-enable-gnu-global-databases 'c++-mode))
+
+(when (cedet-ectag-version-check)
+  (semantic-load-enable-primary-exuberent-ctags-support))
 
 (defun my-cedet-hook ()
 	(local-set-key [(control return)] 'semantic-ia-complete-symbol)
@@ -36,6 +50,7 @@
 	(local-set-key [f12] 'semantic-complete-jump)
 	(local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
 )
+
 (add-hook 'c++-mode-common-hook 'my-cedet-hook)
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 
@@ -53,13 +68,6 @@
 (setq ecb-tip-of-the-day nil)
 (setq ecb-display-news-for-upgrade nil)
 (setq ecb-windows-width 0.2)
-
-; Enabling this hook makes emacs less responsive and it can be annoying on a "little" machine
-;(defun my-c-mode-cedet-hook ()
-; (local-set-key "." 'semantic-complete-self-insert)
-; (local-set-key ">" 'semantic-complete-self-insert))
-;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-;(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
 
 
 (defun my-c-mode-hook()
