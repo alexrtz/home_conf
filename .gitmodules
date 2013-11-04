@@ -19,3 +19,6 @@
 [submodule "emacs.d/cedet"]
 	path = emacs.d/cedet
 	url = https://github.com/emacsmirror/cedet
+[submodule "emacs.d/coffee-mode"]
+	path = emacs.d/coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git
