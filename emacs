@@ -4,6 +4,7 @@
 (add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -17,12 +18,13 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 ;(require 'semantic-gcc)
-;(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
-;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
-;(require 'semanticdb)
+(semantic-add-system-include "/usr/include/c++/4.7.2/" 'c++-mode)
+(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+;(load-file "~/.emacs.d/cedet/lisp/cedet/semantic/db.el")
+(require 'semantic/db)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-completions-mode)
-;(require 'semanticdb-global)
+(require 'semantic/db-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 ;(semantic-load-enable-primary-exuberent-ctags-support)
@@ -33,9 +35,9 @@
   (imenu-add-to-menubar "TAGS"))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-;(when (cedet-gnu-global-version-check t)
-;  (semanticdb-enable-gnu-global-databases 'c-mode)
-;  (semanticdb-enable-gnu-global-databases 'c++-mode))
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
 
 (when (cedet-ectag-version-check)
   (semantic-load-enable-primary-exuberent-ctags-support))
@@ -84,7 +86,7 @@
     (insert "\"\"" )
     (backward-char 1))
 	(setq c-basic-offset 2)
-  (setq indent-tabs-mode t)
+  (setq indent-tabs-mode nil)
   (setq tab-width 2)
 	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
@@ -149,15 +151,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 
-
-(defun my-nany-mode-hook()
-  (setq indent-tabs-mode t)
-  (setq tab-width 2)
-)
-
-(add-hook 'nany-mode-hook 'my-nany-mode-hook)
-(add-to-list 'auto-mode-alist '("\\.opc\\'" . nany-mode))
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -187,6 +182,10 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+
+(require 'coffee-mode)
+
 
 (defun fullscreen (&optional f)
        (interactive)
@@ -243,8 +242,6 @@
 (load-file "~/.emacs.d/color-theme-solarized.el")
 (color-theme-solarized-dark)
 
-(load-file "~/.emacs.d/nany-mode.el")
-(add-to-list 'auto-mode-alist '("\\.ny\\'" . nany-mode))
 
 (load-file "~/.emacs.d/markdown-mode.el")
 (require 'markdown-mode)
@@ -290,13 +287,6 @@
 
 (global-set-key [f9] 'cycle-ispell-languages)
 
-
-
-(defun my-nany-hook ()
-  (setq show-trailing-whitespace t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  )
-(add-hook 'nany-mode-hook 'my-nany-hook)
 
 ;(load-file "~/.emacs.d/plantuml-mode.el")
 ;(require 'plantuml-mode)
@@ -828,6 +818,8 @@ This is a wrapper around `orig-yes-or-no'."
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+
+(add-to-list 'auto-mode-alist '("^Rakefile$" . ruby-mode))
 
 ; PERL stuff
 
