@@ -19,3 +19,12 @@
 [submodule "emacs.d/cedet"]
 	path = emacs.d/cedet
 	url = https://github.com/emacsmirror/cedet
+[submodule "emacs.d/php-mode"]
+	path = emacs.d/php-mode
+	url = https://github.com/ejmr/php-mode.git
+[submodule "emacs.d/mmm-mode"]
+	path = emacs.d/mmm-mode
+	url = https://github.com/purcell/mmm-mode.git
+[submodule "emacs.d/scss-mode"]
+	path = emacs.d/scss-mode
+	url = https://github.com/antonj/scss-mode.git

@@ -96,9 +96,13 @@
  unadd = reset HEAD
 # lol = log --graph --pretty=format:'%C(red)%h%C(reset) %C(yellow)%d%C(reset)%s %C(green)%an %C(bold black)%cr%C(reset)' --abbrev-commit --date=relative
 
+
+[merge]
+tool = meld
+
 [rerere]
 enabled = true
 
 [http]
  sslVerify = no
-
+# proxy = http://webcache5.altengroup.dir:8000
