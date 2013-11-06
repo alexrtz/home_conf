@@ -4,6 +4,8 @@
 (add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
+(add-to-list 'load-path "~/.emacs.d/php-mode")
+(add-to-list 'load-path "~/.emacs.d/mmm-mode")
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -83,8 +85,8 @@
   (defun insert-quotes () "insert quotes and go between them" (interactive)
     (insert "\"\"" )
     (backward-char 1))
-	(setq c-basic-offset 2)
-  (setq indent-tabs-mode t)
+  (setq c-basic-offset 2)
+  (setq indent-tabs-mode -1)
   (setq tab-width 2)
 	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
@@ -151,14 +153,6 @@
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
 
 
-(defun my-nany-mode-hook()
-  (setq indent-tabs-mode t)
-  (setq tab-width 2)
-)
-
-(add-hook 'nany-mode-hook 'my-nany-mode-hook)
-(add-to-list 'auto-mode-alist '("\\.opc\\'" . nany-mode))
-
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
@@ -172,6 +166,8 @@
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
+
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
 
 (require 'highlight-indentation)
@@ -187,6 +183,43 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+
+(load-file "~/.emacs.d/php-mode/php-mode.el")
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+(add-to-list 'auto-mode-alist '("\\.coffee$" . javascript-mode))
+
+
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+
+(defun my-css-mode-hook()
+  (defun insert-parentheses () "insert parentheses and go between them" (interactive)
+    (insert "()" )
+    (backward-char 1))
+  (defun insert-brackets () "insert brackets and go between them" (interactive)
+    (insert "[]" )
+    (backward-char 1))
+  (defun insert-braces () "insert curly braces and go between them" (interactive)
+    (insert "{}" )
+    (backward-char 1))
+  (defun insert-quotes () "insert quotes and go between them" (interactive)
+    (insert "\"\"" )
+    (backward-char 1))
+  (setq indent-tabs-mode -1)
+  (setq show-trailing-whitespace t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq css-indent-offset 2)
+)
+
+(add-hook 'css-mode-hook 'my-css-mode-hook)
+
+;(require 'mmm-mode)
+;(setq mmm-global-mode t)
+;(mmm-add-mode-ext-class 'html-mode "\\.php$'" 'html-php)
+
 
 (defun fullscreen (&optional f)
        (interactive)
@@ -243,8 +276,6 @@
 (load-file "~/.emacs.d/color-theme-solarized.el")
 (color-theme-solarized-dark)
 
-(load-file "~/.emacs.d/nany-mode.el")
-(add-to-list 'auto-mode-alist '("\\.ny\\'" . nany-mode))
 
 (load-file "~/.emacs.d/markdown-mode.el")
 (require 'markdown-mode)
@@ -290,13 +321,6 @@
 
 (global-set-key [f9] 'cycle-ispell-languages)
 
-
-
-(defun my-nany-hook ()
-  (setq show-trailing-whitespace t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  )
-(add-hook 'nany-mode-hook 'my-nany-hook)
 
 ;(load-file "~/.emacs.d/plantuml-mode.el")
 ;(require 'plantuml-mode)
@@ -352,7 +376,7 @@ This is a wrapper around `orig-yes-or-no'."
 
 
 (transient-mark-mode t)
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 (show-paren-mode t)
 (setq show-paren-delay 0)           ; how long to wait?
 (setq show-paren-style 'expression) ; alternatives are 'parenthesis' and 'mixed'

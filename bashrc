@@ -15,7 +15,9 @@ HISTCONTROL=ignoredups
 
 [ -f /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
 
-[ -f ~/.bash_completion/ctest ] && . ~/.bash_completion/ctest
+[ -f ~/.bash_completion.d/ctest ] && . ~/.bash_completion.d/ctest
+
+[ -f ~/.bash_completion.d/git ] && . ~/.bash_completion.d/git
 
 if [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
@@ -24,11 +26,12 @@ if [ -f /etc/bash_completion.d/git ]; then
 fi
 
 
-if [ -f /etc/bash_completion.d/git ]; then
-    . /etc/bash_completion.d/git
+if [ -f /etc/bash_completion.d/git-prompt ]; then
+    . /etc/bash_completion.d/git-prompt
      complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
 -        || complete -o default -o nospace -F _git g
 fi
+
 
 if [ -f /usr/share/bash-completion/git ]; then
     . /usr/share/bash-completion/git
@@ -163,30 +166,26 @@ export PKG_CONFIG_PATH
 unset SSH_ASKPASS
 
 if [ -f /usr/bin/ssh-agent ]; then
-    NB_AGENTS=`ps x | grep ssh-agent$ | wc -l`
+NB_AGENTS=`ps x | grep ssh-agent$ | wc -l`
 
     [ $NB_AGENTS -eq 0 ] && rm -f ~/.ssh/sock
 
-    if [ ! -f ~/.ssh/sock  ]; then
-	killall ssh-agent &> /dev/null
-	ssh-agent > ~/.ssh/tmp
-	. ~/.ssh/tmp
-	cat ~/.ssh/tmp | grep SOCK | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/sock
-	cat ~/.ssh/tmp | grep PID | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/pid
-	rm -f .ssh/tmp
-	ssh-add ~/.ssh/id_rsa
+    if [ ! -f ~/.ssh/sock ]; then
+        killall ssh-agent &> /dev/null
+        ssh-agent > ~/.ssh/tmp
+        . ~/.ssh/tmp
+        cat ~/.ssh/tmp | grep SOCK | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/sock
+        cat ~/.ssh/tmp | grep PID | cut -d'=' -f2 | cut -d';' -f1 > ~/.ssh/pid
+        rm -f .ssh/tmp
+        ssh-add ~/.ssh/id_rsa
     else
-	SSH_AUTH_SOCK=`cat ~/.ssh/sock`
-	export SSH_AUTH_SOCK
-	SSH_AGENT_PID=`cat ~/.ssh/pid`
-	export SSH_AGENT_PID
+        SSH_AUTH_SOCK=`cat ~/.ssh/sock`
+        export SSH_AUTH_SOCK
+        SSH_AGENT_PID=`cat ~/.ssh/pid`
+        export SSH_AGENT_PID
     fi
 fi
 
 
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
