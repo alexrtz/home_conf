@@ -28,3 +28,6 @@
 [submodule "emacs.d/scss-mode"]
 	path = emacs.d/scss-mode
 	url = https://github.com/antonj/scss-mode.git
+[submodule "emacs.d/coffee-mode"]
+	path = emacs.d/coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git
