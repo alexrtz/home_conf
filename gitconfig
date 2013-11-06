@@ -102,6 +102,9 @@ ignoreSubmodules = dirty
 [merge]
 tool = meld
 
+[push]
+default = simple
+
 [rerere]
 enabled = true
 
