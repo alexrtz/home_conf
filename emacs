@@ -6,6 +6,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/mmm-mode")
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -19,12 +20,13 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 ;(require 'semantic-gcc)
-;(semantic-add-system-include "/usr/include/c++/4.5.2/" 'c++-mode)
-;(semantic-add-system-include "/usr/include/boost" 'c++-mode)
-;(require 'semanticdb)
+(semantic-add-system-include "/usr/include/c++/4.7.2/" 'c++-mode)
+(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+;(load-file "~/.emacs.d/cedet/lisp/cedet/semantic/db.el")
+(require 'semantic/db)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-completions-mode)
-;(require 'semanticdb-global)
+(require 'semantic/db-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 ;(semantic-load-enable-primary-exuberent-ctags-support)
@@ -35,9 +37,9 @@
   (imenu-add-to-menubar "TAGS"))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-;(when (cedet-gnu-global-version-check t)
-;  (semanticdb-enable-gnu-global-databases 'c-mode)
-;  (semanticdb-enable-gnu-global-databases 'c++-mode))
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
 
 (when (cedet-ectag-version-check)
   (semantic-load-enable-primary-exuberent-ctags-support))
@@ -151,6 +153,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 
 
 (require 'auto-complete-config)
@@ -184,12 +187,11 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
+(require 'coffee-mode)
 
 (load-file "~/.emacs.d/php-mode/php-mode.el")
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-
-(add-to-list 'auto-mode-alist '("\\.coffee$" . javascript-mode))
 
 
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
@@ -219,6 +221,8 @@
 ;(require 'mmm-mode)
 ;(setq mmm-global-mode t)
 ;(mmm-add-mode-ext-class 'html-mode "\\.php$'" 'html-php)
+
+
 
 
 (defun fullscreen (&optional f)
@@ -852,6 +856,8 @@ This is a wrapper around `orig-yes-or-no'."
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+
+(add-to-list 'auto-mode-alist '("^Rakefile$" . ruby-mode))
 
 ; PERL stuff
 
