@@ -189,6 +189,12 @@
 
 (require 'coffee-mode)
 
+(defun my-coffee-mode-hook()
+  (setq tab-width 4)
+  )
+
+(add-hook 'coffee-mode-hook 'my-coffee-mode-hook)
+
 (load-file "~/.emacs.d/php-mode/php-mode.el")
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
