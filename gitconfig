@@ -4,7 +4,7 @@
 
 [core]
  pager = less -FRSX -x4
- whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+ whitespace = trailing-space,cr-at-eol,tabwidth=2
  editor = emacs -q -nw
 # excludesfile = ~/.gitignore
 
@@ -26,6 +26,7 @@
  frag = magenta bold
  old = red bold
  new = green bold
+ whitespace = red reverse
 
 [color "status"]
  added = yellow
@@ -68,7 +69,11 @@
  # Show Branches
  sb = branch -a
 
+ sno = show --name-only
+
  st = status -s
+ # Show only modified files
+ stm = status -s -uno
 
  # stash
  s = stash
