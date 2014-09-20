@@ -20,8 +20,18 @@ alias cmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_BUILD_TYPE:STRING=release"
 alias dcmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ -DCMAKE_BUILD_TYPE:STRING=release"
 alias v="vim"
 alias e="emacs"
+
 alias g="git"
+alias ga="g a"
+alias gci="g ci"
+alias gco="g co"
+alias gcp="g cp"
+alias gll="g ll"
+alias gnb="g nb"
+alias gst="g st"
+
 alias gk="gitk"
+
 alias ackcpp="ack --cpp"
 alias t=tmuxinator
 alias gsr="git svn rebase"
@@ -30,7 +40,7 @@ alias v=vim
 NB_PROCS=`cat /proc/cpuinfo|grep 'processor'|wc -l`
 
 # Made some tests on a machine with 16 cores and with -j10 and higher the compilation was slower
-# than with -j9
+# than with -j9.
 # It could go faster with an SSD but I keep using the 'safe' value until I can test with an SSD
 # and more than 10 cores.
 [ ${NB_PROCS} -lt 9 ] || NB_PROC=8

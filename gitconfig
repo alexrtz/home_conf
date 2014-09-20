@@ -1,5 +1,5 @@
 [user]
- email = hvagabond@gmail.com
+ email = aortiz@summit-tech.ca
  name = Alexandre Ortiz
 
 [core]
@@ -74,6 +74,8 @@
  st = status -s
  # Show only modified files
  stm = status -s -uno
+ # Also show ignored files
+ sti = status -s --ignored
 
  # stash
  s = stash

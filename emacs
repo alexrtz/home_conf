@@ -19,6 +19,7 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (semantic-add-system-include "/usr/include/boost" 'c++-mode)
+(semantic-add-system-include "/usr/include/OGRE" 'c++-mode)
 ;(load-file "~/.emacs.d/cedet/lisp/cedet/semantic/db.el")
 (require 'semantic/db)
 (global-semanticdb-minor-mode 1)
@@ -755,34 +756,77 @@ This is a wrapper around `orig-yes-or-no'."
 ;(global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
 ;(setq compilation-window-height 15)
 
-(setq compilation-finish-function
-      (lambda (buf str)
+;; (setq compilation-finish-function
+;;       (lambda (buf str)
 
-        (if (string-match "exited abnormally" str)
+;;         (if (string-match "exited abnormally" str)
 
-            ;;there were errors
-            (message "compilation errors, press C-x ` to visit")
+;;             ;;there were errors
+;;             (message "compilation errors, press C-x ` to visit")
 
-          ;;no errors, make the compilation window go away in 0.5 seconds
-;          (run-at-time 0.5 nil 'delete-windows-on buf)
-          (run-at-time 0.5 nil 'kill-buffer buf)
-          (message "NO COMPILATION ERRORS!"))))
+;;           ;;no errors, make the compilation window go away in 0.5 seconds
+;; ;          (run-at-time 0.5 nil 'delete-windows-on buf)
+;;           (run-at-time 0.5 nil 'kill-buffer buf)
+;;           (message "NO COMPILATION ERRORS!"))))
 
 
-(defun bury-compile-buffer-if-successful (buffer string)
-  "Bury a compilation buffer if succeeded without warnings "
-  (if (and
-       (with-current-buffer buffer
-          (search-forward "xcolor" nil t))
-       (not
-        (with-current-buffer buffer
-          (search-forward "wazaaabi" nil t))))
-      (run-with-timer 1 nil
-                      (lambda (buf)
-                        (bury-buffer buf)
-                        (switch-to-prev-buffer (get-buffer-window buf) 'kill))
-                      buffer)))
-(add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+;; (setq compilation-finish-function
+;;       (lambda (buf str)
+;;         (if (string-match "*Ack-and-a-half*" (buffer-name))
+;;             (if (string-match "exited abnormally" str)
+;;                 (run-at-time 0.5 nil 'kill-buffer buf)
+;;                  )
+;;         (if (string-match "exited abnormally" str)
+;;             (message "compilation errors, press C-x ` to visit")
+;;           ; else
+;;           ((run-at-time 0.5 nil 'kill-buffer buf)
+;;           (message "NO COMPILATION ERRORS!"))
+;;           ) ; (string-match "exited abnormally" str)
+;;         )))
+
+  ;; Close the compilation window if there was no error at all.
+(setq compilation-exit-message-function
+      (lambda (status code msg)
+        ;; If M-x compile exists with a 0
+        (when (and (eq status 'exit) (zerop code) (not (string-match "*Ack-and-a-half*" (buffer-name))))
+          ;; then bury the *compilation* buffer, so that C-x b doesn't go there
+  	  (bury-buffer "*compilation*")
+  	  ;; and return to whatever were looking at before
+  	  (replace-buffer-in-windows "*compilation*"))
+        ;; Always return the anticipated result of compilation-exit-message-function
+  	(cons msg code)))
+
+
+;; (setq compilation-finish-function
+;;       (lambda (buf str)
+
+;;         (if (and (string-match "exited abnormally" str)
+;;             (string-match "*Ack-and-a-half*" (buffer-name)))
+;;             ((run-at-time 0.5 nil 'kill-buffer buf)
+;;           (message "NO COMPILATION ERRORS!"))
+
+;;             ;;there were errors
+;;             (message "compilation errors, press C-x ` to visit")
+
+;;           ;;no errors, make the compilation window go away in 0.5 seconds
+;; ;          (run-at-time 0.5 nil 'delete-windows-on buf)
+;;           )))
+
+
+;; (defun bury-compile-buffer-if-successful (buffer string)
+;;   "Bury a compilation buffer if succeeded without warnings "
+;;   (if (and
+;;        (with-current-buffer buffer
+;;           (search-forward "xcolor" nil t))
+;;        (not
+;;         (with-current-buffer buffer
+;;           (search-forward "wazaaabi" nil t))))
+;;       (run-with-timer 1 nil
+;;                       (lambda (buf)
+;;                         (bury-buffer buf)
+;;                         (switch-to-prev-buffer (get-buffer-window buf) 'kill))
+;;                       buffer)))
+;; (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
 
 
 
