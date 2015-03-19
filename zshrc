@@ -39,6 +39,7 @@ ZSH_CUSTOM=~/.zsh_custom
 
 # You may need to manually set your language environment
 export LANG=en_CA.UTF-8
+export LC_ALL=en_CA.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -56,7 +57,7 @@ export LANG=en_CA.UTF-8
 
 [ -f ~/.shell_common/aliases.sh ] && . ~/.shell_common/aliases.sh
 [ -f ~/.shell_common/variables.sh ] && . ~/.shell_common/variables.sh
-[ -f ~/.shell_common/ssh.sh ] && . ~/.shell_common/ssh.sh
+#[ -f ~/.shell_common/ssh.sh ] && . ~/.shell_common/ssh.sh
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
 
-[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
+#[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null

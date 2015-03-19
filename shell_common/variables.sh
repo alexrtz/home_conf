@@ -1,5 +1,5 @@
 EDITOR="emacs -nw -q"
-SHELL_USERNAME=`whoami`
+SHELL_USERNAME=alex
 
 PATH=$PATH:/usr/sbin:$MYPATH
 LD_LIBRARY_PATH=$MY_LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH

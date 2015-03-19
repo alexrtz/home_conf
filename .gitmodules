@@ -34,3 +34,6 @@
 [submodule "emacs.d/cedet"]
 	path = emacs.d/cedet
 	url = https://github.com/emacsmirror/cedet
+[submodule "emacs.d/qmake-mode"]
+	path = emacs.d/qmake-mode
+	url = https://github.com/coldnew/qmake-mode.git

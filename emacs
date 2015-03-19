@@ -1,12 +1,12 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
+(add-to-list 'load-path "~/.emacs.d/qmake-mode")
 (add-to-list 'load-path "~/.emacs.d/highlight-indentation")
 (add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
-(add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
+;(add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/mmm-mode")
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -90,9 +90,9 @@
   (defun insert-quotes () "insert quotes and go between them" (interactive)
     (insert "\"\"" )
     (backward-char 1))
-  (setq c-basic-offset 2)
+  (setq c-basic-offset 4)
   (setq indent-tabs-mode t)
-  (setq tab-width 2)
+  (setq tab-width 4)
 	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
   (c-set-offset 'brace-list-open '0)
@@ -111,6 +111,8 @@
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+(require 'qmake-mode)
 
 ;(defun c-lineup-arglist-ofono (langelem)
 ; )
@@ -189,8 +191,6 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
-
-(require 'coffee-mode)
 
 (defun my-coffee-mode-hook()
   (setq tab-width 4)
@@ -430,13 +430,13 @@ This is a wrapper around `orig-yes-or-no'."
 
 
 ;; https://github.com/jhelwig/ack-and-a-half
-(add-to-list 'load-path "~/.emacs.d/ack-and-a-half/")
-(require 'ack-and-a-half)
+;(add-to-list 'load-path "~/.emacs.d/ack-and-a-half/")
+;(require 'ack-and-a-half)
 ;; Create shorter aliases
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+;(defalias 'ack 'ack-and-a-half)
+;(defalias 'ack-same 'ack-and-a-half-same)
+;(defalias 'ack-find-file 'ack-and-a-half-find-file)
+;(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
 ; http://www.emacswiki.org/emacs/IncrementNumber

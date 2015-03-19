@@ -32,6 +32,7 @@ alias gst="g st"
 
 alias gk="gitk"
 
+alias ack=ack-grep
 alias ackcpp="ack --cpp"
 alias t=tmuxinator
 alias gsr="git svn rebase"
