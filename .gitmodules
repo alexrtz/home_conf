@@ -37,3 +37,6 @@
 [submodule "emacs.d/qmake-mode"]
 	path = emacs.d/qmake-mode
 	url = https://github.com/coldnew/qmake-mode.git
+[submodule "git.d/git-number"]
+	path = git.d/git-number
+	url = https://github.com/holygeek/git-number.git
