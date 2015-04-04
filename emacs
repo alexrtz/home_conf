@@ -1,12 +1,20 @@
 (add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/mine")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
+(add-to-list 'load-path "~/.emacs.d/qmake-mode")
 (add-to-list 'load-path "~/.emacs.d/highlight-indentation")
 (add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
-(add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
+;(add-to-list 'load-path "~/.emacs.d/emacs-clang-complete-async")
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/mmm-mode")
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+(add-to-list 'load-path "~/.emacs.d/ack-and-a-half")
+
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(require 'path-completion)
 
 ; C/C++ stuff
 ; Currently CEDET issues a warning “Warning: cedet-called-interactively-p called with 0 arguments,
@@ -90,9 +98,9 @@
   (defun insert-quotes () "insert quotes and go between them" (interactive)
     (insert "\"\"" )
     (backward-char 1))
-  (setq c-basic-offset 2)
+  (setq c-basic-offset 4)
   (setq indent-tabs-mode t)
-  (setq tab-width 2)
+  (setq tab-width 4)
 	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
   (c-set-offset 'brace-list-open '0)
@@ -111,6 +119,8 @@
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+(require 'qmake-mode)
 
 ;(defun c-lineup-arglist-ofono (langelem)
 ; )
@@ -189,8 +199,6 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
-
-(require 'coffee-mode)
 
 (defun my-coffee-mode-hook()
   (setq tab-width 4)
@@ -335,8 +343,20 @@
 (global-set-key [f9] 'cycle-ispell-languages)
 
 
-;(load-file "~/.emacs.d/plantuml-mode.el")
-;(require 'plantuml-mode)
+(defalias 'glog 'magit-file-log)
+(defalias 'gd 'magit-diff-unstaged)
+(defalias 'gds 'magit-diff-staged)
+
+(require 'ack-and-a-half)
+;; Create shorter aliases
+(defalias 'ack 'ack-and-a-half)
+(defalias 'ack-same 'ack-and-a-half-same)
+(defalias 'ack-find-file 'ack-and-a-half-find-file)
+(defalias 'aff 'ack-and-a-half-find-file)
+(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+(defalias 'ack-with-args 'ack-and-a-half-with-args)
+
+(global-set-key (kbd "C-S-f") 'ack)
 
 ; http://scottmcpeak.com/elisp/scott.emacs.el
 ; ------------------- yes-or-no-p ---------------------
@@ -430,13 +450,13 @@ This is a wrapper around `orig-yes-or-no'."
 
 
 ;; https://github.com/jhelwig/ack-and-a-half
-(add-to-list 'load-path "~/.emacs.d/ack-and-a-half/")
-(require 'ack-and-a-half)
+;(add-to-list 'load-path "~/.emacs.d/ack-and-a-half/")
+;(require 'ack-and-a-half)
 ;; Create shorter aliases
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+;(defalias 'ack 'ack-and-a-half)
+;(defalias 'ack-same 'ack-and-a-half-same)
+;(defalias 'ack-find-file 'ack-and-a-half-find-file)
+;(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
@@ -752,7 +772,6 @@ This is a wrapper around `orig-yes-or-no'."
 (global-set-key [f6] 'smart-compile)
 (global-set-key [f7] 'next-error)
 
-;(global-set-key [f6] 'smart-compile)
 ;(global-set-key [f7] 'compile-goto-error-and-close-compilation-window)
 ;(setq compilation-window-height 15)
 
@@ -880,6 +899,18 @@ This is a wrapper around `orig-yes-or-no'."
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+
+(defvar my-cpp-other-file-alist
+  '(("\\.cpp\\'" (".h"))
+    ("\\.c\\'" (".h"))
+    ("\\.h\\'" (".cpp"))
+    ))
+
+(setq-default ff-other-file-alist 'my-cpp-other-file-alist)
+
+(add-hook 'c-initialization-hook (lambda ()
+    (define-key c-mode-base-map [(meta o)] 'ff-get-other-file))
+)
 
 ; Clean mode line
 

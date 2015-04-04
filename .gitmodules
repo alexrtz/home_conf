@@ -15,7 +15,7 @@
 	url = https://github.com/auto-complete/popup-el.git
 [submodule "emacs.d/ack-and-a-half"]
 	path = emacs.d/ack-and-a-half
-	url = https://github.com/jhelwig/ack-and-a-half.git
+	url = https://github.com/mgalgs/ack-and-a-half
 [submodule "emacs.d/php-mode"]
 	path = emacs.d/php-mode
 	url = https://github.com/ejmr/php-mode.git
@@ -34,3 +34,10 @@
 [submodule "emacs.d/cedet"]
 	path = emacs.d/cedet
 	url = https://github.com/emacsmirror/cedet.git
+[submodule "emacs.d/qmake-mode"]
+	path = emacs.d/qmake-mode
+	url = https://github.com/coldnew/qmake-mode.git
+[submodule "git.d/git-number"]
+	path = git.d/git-number
+	url = https://github.com/holygeek/git-number.git
+
