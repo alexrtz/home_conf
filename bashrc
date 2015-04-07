@@ -55,10 +55,10 @@ fi
 # alias gitarch="git archive master --format=tar --prefix=`pwd | sed -e 's/\// /g' |awk '{print $NF}'`/ | gzip >`pwd | sed -e 's/\// /g' |awk '{print $NF}'`.tgz"
 
 
-[ -f ~/.shell_common/aliases.sh ] && . ~/.shell_common/aliases.sh
-[ -f ~/.shell_common/variables.sh ] && . ~/.shell_common/variables.sh
+#[ -f ~/.shell_common/aliases.sh ] && . ~/.shell_common/aliases.sh
+#[ -f ~/.shell_common/variables.sh ] && . ~/.shell_common/variables.sh
 #[ -f ~/.shell_common/ssh.sh ] && . ~/.shell_common/ssh.sh
-[ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
+#[ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
 
 # https://github.com/nicolargo/dotfiles/blob/master/_bashrc.d/bashrc_prompt
 
@@ -130,3 +130,6 @@ fi
 
 
 #[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
+
+
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin

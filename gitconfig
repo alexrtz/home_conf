@@ -1,6 +1,5 @@
-[user]
- email = alexandre.ortiz@broadsign.com
- name = Alexandre Ortiz
+[include]
+	path=~/.config/mine/git/user
 
 [core]
  pager = less -FRSX -x4
@@ -69,7 +68,7 @@
  # Show Branches
  sb = branch -a
 
- sno = show --name-only
+ sno = show --name-only --oneline
 
  st = status -s
  # Show only modified files
