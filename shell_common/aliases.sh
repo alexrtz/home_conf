@@ -20,6 +20,9 @@ alias cmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_BUILD_TYPE:STRING=release"
 alias dcmaker="rm -f CMakeCache.txt; cmake . -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ -DCMAKE_BUILD_TYPE:STRING=release"
 alias v="vim"
 alias e="emacs"
+alias p=python3
+alias pg_data_dump="pg_dump -a bss |grep -v '^\(--\)\?$'|grep -v 'PostgreSQL database dump' | grep -v '^SET' | grep -v '^--Name' | grep -v '^SELECT'"
+alias qm="qmake \"CONFIG += silent\" -r"
 
 alias g="git"
 alias ga="g a"
@@ -29,16 +32,23 @@ alias gcp="g cp"
 alias gll="g ll"
 alias gnb="g nb"
 alias gst="g st"
+alias gsr="git svn rebase"
 
 alias gk="gitk"
 
 alias ack="ack-grep --smart-case -s"
 alias ackcpp="ack --cpp"
-alias t=tmuxinator
-alias gsr="git svn rebase"
-alias v=vim
 
-NB_PROCS=`cat /proc/cpuinfo|grep 'processor'|wc -l`
+alias t=tmuxinator
+
+alias show_upgrades="apt-get -s upgrade| awk -F'[][() ]+' '/^Inst/{printf \"Prog: %s\tcur: %s\tavail: %s\n\", \$2,\$3,\$4}'"
+
+
+alias dpi=docker_purge_images
+alias dpc=docker_purge_containers
+
+
+NB_PROCS=`nproc`
 
 # Made some tests on a machine with 16 cores and with -j10 and higher the compilation was slower
 # than with -j9.
@@ -48,6 +58,6 @@ NB_PROCS=`cat /proc/cpuinfo|grep 'processor'|wc -l`
 
 NB_PROCS=$((${NB_PROCS} + 1))
 
-alias m="make -j${NB_PROCS}"
+alias m="make -j`nproc`"
 
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"

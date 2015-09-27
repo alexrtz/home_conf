@@ -9,6 +9,11 @@
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/mmm-mode")
 (add-to-list 'load-path "~/.emacs.d/ack-and-a-half")
+(add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
+
+;(require 'dockerfile-mode)
+;(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
 
 (require 'package)
 (package-initialize)
@@ -136,7 +141,6 @@
 
 
 
-
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
   (ignore-errors
@@ -168,6 +172,8 @@
 (add-to-list 'auto-mode-alist '("\\.hxx\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 
+
+(add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode t)))
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")

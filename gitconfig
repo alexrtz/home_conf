@@ -1,6 +1,5 @@
-[user]
- email = alexandre.ortiz@alexrtz.net
- name = Alexandre Ortiz
+[include]
+	path=~/.config/mine/git/user
 
 [core]
  pager = less -FRSX -x4
@@ -55,6 +54,8 @@
 
  info = remote show origin
 
+ l = log
+
  # New Branch
  nb = checkout -b
 
@@ -69,7 +70,7 @@
  # Show Branches
  sb = branch -a
 
- sno = show --name-only
+ sno = show --name-only --oneline
 
  st = status -s
  # Show only modified files

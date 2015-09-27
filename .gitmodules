@@ -40,4 +40,6 @@
 [submodule "git.d/git-number"]
 	path = git.d/git-number
 	url = https://github.com/holygeek/git-number.git
-
+[submodule "emacs.d/dockerfile-mode"]
+	path = emacs.d/dockerfile-mode
+	url = https://github.com/spotify/dockerfile-mode.git

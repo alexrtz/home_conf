@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh installation.
+
 export ZSH=$HOME/.oh-my-zsh
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -54,10 +55,14 @@ export LC_ALL=en_CA.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
-[ -f ~/.shell_common/aliases.sh ] && . ~/.shell_common/aliases.sh
-[ -f ~/.shell_common/variables.sh ] && . ~/.shell_common/variables.sh
-#[ -f ~/.shell_common/ssh.sh ] && . ~/.shell_common/ssh.sh
+SHELL_CONFIG_DIR=~/.config/mine/shell_common
+
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
+[ -f $SHELL_CONFIG_DIR/variables.sh ] && . $SHELL_CONFIG_DIR/variables.sh
+[ -f $SHELL_CONFIG_DIR/aliases.sh ] && . $SHELL_CONFIG_DIR/aliases.sh
+[ -f $SHELL_CONFIG_DIR/functions.sh ] && . $SHELL_CONFIG_DIR/functions.sh
+#[ -f $SHELL_CONFIG_DIR/ssh.sh ] && . $SHELL_CONFIG_DIR/ssh.sh
 
 #[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
