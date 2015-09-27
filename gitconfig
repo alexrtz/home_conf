@@ -54,6 +54,8 @@
 
  info = remote show origin
 
+ l = log
+
  # New Branch
  nb = checkout -b
 

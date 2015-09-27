@@ -22,6 +22,7 @@ alias v="vim"
 alias e="emacs"
 alias p=python3
 alias pg_data_dump="pg_dump -a bss |grep -v '^\(--\)\?$'|grep -v 'PostgreSQL database dump' | grep -v '^SET' | grep -v '^--Name' | grep -v '^SELECT'"
+alias qm="qmake \"CONFIG += silent\" -r"
 
 alias g="git"
 alias ga="g a"
@@ -39,6 +40,13 @@ alias ack="ack-grep --smart-case -s"
 alias ackcpp="ack --cpp"
 
 alias t=tmuxinator
+
+alias show_upgrades="apt-get -s upgrade| awk -F'[][() ]+' '/^Inst/{printf \"Prog: %s\tcur: %s\tavail: %s\n\", \$2,\$3,\$4}'"
+
+
+alias dpi=docker_purge_images
+alias dpc=docker_purge_containers
+
 
 NB_PROCS=`nproc`
 
