@@ -66,36 +66,31 @@ SHELL_CONFIG_DIR=~/.config/mine/shell_common
 
 # https://github.com/nicolargo/dotfiles/blob/master/_bashrc.d/bashrc_prompt
 
-# Colors
-
 Yellow="\033[01;33m"
 Cyan="\033[01;36m"
 Green="\033[0;32m"
 Red="\033[0;31m"
 NoColor="\033[0m"
 
-# Chars
 RootPrompt="\#"
 NonRootPrompt="\$"
 
-# Contextual prompt
 prompt() {
 
     USERNAME=$SHELL_USERNAME
     HOSTNAME=`hostname -s`
-#CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
 
-# Change the Window title
     WINDOWTITLE="$USERNAME@$HOSTNAME"
     echo -ne "\033]0;$WINDOWTITLE\007"
 
-# Change the dynamic prompt
-#LEFTPROMPT="$Yellow$CURRENTPATH"
     LEFTPROMPT="\[$Yellow\]$USERNAME@$HOSTNAME \[$Cyan\]\W"
 
     BRANCH=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [ $? -eq 0 ]; then
-	LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
+        LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
+    else
+        BRANCH=$(hg branch 2> /dev/null)
+        [ $? -eq 0 ] && LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
     fi
 
     LineEnding="\n"
@@ -103,15 +98,12 @@ prompt() {
     [ ${#LEFT_PROMPT}  -lt 30 ] && LineEnding=" "
 
     if [ $EUID -ne 0 ]; then
-	PS1=$LEFTPROMPT"\[$Cyan\] "$NonRootPrompt"\[$NoColor\]"$LineEnding
+        PS1=$LEFTPROMPT"\[$Cyan\] "$NonRootPrompt"\[$NoColor\]"$LineEnding
     else
-	PS1=$LEFTPROMPT"\[$Red\] "$RootPrompt$LineEnding
+        PS1=$LEFTPROMPT"\[$Red\] "$RootPrompt$LineEnding
     fi
-
-# echo -e -n $LEFTPROMPT
 }
 
-# Define PROMPT_COMMAND if not already defined (fix: Modifying title on SSH connections)
 if [ -z "$PROMPT_COMMAND" ]; then
     case $TERM in
 	xterm*)
@@ -123,7 +115,6 @@ if [ -z "$PROMPT_COMMAND" ]; then
     esac
 fi
 
-# Main prompt
 PROMPT_COMMAND="prompt;$PROMPT_COMMAND"
 
 if [ $EUID -ne 0 ]; then
@@ -131,6 +122,5 @@ if [ $EUID -ne 0 ]; then
 else
     PS1=$RootPrompt" "
 fi
-
 
 #[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
