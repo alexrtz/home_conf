@@ -31,9 +31,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "emacs.d/cedet"]
-	path = emacs.d/cedet
-	url = https://github.com/emacsmirror/cedet.git
 [submodule "emacs.d/qmake-mode"]
 	path = emacs.d/qmake-mode
 	url = https://github.com/coldnew/qmake-mode.git
@@ -43,3 +40,6 @@
 [submodule "emacs.d/dockerfile-mode"]
 	path = emacs.d/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
+[submodule "emacs.d/cedet"]
+	path = emacs.d/cedet
+	url = https://github.com/alexott/cedet

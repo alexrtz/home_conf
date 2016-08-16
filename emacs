@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mine")
 (add-to-list 'load-path "~/.emacs.d/anything-config")
 (add-to-list 'load-path "~/.emacs.d/qmake-mode")
@@ -300,11 +300,11 @@
 
 (require 'color-theme-solarized)
 (setq color-theme-is-global t)
-(load-file "~/.emacs.d/color-theme-solarized.el")
+(load-file "~/.emacs.d/lisp/color-theme-solarized.el")
 (color-theme-solarized-light)
 
 
-(load-file "~/.emacs.d/markdown-mode.el")
+(load-file "~/.emacs.d/lisp/markdown-mode.el")
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -751,7 +751,7 @@ This is a wrapper around `orig-yes-or-no'."
 (modify-coding-system-alist 'file "\\.yml$" 'utf-8)
 (modify-coding-system-alist 'file "\\.sql$" 'utf-8)
 
-(load-file "~/.emacs.d/gprof-mode.el")
+(load-file "~/.emacs.d/lisp/gprof-mode.el")
 (require 'gprof)
 (setq auto-mode-alist (cons '("\\.gprof\\w?" . gprof-mode) auto-mode-alist))
 
@@ -976,8 +976,8 @@ want to use in the modeline *in lieu of* the original.")
 
 ; Clean mode line end
 
-(if (file-exists-p "~/.emacs.d/work.el")
-    (load-file "~/.emacs.d/work.el"))
+(if (file-exists-p "~/.emacs.d/mine/work.el")
+    (load-file "~/.emacs.d/mine/work.el"))
 
 
 ; ---- language-env DON'T MODIFY THIS LINE!
