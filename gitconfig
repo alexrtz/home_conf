@@ -5,7 +5,7 @@
  pager = less -FRSX -x4
  whitespace = trailing-space,cr-at-eol,tabwidth=2
  editor = emacs -q -nw
-# excludesfile = ~/.gitignore
+ excludesfile = ~/.config/mine/git/gitignore
 
 [color]
  diff = auto

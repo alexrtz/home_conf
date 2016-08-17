@@ -36,8 +36,11 @@ alias gsr="git svn rebase"
 
 alias gk="gitk"
 
-alias ack="ack-grep --smart-case -s"
-alias ackcpp="ack --cpp"
+
+ACK=ack
+which ack > /dev/null || ACK=ack-grep
+alias ack="$ACK --smart-case -s"
+alias ackcpp="$ACK --cpp"
 
 alias t=tmuxinator
 
@@ -58,6 +61,6 @@ NB_PROCS=`nproc`
 
 NB_PROCS=$((${NB_PROCS} + 1))
 
-alias m="make -j`nproc`"
+alias m="make -j$NB_PROCS"
 
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"

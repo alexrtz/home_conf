@@ -14,10 +14,11 @@
 ;(require 'dockerfile-mode)
 ;(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
-
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(when (require 'package nil 'noerror)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+)
 
 (require 'path-completion)
 
@@ -26,9 +27,14 @@
 ; but requires 1”, which can be suppressed by adding (setq byte-compile-warnings nil) in your
 ; .emacs file before CEDET is loaded
 ;(setq byte-compile-warnings nil)
-(load-file "~/.emacs.d/cedet/cedet-devel-load.el")
+
+(if (file-exists-p "~/.emacs.d/cedet/cedet-devel-load.el")
+(when (require 'semantic/ia nil 'noerror)
+(unless (require 'cedet nil 'noerror)
+ (load-file "~/.emacs.d/cedet/cedet-devel-load.el")
+)
 (semantic-mode 1)
-(semantic-load-enable-excessive-code-helpers)
+;(semantic-load-enable-excessive-code-helpers)
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (semantic-add-system-include "/usr/include/boost" 'c++-mode)
@@ -77,10 +83,11 @@
 (if (file-exists-p "~/.emacs.d/ede-projects")
     (load-file "~/.emacs.d/ede-projects"))
 
+)
+)
 
-(cogre-uml-enable-unicode)
 
-
+(when (require 'ecb nil 'noerror)
 (add-to-list 'load-path "~/.emacs.d/ecb")
 (require 'ecb)
 (require 'ecb-autoloads)
@@ -88,7 +95,7 @@
 (setq ecb-tip-of-the-day nil)
 (setq ecb-display-news-for-upgrade nil)
 (setq ecb-windows-width 0.2)
-
+)
 
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)
@@ -126,19 +133,6 @@
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 (require 'qmake-mode)
-
-;(defun c-lineup-arglist-ofono (langelem)
-; )
-
-;(defconst ofono-c-style
-;  '("linux" (c-offsets-alist
-;						 (arglist-cont-nonempty
-;							c-lineup-gcc-asm-reg
-;							c-lineup-arglist-ofono)))
-;  "C Style for oFono.")
-
-;(c-add-style "ofono" ofono-c-style)
-
 
 
 (defun inside-class-enum-p (pos)
@@ -195,7 +189,7 @@
 (require 'highlight-indentation)
 
 (defun my-python-mode-hook()
-  (set-face-background 'highlight-indentation-face "#23664f")
+  (set-face-background 'highlight-indentation-face "#ffcc99")
   (set-face-background 'highlight-indentation-current-column-face "#24a076")
   (highlight-indentation-mode)
 	;;(setq indent-tabs-mode t)
@@ -212,10 +206,11 @@
 
 (add-hook 'coffee-mode-hook 'my-coffee-mode-hook)
 
+(when (require 'php-mode-to-fix nil 'noerror)
 (load-file "~/.emacs.d/php-mode/php-mode.el")
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-
+)
 
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
@@ -266,13 +261,13 @@
   (lambda() (interactive)
     (anything
      :prompt "Switch to: "
-     :candidate-number-limit 10                 ;; up to 10 of each
+     :candidate-number-limit 30
      :sources
-     '( anything-c-source-buffers               ;; buffers
-        anything-c-source-recentf               ;; recent files
-        anything-c-source-bookmarks             ;; bookmarks
-        anything-c-source-files-in-current-dir+ ;; current dir
-        anything-c-source-locate))))            ;; use 'locate'
+     '( anything-c-source-buffers
+        anything-c-source-recentf
+        anything-c-source-bookmarks
+        anything-c-source-files-in-current-dir+
+        anything-c-source-locate))))
 
 
 ;; (add-hook 'emacs-lisp-mode-hook
@@ -317,7 +312,6 @@
 
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
-
 
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
@@ -730,6 +724,7 @@ This is a wrapper around `orig-yes-or-no'."
 (global-set-key [C-f10] 'gud-next)
 (global-set-key [C-f11] 'gud-step)
 
+;; TODO AOR: emacs on Windows tells me iswitchb is obsolete
 (iswitchb-mode t)
 (add-to-list 'iswitchb-buffer-ignore "*Scratch*")
 (add-to-list 'iswitchb-buffer-ignore "*Messages*")
