@@ -64,8 +64,7 @@
 
 ;; Yasnippet
 (use-package yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippet/snippets")
-
+(use-package yasnippet-snippets)
+(yas-global-mode 1)
 
 (provide 'setup-various-languages)
