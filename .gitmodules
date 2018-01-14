@@ -1,45 +1,15 @@
-[submodule "emacs.d/egg"]
-	path = emacs.d/egg
-	url = https://github.com/bogolisk/egg.git
-[submodule "emacs.d/highlight-indentation"]
-	path = emacs.d/highlight-indentation
-	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
-[submodule "emacs.d/auto-complete"]
-	path = emacs.d/auto-complete
-	url = https://github.com/auto-complete/auto-complete.git
 [submodule "emacs.d/emacs-clang-complete-async"]
 	path = emacs.d/emacs-clang-complete-async
 	url = https://github.com/Golevka/emacs-clang-complete-async.git
-[submodule "emacs.d/popup"]
-	path = emacs.d/popup
-	url = https://github.com/auto-complete/popup-el.git
 [submodule "emacs.d/ack-and-a-half"]
 	path = emacs.d/ack-and-a-half
 	url = https://github.com/mgalgs/ack-and-a-half
-[submodule "emacs.d/php-mode"]
-	path = emacs.d/php-mode
-	url = https://github.com/ejmr/php-mode.git
-[submodule "emacs.d/mmm-mode"]
-	path = emacs.d/mmm-mode
-	url = https://github.com/purcell/mmm-mode.git
-[submodule "emacs.d/scss-mode"]
-	path = emacs.d/scss-mode
-	url = https://github.com/antonj/scss-mode.git
-[submodule "emacs.d/coffee-mode"]
-	path = emacs.d/coffee-mode
-	url = https://github.com/defunkt/coffee-mode.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "emacs.d/qmake-mode"]
-	path = emacs.d/qmake-mode
-	url = https://github.com/coldnew/qmake-mode.git
 [submodule "git.d/git-number"]
 	path = git.d/git-number
 	url = https://github.com/holygeek/git-number.git
 [submodule "emacs.d/dockerfile-mode"]
 	path = emacs.d/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
-[submodule "emacs.d/cedet"]
-	path = emacs.d/cedet
-	url = https://github.com/alexott/cedet
