@@ -1,0 +1,3 @@
+[extensions]
+histedit =
+prompt = ~/.config/mine/scripts/prompt.py
