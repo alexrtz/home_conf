@@ -1,0 +1,24 @@
+[default]
+
+stop-screensaver=yes
+fs=yes
+#ao=null
+ao=pulse
+#ao=alsa
+vo = xv,x11,
+vd-lavc-threads = 4
+cache=4096
+#delay=0
+mc=0
+framedrop=no
+index=recreate
+
+
+slang=fr,fra
+# son, langue par défaut
+alang=jpn,en
+
+fs-screen=0
+
+#[gnome-mplayer]
+#msg-level=all
