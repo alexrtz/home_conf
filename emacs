@@ -11,8 +11,8 @@
 (add-to-list 'load-path "~/.emacs.d/ack-and-a-half")
 (add-to-list 'load-path "~/.emacs.d/dockerfile-mode")
 
-;(require 'dockerfile-mode)
-;(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 (when (require 'package nil 'noerror)
   (require 'package)
