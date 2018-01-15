@@ -58,10 +58,7 @@
 
 (use-package solarized-theme)
 
-(use-package color-theme-solarized
-  :init
-  (setq color-theme-is-global t)
-  (color-theme-solarized-light))
+(use-package color-theme-sanityinc-solarized)
 
 (require 'mwheel)
 (mwheel-install)
