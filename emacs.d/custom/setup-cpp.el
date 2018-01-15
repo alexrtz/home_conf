@@ -122,13 +122,12 @@
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 
 ;; TODO AOR: clean this
-
 (global-set-key [C-f5] 'gud-cont)
 (global-set-key [C-f9] 'gud-break)
 (global-set-key [C-f10] 'gud-next)
 (global-set-key [C-f11] 'gud-step)
 
-
+;; TODO AOR: what is this for?
 (load-file "~/.emacs.d/lisp/gprof-mode.el")
 (require 'gprof)
 (setq auto-mode-alist (cons '("\\.gprof\\w?" . gprof-mode) auto-mode-alist))

@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mine")
 
 (setq display-time-24hr-format t)
@@ -55,10 +56,11 @@
 
 (require 'path-completion)
 
+(use-package solarized-theme)
+
 (use-package color-theme-solarized
   :init
   (setq color-theme-is-global t)
-  (load-file "~/.emacs.d/lisp/color-theme-solarized.el")
   (color-theme-solarized-light))
 
 (require 'mwheel)
