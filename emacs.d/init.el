@@ -17,6 +17,7 @@
 
 (require 'setup-general)
 
+(require 'setup-net-clients)
 (require 'setup-cpp)
 (require 'setup-org)
 (require 'setup-spelling)
