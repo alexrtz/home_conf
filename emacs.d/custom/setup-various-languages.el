@@ -58,6 +58,10 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
+;;  Rust
+
+(use-package rust-mode)
+
 ;; Shell
 
 (add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode t)))
