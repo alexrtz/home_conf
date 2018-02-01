@@ -1,11 +1,51 @@
+function f
+{
+    rm -f ~/.config/mine/tmp_find_results
+
+    n=1;
+
+    for i in $(find . -iname \*$1\*); do
+	echo "$n $i"
+	echo "$n $i" >> ~/.config/mine/tmp_find_results
+	n=$(($n+1))
+    done
+}
+
+function en
+{
+    [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
+
+    for i in $*; do
+	FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
+	emacsclient -n "$FILENAME"
+    done
+}
+
+function cn
+{
+    [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
+
+    DIRNAME=$(awk "/^$1 / { print \$2 }" ~/.config/mine/tmp_find_results)
+    cd $DIRNAME
+}
+
+
+
+# git conflicted
+function gconflicted
+{
+    for i in `git status -s | awk '/^UU / { print $2} '`; do emacsclient -n $i; done
+}
+
+# git modified
+function gmodified
+{
+    for i in `git status -s | grep -v \? | sed -re 's/^[ ]?[AM]{1,2} //'`; do emacsclient -n $i; done
+}
+
 function svn_conflicted
 {
     for i in `svn st | grep -E '^[ ]?C' | cut -d' ' -f8`; do emacsclient -n $i; done
-}
-
-function git_modified
-{
-    for i in `git status -s | grep -v \? | sed -re 's/^[ ]?[AM]{1,2} //'`; do emacsclient -n $i; done
 }
 
 

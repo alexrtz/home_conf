@@ -66,6 +66,8 @@
 
 (add-hook 'sh-mode-hook (lambda () (setq indent-tabs-mode t)))
 
+(add-to-list 'auto-mode-alist '("\\.bats$" . shell-script-mode))
+
 ;; Yasnippet
 (use-package yasnippet)
 (use-package yasnippet-snippets)
