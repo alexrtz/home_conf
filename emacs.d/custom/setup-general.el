@@ -13,7 +13,7 @@
 (visual-line-mode t)
 (setq line-move-visual t)
 
-(setq tab-width 2)
+(setq-default tab-width 2)
 
 (setq
  scroll-margin 0

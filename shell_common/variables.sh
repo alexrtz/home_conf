@@ -8,14 +8,13 @@ then
     PATH=$MY_PATH:$PATH
 fi
 
-LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 
-if [ -n "$LD_LIBRARY_PATH" ];
+if [ -n "$MY_LD_LIBRARY_PATH" ];
 then
     LD_LIBRARY_PATH=$MY_LD_LIBRARY_PATH:$LD_LIBRARY_PATH
 fi
 
-LD_LIBRARY_PATH=$MY_LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 LIBRARY_PATH=$MY_LIBRARY_PATH:/usr/lib:/usr/local/lib:$LIBRARY_PATH
 PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH
 

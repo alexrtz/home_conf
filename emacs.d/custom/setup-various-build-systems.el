@@ -1,6 +1,6 @@
 ;; CMake
 
-(require 'cmake-mode)
+(use-package cmake-mode)
 (setq auto-mode-alist (cons '("\\CMakeLists.txt\\w?" . cmake-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.cmake\\w?" . cmake-mode) auto-mode-alist))
 

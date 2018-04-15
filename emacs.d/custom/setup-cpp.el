@@ -82,7 +82,7 @@
   ;;(c-set-offset 'arglist-intro '+)
   ;; (c-set-offset 'arglist-cont '0)
   ;; (c-set-offset 'arglist-close '+)
-  ;;  (c-set-offset 'innamespace '0)
+  (c-set-offset 'innamespace '+)
   (setq show-trailing-whitespace t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   ;; (flyspell-prog-mode)
