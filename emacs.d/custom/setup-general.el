@@ -1,6 +1,14 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mine")
 
+(setq
+ backup-by-copying t ; don't clobber symlinks
+ backup-directory-alist '(("~/.saves/"))
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)
+
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (column-number-mode t)

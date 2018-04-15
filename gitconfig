@@ -51,6 +51,7 @@
  dif = diff --ignore-all-space
  dn = diff --name-only
  ds = diff --staged
+ f = fetch
 
  info = remote show origin
 
@@ -63,6 +64,8 @@
  push = push -u
  # push current branch
  pushc = push origin HEAD
+
+ r = rebase
 
  # Clean remote deleted branches
  rdb = remote prune origin
