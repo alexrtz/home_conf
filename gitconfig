@@ -6,6 +6,7 @@
  whitespace = trailing-space,cr-at-eol,tabwidth=2
  editor = emacs -q -nw
  excludesfile = ~/.config/mine/git/gitignore
+ autocrlf = false
 
 [color]
  diff = auto
