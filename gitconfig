@@ -94,7 +94,8 @@
  whatbranch = branch --contains
  graph = log --graph --oneline --decorate
 
-
+ wa = worktree add
+ wr = worktree remove
 
  # number
  n=number
