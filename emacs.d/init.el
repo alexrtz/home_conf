@@ -15,6 +15,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 
+(defun risky-local-variable-p (sym &optional _ignored) nil)
+
 (require 'setup-general)
 
 (require 'setup-net-clients)

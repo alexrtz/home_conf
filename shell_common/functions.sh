@@ -1,3 +1,9 @@
+function mkcd
+{
+		mkdir -p $1
+		cd  $1
+}
+
 function f
 {
     rm -f ~/.config/mine/tmp_find_results
@@ -16,8 +22,8 @@ function en
     [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
 
     for i in $*; do
-	FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
-	emacsclient -n "$FILENAME"
+				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
+				emacsclient -n "$FILENAME"
     done
 }
 
@@ -29,7 +35,11 @@ function cn
     cd $DIRNAME
 }
 
-
+# git last 10 modified branches
+function glmb
+{
+    for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | head -n 10
+}
 
 # git conflicted
 function gconflicted

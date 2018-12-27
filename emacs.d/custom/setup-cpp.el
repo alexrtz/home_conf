@@ -77,15 +77,15 @@
   (c-set-offset 'substatement-open '0)
   (c-set-offset 'brace-list-open '0)
   (c-set-offset 'statement-case-open '0)
-  (c-set-offset 'case-label '+)
+  (c-set-offset 'case-label '0)
   ;;(c-set-offset 'statement-case-intro '+)
-  ;;(c-set-offset 'arglist-intro '+)
+  (c-set-offset 'arglist-intro '+)
   ;; (c-set-offset 'arglist-cont '0)
-  ;; (c-set-offset 'arglist-close '+)
+  (c-set-offset 'arglist-close '0)
   (c-set-offset 'innamespace '+)
   (setq show-trailing-whitespace t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  ;; (flyspell-prog-mode)
+  (flyspell-prog-mode)
 )
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
@@ -138,6 +138,8 @@
 (setq compilation-read-command nil)
 
 (use-package smart-compile)
+
+(setq compilation-ask-about-save nil)
 
 (global-set-key [f6] 'smart-compile)
 (global-set-key [f7] 'next-error)
