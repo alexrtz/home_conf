@@ -261,21 +261,23 @@ want to use in the modeline *in lieu of* the original.")
 (defalias 'ack-with-args 'ack-and-a-half-with-args)
 (global-set-key (kbd "C-S-f") 'ack)
 
-(use-package anything)
-(require 'anything-match-plugin)
-(require 'anything-config)
+(global-set-key (kbd "C-x w") 'helm-recentf)
 
-(global-set-key (kbd "C-x w")
-  (lambda() (interactive)
-    (anything
-     :prompt "Switch to: "
-     :candidate-number-limit 30
-     :sources
-     '( anything-c-source-buffers
-        anything-c-source-recentf
-        anything-c-source-bookmarks
-        anything-c-source-files-in-current-dir+
-        anything-c-source-locate))))
+;; (use-package anything)
+;; (require 'anything-match-plugin)
+;; (require 'anything-config)
+
+;; (global-set-key (kbd "C-x w")
+;;   (lambda() (interactive)
+;;     (anything
+;;      :prompt "Switch to: "
+;;      :candidate-number-limit 30
+;;      :sources
+;;      '( anything-c-source-buffers
+;;         anything-c-source-recentf
+;;         anything-c-source-bookmarks
+;;         anything-c-source-files-in-current-dir+
+;;         anything-c-source-locate))))
 
 (use-package auto-complete)
 
