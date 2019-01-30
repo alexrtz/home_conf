@@ -38,9 +38,11 @@ alias gk="gitk"
 
 
 ACK=ack
-which ack > /dev/null || ACK=ack-grep
+which ack > /dev/null 2>&1 || ACK=ack-grep
 alias ack="$ACK --smart-case -s"
 alias ackcpp="$ACK --cpp"
+
+alias agcpp="ag --cpp"
 
 alias t=tmuxinator
 
