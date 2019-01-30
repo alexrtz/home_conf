@@ -67,4 +67,7 @@ SHELL_CONFIG_DIR=~/.config/mine/shell_common
 
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
 
-#[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
+[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh && rvm use ruby > /dev/null
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

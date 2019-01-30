@@ -28,7 +28,6 @@
  scroll-conservatively 100000
  scroll-preserve-screen-position 1)
 
-
 (global-set-key [C-tab] 'dabbrev-expand)
 (global-set-key "\C-s" 'save-buffer)
 (global-set-key "\C-o" 'find-file)
@@ -39,17 +38,6 @@
 (global-set-key "\C-l" 'goto-line)
 (global-set-key "\C-xk" 'kill-this-buffer)
 (global-set-key "\C-b" 'iswitchb-buffer)
-
-; TODO AOR: iswitchb is obsolete
-(iswitchb-mode t)
-(add-to-list 'iswitchb-buffer-ignore "*Scratch*")
-(add-to-list 'iswitchb-buffer-ignore "*Messages*")
-(add-to-list 'iswitchb-buffer-ignore "*Completions")
-(add-to-list 'iswitchb-buffer-ignore "*CEDET Global")
-(add-to-list 'iswitchb-buffer-ignore "*Egg:Select Action*")
-(add-to-list 'iswitchb-buffer-ignore "*anything")
-(add-to-list 'iswitchb-buffer-ignore "*ftp ")
-(add-to-list 'iswitchb-buffer-ignore "^[tT][aA][gG][sS]$")
 
 ; We want thos file in UTF-8 by default
 (modify-coding-system-alist 'file "\\.php$" 'utf-8)
@@ -81,7 +69,6 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 100)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 (global-auto-revert-mode t)
 
@@ -121,6 +108,35 @@
   (when buffer-file-name (save-buffer)))
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
+
+
+; TODO: make this work
+;(defun interrupt-and-recompile ()
+;  "Interrupt old compilation, if any, and recompile."
+;  (interactive)
+;  (ignore-errors (kill-compilation))
+;  (recompile))
+
+
+(global-set-key [f6] 'compile)
+(global-set-key [f7] 'next-error)
+
+(setq compilation-ask-about-save nil)
+(setq compilation-read-command nil)
+(setq compilation-scroll-output 'first-error)
+
+(setq compilation-exit-message-function
+      (lambda (status code msg)
+        ;; If M-x compile exists with a 0
+        (when (and (eq status 'exit) (zerop code) (not (string-match "*Ack-and-a-half*" (buffer-name))))
+          (sleep-for 1)
+          ;; then bury the *compilation* buffer, so that C-x b doesn't go there
+          (bury-buffer "*compilation*")
+          ;; and return to whatever were looking at before
+          (delete-window (get-buffer-window (get-buffer "*compilation*"))))
+        ;; Always return the anticipated result of compilation-exit-message-function
+        (cons msg code)))
+
 
 (autoload 'save-current-configuration "revive" "Save status" t)
 (autoload 'resume "revive" "Resume Emacs" t)
@@ -261,23 +277,94 @@ want to use in the modeline *in lieu of* the original.")
 (defalias 'ack-with-args 'ack-and-a-half-with-args)
 (global-set-key (kbd "C-S-f") 'ack)
 
-(global-set-key (kbd "C-x w") 'helm-recentf)
+;; Helm makes searching for anything nicer.
+;; It works on top of many other commands / packages and gives them nice, flexible UI.
+(use-package helm
+  :config
+  (progn
+    (require 'helm-config)
 
-;; (use-package anything)
-;; (require 'anything-match-plugin)
-;; (require 'anything-config)
+    ;; Use C-c h instead of default C-x c, it makes more sense.
+    (global-set-key (kbd "C-c x") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
 
-;; (global-set-key (kbd "C-x w")
-;;   (lambda() (interactive)
-;;     (anything
-;;      :prompt "Switch to: "
-;;      :candidate-number-limit 30
-;;      :sources
-;;      '( anything-c-source-buffers
-;;         anything-c-source-recentf
-;;         anything-c-source-bookmarks
-;;         anything-c-source-files-in-current-dir+
-;;         anything-c-source-locate))))
+    (setq
+     ;; move to end or beginning of source when reaching top or bottom of source.
+     helm-move-to-line-cycle-in-source t
+     ;; search for library in `require' and `declare-function' sexp.
+     helm-ff-search-library-in-sexp t
+     ;; scroll 8 lines other window using M-<next>/M-<prior>
+     helm-scroll-amount 8
+     helm-ff-file-name-history-use-recentf t
+     helm-echo-input-in-header-line t)
+
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+    (global-set-key (kbd "C-x b") 'helm-mini)
+    (setq helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match t)
+
+    ;; TOOD: helm-semantic has not syntax coloring! How can I fix that?
+    (setq helm-semantic-fuzzy-match t
+          helm-imenu-fuzzy-match t)
+
+    ;; Lists all occurences of a pattern in buffer.
+    (global-set-key (kbd "C-c h o") 'helm-occur)
+
+    (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+    ;; open helm buffer inside current window, not occupy whole other window
+    (setq helm-split-window-in-side-p t)
+    (setq helm-autoresize-max-height 0)
+    (setq helm-autoresize-min-height 20)
+    (helm-autoresize-mode 1)
+
+
+    (global-set-key (kbd "C-x w") 'helm-for-files)
+
+    (setq helm-boring-buffer-regexp-list
+          (list
+           (rx "\*")
+           ;; (rx "\*code-conversion-work\*")
+           ;; (rx "\*Completions\*")
+           ;; (rx "\*Echo Area 0\*")
+           ;; (rx "\*Echo Area 1\*")
+           ;; (rx "\*Egg:Select Action\*")
+           ;; (rx "\*Irony\*")
+           ;; (rx "\*Messages\*")
+           ;; (rx "\*Minibuf-0\*")
+           ;; (rx "\*RTags Diagnostics\*")
+           ;; (rx "\*RTags Raw\*")
+           ;; (rx "\*scratch\*")
+           ;; (rx "\*tag-info\*")
+           (rx "*helm")
+           )
+      )
+
+
+    (helm-mode 1)
+    ))
+
+;; Use Helm in Projectile.
+(use-package projectile
+  :config
+  (progn
+    (projectile-global-mode)
+    ))
+
+
+(use-package helm-projectile
+;  :require helm projectile
+  :config
+  (progn
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)
+    ))
 
 (use-package auto-complete)
 

@@ -28,6 +28,11 @@
 (require 'setup-various-languages)
 (require 'setup-vcs)
 
+(let ((local-settings "~/.config/mine/local-settings.el"))
+ (when (file-exists-p local-settings)
+   (load-file local-settings))
+)
+
 ; ---- language-env end DON'T MODIFY THIS LINE!
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
