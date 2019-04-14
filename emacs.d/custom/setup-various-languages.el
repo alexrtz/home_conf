@@ -1,3 +1,17 @@
+;; General
+
+
+(modify-coding-system-alist 'file "\\.php$" 'utf-8)
+(modify-coding-system-alist 'file "\\.plant$" 'utf-8)
+(modify-coding-system-alist 'file "\\.py$" 'utf-8)
+(modify-coding-system-alist 'file "\\.csv$" 'utf-8)
+(modify-coding-system-alist 'file "\\.tex$" 'utf-8)
+(modify-coding-system-alist 'file "\\.rb$" 'utf-8)
+(modify-coding-system-alist 'file "\\.yaml$" 'utf-8)
+(modify-coding-system-alist 'file "\\.yml$" 'utf-8)
+(modify-coding-system-alist 'file "\\.sql$" 'utf-8)
+
+
 ;; CoffeeScript
 
 (defun my-coffee-mode-hook()

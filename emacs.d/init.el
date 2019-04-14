@@ -1,3 +1,9 @@
+;;; init -- emacs initialization
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'package)
 (add-to-list 'package-archives
          '("melpa" . "http://melpa.org/packages/") t)
@@ -14,19 +20,25 @@
 (setq use-package-always-ensure t)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/mine")
 
 (defun risky-local-variable-p (sym &optional _ignored) nil)
 
-(require 'setup-general)
+(require 'helm-setup)
+(require 'general-setup)
+(require 'ui-setup)
+(require 'cpp-setup)
 
 (require 'setup-net-clients)
-(require 'setup-cpp)
 (require 'setup-org)
 (require 'setup-spelling)
 (require 'setup-various-build-systems)
 (require 'setup-various-doc-formats)
 (require 'setup-various-languages)
 (require 'setup-vcs)
+
+(require 'shortcuts-setup)
 
 (let ((local-settings "~/.config/mine/local-settings.el"))
  (when (file-exists-p local-settings)

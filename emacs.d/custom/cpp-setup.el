@@ -1,3 +1,5 @@
+;;; cpp-setup --- C and C++ config
+
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)
     (insert "()" )
@@ -32,17 +34,6 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
-(use-package company
-  :config
-  (progn
-    (add-hook 'after-init-hook 'global-company-mode)
-    (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
-    (setq company-idle-delay 0)))
-
-(use-package flycheck
-  :config
-  (progn
-    (global-flycheck-mode)))
 
 (use-package irony
   :config
@@ -60,19 +51,16 @@
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   ))
 
-  ;; I use irony with company to get code completion.
   (use-package company-irony
     :config
     (progn
       (eval-after-load 'company '(add-to-list 'company-backends 'company-irony))))
 
-  ;; I use irony with flycheck to get real-time syntax checking.
   (use-package flycheck-irony
     :config
     (progn
       (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))))
 
-  ;; Eldoc shows argument list of the function you are currently writing in the echo area.
   (use-package irony-eldoc
     :config
     (progn
@@ -88,44 +76,10 @@
     (define-key c-mode-base-map (kbd "M-,") 'rtags-find-references-at-point)
     (define-key c-mode-base-map (kbd "M-?") 'rtags-display-summary)
     (rtags-enable-standard-keybindings)
+    (rtags-set-periodic-reparse-timeout 1.0)
 
     (setq rtags-use-helm t)
-
-    ;; Shutdown rdm when leaving emacs.
-    (add-hook 'kill-emacs-hook 'rtags-quit-rdm)
     ))
 
-;; TODO: Has no coloring! How can I get coloring?
-(use-package helm-rtags
-  :config
-  (progn
-    (setq rtags-display-result-backend 'helm)
-    ))
-
-;; Use rtags for auto-completion.
-(use-package company-rtags
-  :config
-  (progn
-    (setq rtags-autostart-diagnostics t)
-    (rtags-diagnostics)
-    (setq rtags-completions-enabled t)
-    (push 'company-rtags company-backends)
-    ))
-
-;; Live code checking.
-(use-package flycheck-rtags
-  :config
-  (progn
-    ;; ensure that we use only rtags checking
-    ;; https://github.com/Andersbakken/rtags#optional-1
-    (defun setup-flycheck-rtags ()
-      (flycheck-select-checker 'rtags)
-      (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-      (setq-local flycheck-check-syntax-automatically nil)
-      (rtags-set-periodic-reparse-timeout 2.0)  ;; Run flycheck 2 seconds after being idle.
-      )
-    (add-hook 'c-mode-hook #'setup-flycheck-rtags)
-    (add-hook 'c++-mode-hook #'setup-flycheck-rtags)
-    ))
-
-(provide 'setup-cpp)
+(provide 'cpp-setup)
+;;; setup-cpp.el ends here
