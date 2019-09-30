@@ -1,5 +1,9 @@
 ;;; cpp-setup --- C and C++ config
 
+;;; Commentary:
+
+;;; Code:
+
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)
     (insert "()" )
@@ -34,52 +38,25 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
+(use-package modern-cpp-font-lock
+   :config
+  (modern-c++-font-lock-mode t))
 
-(use-package irony
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
+(use-package lsp-mode :commands lsp
   :config
   (progn
-    ;; If irony server was never installed, install it.
-    (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
+    (setq lsp-enable-file-watchers nil)
+    )
+  )
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
 
-    (add-hook 'c++-mode-hook 'irony-mode)
-    (add-hook 'c-mode-hook 'irony-mode)
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
-    ;; Use compilation database first, clang_complete as fallback.
-    (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang
-                                                      irony-cdb-clang-complete))
-
-    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  ))
-
-  (use-package company-irony
-    :config
-    (progn
-      (eval-after-load 'company '(add-to-list 'company-backends 'company-irony))))
-
-  (use-package flycheck-irony
-    :config
-    (progn
-      (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))))
-
-  (use-package irony-eldoc
-    :config
-    (progn
-      (add-hook 'irony-mode-hook #'irony-eldoc)))
-
-(use-package rtags
-  :config
-  (progn
-    (unless (rtags-executable-find "rc") (error "Binary rc is not installed!"))
-    (unless (rtags-executable-find "rdm") (error "Binary rdm is not installed!"))
-
-    (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
-    (define-key c-mode-base-map (kbd "M-,") 'rtags-find-references-at-point)
-    (define-key c-mode-base-map (kbd "M-?") 'rtags-display-summary)
-    (rtags-enable-standard-keybindings)
-    (rtags-set-periodic-reparse-timeout 1.0)
-
-    (setq rtags-use-helm t)
-    ))
 
 (provide 'cpp-setup)
-;;; setup-cpp.el ends here
+;;; cpp-setup.el ends here

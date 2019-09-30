@@ -6,7 +6,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-         '("melpa" . "http://melpa.org/packages/") t)
+         '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -54,8 +54,8 @@
  '(column-number-mode t)
  '(custom-enabled-themes (quote (sanityinc-solarized-light)))
  '(custom-safe-themes
-	 (quote
-		("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+   (quote
+    ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(dta-default-cfg "default.conf")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
@@ -63,8 +63,8 @@
  '(ecb-windows-width 0.2)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-	 (quote
-		(projectile company-irony company-irony-c-headers flycheck-irony irony-eldoc flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack)))
+   (quote
+    (lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck-irony irony-eldoc flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
