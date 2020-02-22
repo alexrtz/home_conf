@@ -52,19 +52,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (sanityinc-solarized-light)))
+ '(custom-enabled-themes '(sanityinc-solarized-light))
  '(custom-safe-themes
-   (quote
-    ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+	 '("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default))
  '(dta-default-cfg "default.conf")
  '(ecb-options-version "2.40")
- '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
  '(ecb-tree-indent 1)
  '(ecb-windows-width 0.2)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   (quote
-    (lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck-irony irony-eldoc flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack)))
+	 '(ccls lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack))
+ '(safe-local-variable-values
+	 '((compile-command . "make -j -C `pwd`/build/")
+		 (compile-command . "make -j -C /home/alex/Prog/Projets/debugz/build/")
+		 (compile-command "make -j -C /home/alex/Prog/Projets/debugz/build/")
+		 (compile-command "make -j -C $PWD/build/")
+		 (compile-command . "make -j -C `pwd`/build")))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

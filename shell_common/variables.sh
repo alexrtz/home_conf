@@ -20,7 +20,7 @@ then
     LIBRARY_PATH=$MY_LIBRARY_PATH:$LIBRARY_PATH
 fi
 
-PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH
+PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH:/home/alex/Documents/Programs/root/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 
 export QT_SELECT=5
 

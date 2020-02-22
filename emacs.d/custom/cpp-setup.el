@@ -38,6 +38,8 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
+(use-package yasnippet)
+
 (use-package modern-cpp-font-lock
    :config
   (modern-c++-font-lock-mode t))
