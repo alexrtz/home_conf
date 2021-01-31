@@ -8,7 +8,7 @@ my_git_prompt() {
     __git_ps1 "${ZSH_THEME_GIT_PROMPT_PREFIX//\%/%%}%s${ZSH_THEME_GIT_PROMPT_SUFFIX//\%/%%}"   
 }
 
-PROMPT='%{${fg_bold[yellow]}%}alex%{$reset_color%} %{${fg_bold[cyan]}%}%3~ $(my_git_prompt)%{${fg_bold[$CARETCOLOR]}%}$%{${reset_color}%} '
+PROMPT='%{${fg_bold[yellow]}%}alex%{$reset_color%}@${${(%):-%m}} %{${fg_bold[cyan]}%}%3~ $(my_git_prompt)%{${fg_bold[$CARETCOLOR]}%}$%{${reset_color}%} '
 
 RPS1="${return_code}"
 

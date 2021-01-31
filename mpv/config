@@ -1,13 +1,13 @@
-[default]
-
 stop-screensaver=yes
 fs=yes
 #ao=null
 ao=pulse
 #ao=alsa
-vo = xv,x11,
-vd-lavc-threads = 4
-cache=4096
+vo=xv,x11,
+vd-lavc-threads=4
+cache=yes
+demuxer-max-bytes=1120400KiB
+demuxer-readahead-secs=120
 #delay=0
 mc=0
 framedrop=no
@@ -18,7 +18,7 @@ slang=fr,fra
 # son, langue par défaut
 alang=jpn,en
 
-fs-screen=0
+fs-screen=1
 
 #[gnome-mplayer]
 #msg-level=all
