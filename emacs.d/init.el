@@ -52,9 +52,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes '(sanityinc-solarized-light))
+ '(custom-enabled-themes '(sanityinc-solarized-dark))
  '(custom-safe-themes
-	 '("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default))
+	 '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default))
  '(dta-default-cfg "default.conf")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
@@ -69,10 +69,12 @@
 		 (compile-command "make -j -C /home/alex/Prog/Projets/debugz/build/")
 		 (compile-command "make -j -C $PWD/build/")
 		 (compile-command . "make -j -C `pwd`/build")))
- '(show-paren-mode t))
+ '(show-paren-mode t)
+ '(warning-suppress-log-types '((comp) (comp) (comp)))
+ '(warning-suppress-types '((comp) (comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))

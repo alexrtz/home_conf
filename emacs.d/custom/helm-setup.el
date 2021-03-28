@@ -31,10 +31,11 @@
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
     (global-set-key (kbd "C-x b") 'helm-mini)
+    (global-set-key (kbd "C-x w") 'helm-for-files)
+
     (setq helm-buffers-fuzzy-matching t
           helm-recentf-fuzzy-match t)
 
-    ;; TOOD: helm-semantic has not syntax coloring! How can I fix that?
     (setq helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match t)
 
@@ -48,8 +49,6 @@
     (setq helm-autoresize-max-height 0)
     (setq helm-autoresize-min-height 20)
     (helm-autoresize-mode 1)
-
-    (global-set-key (kbd "C-x w") 'helm-for-files)
 
     (setq helm-boring-buffer-regexp-list
           (list

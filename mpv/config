@@ -3,6 +3,7 @@ fs=yes
 #ao=null
 ao=pulse
 #ao=alsa
+hwdec=vaapi
 vo=xv,x11,
 vd-lavc-threads=4
 cache=yes

@@ -160,6 +160,9 @@
   (org-mark-subtree)
   (org-mime-subtree))
 
+(use-package org-journal)
+(setq org-journal-file-type 'monthly)
+
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
 
