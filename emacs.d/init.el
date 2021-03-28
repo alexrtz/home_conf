@@ -62,7 +62,7 @@
  '(ecb-windows-width 0.2)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-	 '(ccls lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack))
+	 '(company-ledger flycheck-ledger ledger-import ledger-mode ccls lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack))
  '(safe-local-variable-values
 	 '((compile-command . "make -j -C `pwd`/build/")
 		 (compile-command . "make -j -C /home/alex/Prog/Projets/debugz/build/")

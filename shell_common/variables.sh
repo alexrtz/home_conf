@@ -1,7 +1,7 @@
 EDITOR="emacs -nw -q"
 SHELL_USERNAME=alex
 
-PATH=~/.config/mine/git/git.d/git-number:~/.local/bin:$PATH:/usr/local/bin
+PATH=~/.config/mine/git/git.d/git-number:$HOME/.local/bin:$PATH:/usr/local/bin
 
 if [ -n "$MY_PATH" ];
 then

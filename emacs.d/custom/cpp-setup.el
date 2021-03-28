@@ -4,6 +4,27 @@
 
 ;;; Code:
 
+(use-package yasnippet)
+
+(use-package modern-cpp-font-lock
+   :config
+  (modern-c++-font-lock-mode t))
+
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
+(use-package lsp-mode :commands lsp
+  :config
+  (progn
+    (setq lsp-enable-file-watchers nil)
+    )
+  )
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+
+(use-package ccls
+  :hook ((c-mode c++-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)
     (insert "()" )
@@ -38,27 +59,9 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
-(use-package yasnippet)
+(use-package qml-mode)
 
-(use-package modern-cpp-font-lock
-   :config
-  (modern-c++-font-lock-mode t))
-
-(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
-
-(use-package lsp-mode :commands lsp
-  :config
-  (progn
-    (setq lsp-enable-file-watchers nil)
-    )
-  )
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
-
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode) .
-         (lambda () (require 'ccls) (lsp))))
-
+(use-package company-qml)
 
 (provide 'cpp-setup)
 ;;; cpp-setup.el ends here
