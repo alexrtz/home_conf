@@ -29,3 +29,11 @@ export LD_LIBRARY_PATH
 export PKG_CONFIG_PATH
 
 export WFICA_OPTS="-span a"
+
+export JAVA_HOME=$(readlink -f $(which java) | sed 's:bin/java::')
+export HADOOP_HOME=/opt/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+export SPARK_LOCAL_IP=127.0.0.1

@@ -123,7 +123,12 @@
              ;; expands the files in the directories individually
              (org-defkey org-mode-map "\C-c["    'undefined)
              (org-defkey org-mode-map "\C-c]"    'undefined)
-             (org-defkey org-mode-map "\C-c;"    'undefined))
+             (org-defkey org-mode-map "\C-c;"    'undefined)
+             (add-hook 'org-metaup-hook 'windmove-up)
+             (add-hook 'org-metaleft-hook 'windmove-left)
+             (add-hook 'org-metadown-hook 'windmove-down)
+             (add-hook 'org-metaright-hook 'windmove-right)
+             )
           'append)
 
 (add-hook 'org-mode-hook
@@ -136,21 +141,21 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Documents/org/refile.org")
+      (quote (("t" "todo" entry (file "~/Documents/org-files/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("r" "respond" entry (file "~/Documents/org/refile.org")
+              ("r" "respond" entry (file "~/Documents/org-files/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-              ("n" "note" entry (file "~/Documents/org/refile.org")
+              ("n" "note" entry (file "~/Documents/org-files/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+datetree "~/Documents/org/diary.org")
+              ("j" "Journal" entry (file+datetree "~/Documents/org-files/diary.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
-              ("w" "org-protocol" entry (file "~/Documents/org/refile.org")
+              ("w" "org-protocol" entry (file "~/Documents/org-files/refile.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
-              ("m" "Meeting" entry (file "~/Documents/org/refile.org")
+              ("m" "Meeting" entry (file "~/Documents/org-files/refile.org")
                "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-              ("p" "Phone call" entry (file "~/Documents/org/refile.org")
+              ("p" "Phone call" entry (file "~/Documents/org-files/refile.org")
                "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file "~/Documents/org/refile.org")
+              ("h" "Habit" entry (file "~/Documents/org-files/refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
 
@@ -160,10 +165,33 @@
   (org-mark-subtree)
   (org-mime-subtree))
 
-(use-package org-journal)
-(setq org-journal-file-type 'monthly)
-
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/Documents/org-roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+(setq-default org-roam-dailies-directory "daily")
+
+(setq-default org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+
+(setq org-roam-v2-ack t)
 
 (provide 'setup-org)

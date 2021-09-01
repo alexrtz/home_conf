@@ -5,8 +5,12 @@
 ;;; Code:
 
 (require 'package)
+
 (add-to-list 'package-archives
-         '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(add-to-list 'package-archives
+             '("org" . "https://orgmode.org/elpa/") t)
 
 (package-initialize)
 
@@ -43,7 +47,7 @@
 (let ((local-settings "~/.config/mine/local-settings.el"))
  (when (file-exists-p local-settings)
    (load-file local-settings))
-)
+ )
 
 ; ---- language-env end DON'T MODIFY THIS LINE!
 (custom-set-variables
@@ -62,7 +66,7 @@
  '(ecb-windows-width 0.2)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-	 '(company-ledger flycheck-ledger ledger-import ledger-mode ccls lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack))
+	 '(scala-mode company-ledger flycheck-ledger ledger-import ledger-mode ccls lsp-clangd eglot projectile company-irony company-irony-c-headers flycheck company helm helm-ack magit yasnippet-snippets yaml-mode use-package solarized-theme smart-compile rust-mode restclient markdown-mode iedit egg dockerfile-mode color-theme-solarized color-theme-sanityinc-solarized cmake-mode autopair auto-complete ack))
  '(safe-local-variable-values
 	 '((compile-command . "make -j -C `pwd`/build/")
 		 (compile-command . "make -j -C /home/alex/Prog/Projets/debugz/build/")
