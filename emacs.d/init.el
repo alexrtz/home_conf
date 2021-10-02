@@ -75,7 +75,7 @@
 		 (compile-command . "make -j -C `pwd`/build")))
  '(show-paren-mode t)
  '(warning-suppress-log-types '((comp) (comp) (comp)))
- '(warning-suppress-types '((comp) (comp) (comp))))
+ '(warning-suppress-types '((use-package) (use-package) (comp) (comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
