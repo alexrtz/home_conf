@@ -56,4 +56,4 @@ alias dpc=docker_purge_containers
 
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
 
-alias yt="youtube-dl -o \"%(upload_date)s_%(title)s\""
+alias yt="yt-dlp -o \"%(upload_date)s_%(title)s\""
