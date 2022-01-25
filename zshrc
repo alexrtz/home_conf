@@ -74,3 +74,6 @@ SHELL_CONFIG_DIR=~/.config/mine/shell_common
 export PATH="$PATH:$HOME/.rvm/bin"
 
 rvm use ruby > /dev/null
+
+which direnv > /dev/null 2>&1
+[ $? -eq 0 ] && eval "$(direnv hook zsh)"

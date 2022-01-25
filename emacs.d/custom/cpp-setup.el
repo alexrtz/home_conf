@@ -16,6 +16,7 @@
   :config
   (progn
     (setq lsp-enable-file-watchers nil)
+    (setq lsp-enable-on-type-formatting nil)
     )
   )
 (use-package lsp-ui :commands lsp-ui-mode)
