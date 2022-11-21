@@ -20,11 +20,6 @@
     )
   )
 (use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
-
-(use-package ccls
-  :hook ((c-mode c++-mode) .
-         (lambda () (require 'ccls) (lsp))))
 
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)

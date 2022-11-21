@@ -84,16 +84,6 @@
 (autoload 'save-current-configuration "revive" "Save status" t)
 (autoload 'resume "revive" "Resume Emacs" t)
 
-(use-package autopair)
-(autopair-global-mode) ;; enable autopair in all buffer
-(put 'autopair-insert-opening 'delete-selection t)
-(put 'autopair-skip-close-maybe 'delete-selection t)
-(put 'autopair-insert-or-skip-quote 'delete-selection t)
-(put 'autopair-extra-insert-opening 'delete-selection t)
-(put 'autopair-extra-skip-close-maybe 'delete-selection t)
-(put 'autopair-backspace 'delete-selection 'supersede)
-(put 'autopair-newline 'delete-selection t)
-
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
 (defun my-increment-number-decimal (&optional arg)
