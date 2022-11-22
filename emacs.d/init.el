@@ -31,6 +31,8 @@
     ))
 
 (add-to-list 'load-path "~/.emacs.d/custom")
+; TODO: use use-package for revive
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mine")
 
 (defun risky-local-variable-p (sym &optional _ignored) nil)
@@ -82,3 +84,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+
+(provide 'init)
+;;; init.el ends here

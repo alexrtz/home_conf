@@ -25,8 +25,9 @@
   (progn
     (global-flycheck-mode)))
 
-
 (require 'path-completion)
+
+(electric-pair-local-mode 1
 
 (require 'recentf)
 (recentf-mode 1)
@@ -83,7 +84,6 @@
 
 (autoload 'save-current-configuration "revive" "Save status" t)
 (autoload 'resume "revive" "Resume Emacs" t)
-
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
 (defun my-increment-number-decimal (&optional arg)
