@@ -27,7 +27,7 @@
 
 (require 'path-completion)
 
-(electric-pair-local-mode 1
+(electric-pair-local-mode 1)
 
 (require 'recentf)
 (recentf-mode 1)
