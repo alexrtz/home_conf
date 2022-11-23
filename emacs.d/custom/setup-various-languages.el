@@ -56,22 +56,6 @@
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
-
-;; Python
-;; TODO AOR: is there a package for this package?
-(add-to-list 'load-path "~/.emacs.d/highlight-indentation")
-(require 'highlight-indentation)
-
-(defun my-python-mode-hook()
-  (set-face-background 'highlight-indentation-face "#ffcc99")
-  (set-face-background 'highlight-indentation-current-column-face "#24a076")
-  (highlight-indentation-mode)
-  ;;(setq show-trailing-whitespace t)
-  ;;(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
-  )
-
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-
 ;;  Rust
 
 (use-package rust-mode)

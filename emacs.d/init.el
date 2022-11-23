@@ -41,6 +41,7 @@
 (require 'general-setup)
 (require 'ui-setup)
 (require 'cpp-setup)
+(require 'python-setup)
 
 (require 'setup-net-clients)
 (require 'setup-org)
