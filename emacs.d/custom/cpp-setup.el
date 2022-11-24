@@ -21,9 +21,9 @@
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package company-lsp :commands company-lsp)
 
-(use-package ccls
-  :hook ((c-mode c++-mode) .
-         (lambda () (require 'ccls) (lsp))))
+;; (use-package ccls
+;;  :hook ((c-mode c++-mode) .
+;;         (lambda () (require 'ccls) (lsp))))
 
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)
@@ -58,6 +58,21 @@
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
 
 (use-package qml-mode)
 
