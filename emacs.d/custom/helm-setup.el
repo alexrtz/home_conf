@@ -7,7 +7,6 @@
 (use-package helm
   :config
   (progn
-    (require 'helm-config)
 
     ;; Use C-c h instead of default C-x c, it makes more sense.
     (global-set-key (kbd "C-c x") 'helm-command-prefix)
