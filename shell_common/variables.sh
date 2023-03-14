@@ -37,3 +37,5 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 export SPARK_HOME=/opt/spark
 export PATH=$PATH:$SPARK_HOME/bin
 export SPARK_LOCAL_IP=127.0.0.1
+
+export CMAKE_GENERATOR=Ninja
