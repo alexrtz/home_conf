@@ -6,16 +6,9 @@ alias ll="ls --color -l"
 
 alias rm="rm -i"
 
-alias eamcs="emacs"
-alias emasc="emacs"
+alias u=uncompress_file
 
-alias m="make -j"
-
-alias mi="make -j install"
-alias n="nice ninja -j 10"
-alias ni="nice ninja -j 10 install"
-alias nc="nice ninja -C build -j 10"
-alias nci="nice ninja -C build -j 10 install"
+alias bi="b install"
 
 alias dpump="pump make -j 6"
 
@@ -25,8 +18,6 @@ alias cmb="cmake . -B build"
 alias dcmake="rm -f CMakeCache.txt; cmake .. -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++"
 alias cmaker="rm -f CMakeCache.txt; cmake .. -DCMAKE_BUILD_TYPE:STRING=release"
 alias dcmaker="rm -f CMakeCache.txt; cmake .. -DCMAKE_C_COMPILER=/usr/lib/distcc/gcc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ -DCMAKE_BUILD_TYPE:STRING=release"
-
-
 
 alias grpe="grep"
 alias mysqldump="mysqldump --opt -e -B"

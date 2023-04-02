@@ -4,6 +4,30 @@ function mkcd
 		cd  $1
 }
 
+function uncompress_file
+{
+  local file="$1"
+  local filename="$(basename "$file")"
+  local extension="${filename##*.}"
+
+  case "$extension" in
+    "tar")
+      tar xf "$file" ;;
+    "tar.gz"|"tgz")
+      tar xzf "$file" ;;
+    "tar.bz2"|"tbz2")
+      tar xjf "$file" ;;
+    "tar.xz"|"txz")
+      tar xJf "$file" ;;
+    "zip")
+      unzip "$file" ;;
+    "rar")
+      unrar x "$file" ;;
+    *)
+      echo "Unsupported file format: $file" ;;
+  esac
+}
+
 function b
 {
 		nb_processes=10
