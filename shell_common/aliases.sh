@@ -15,7 +15,7 @@ alias mi="make -j install"
 alias n="nice ninja -j 10"
 alias ni="nice ninja -j 10 install"
 alias nc="nice ninja -C build -j 10"
-alias nc="nice ninja -C build -j 10 install"
+alias nci="nice ninja -C build -j 10 install"
 
 alias dpump="pump make -j 6"
 

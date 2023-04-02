@@ -4,6 +4,21 @@ function mkcd
 		cd  $1
 }
 
+function b
+{
+		nb_processes=10
+
+		if [[ "$1" =~ ^[1-9][0-9]*$ ]]
+		then
+				nb_processes=$1
+		fi
+
+		[ -f Makefile ] && make -j 10 && return
+		[ -f build/Makefile ] && make -C build -j 10 && return
+		[ -f build.ninja ] && ninja -j 10 && return
+		[ -f build/build.ninja ] && ninja -C build -j 10 && return
+}
+
 function f
 {
     rm -f ~/.config/mine/tmp_find_results
@@ -11,21 +26,21 @@ function f
     n=1;
 
     for i in $(find . -iname \*$1\*); do
-	echo "$n $i"
-	echo "$n $i" >> ~/.config/mine/tmp_find_results
-	n=$(($n+1))
+				echo "$n $i"
+				echo "$n $i" >> ~/.config/mine/tmp_find_results
+				n=$(($n+1))
     done
 }
 
-function en
-{
-    [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
+# function en
+# {
+#     [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
 
-    for i in $*; do
-				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
-				emacsclient -n "$FILENAME"
-    done
-}
+#     for i in $*; do
+# 				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
+# 				emacsclient -n "$FILENAME"
+#     done
+# }
 
 function cn
 {
