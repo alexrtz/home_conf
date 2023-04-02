@@ -53,13 +53,10 @@
 
 (require 'shortcuts-setup)
 
-(let ((local-settings "~/.config/mine/local-settings.el"))
- (when (file-exists-p local-settings)
-   (load-file local-settings))
- )
-
 (setq custom-file "~/.config/mine/custom.el")
-(load custom-file)
+(when (file-exists-p custom-file)
+  (load-file custom-file)
+  )
 
 (provide 'init)
 ;;; init.el ends here

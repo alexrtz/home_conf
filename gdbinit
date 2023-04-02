@@ -4,3 +4,7 @@ set print pretty on
 set print array off
 set print array-indexes on
 set breakpoint pending on
+
+define hook-quit
+  set confirm off
+end
