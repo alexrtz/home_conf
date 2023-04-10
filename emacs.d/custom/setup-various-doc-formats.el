@@ -1,8 +1,16 @@
+;; json
+
+(use-package json-mode
+   :config
+   (setq show-trailing-whitespace t)
+   (setq indent-tabs-mode nil)
+   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+)
+
 ;; LaTeX
 
 ;(use-package auctex)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-
 
 ;; Markdown
 
@@ -23,7 +31,7 @@
 
 (defun my-nxml-hook ()
  (setq show-trailing-whitespace t)
- (setq indent-tabs-mode 1)
+ (setq indent-tabs-mode nil)
  (setq
   nxml-child-indent 2
   nxml-attribute-indent 2
