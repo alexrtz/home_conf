@@ -7,7 +7,7 @@
 (use-package yasnippet)
 
 (use-package modern-cpp-font-lock
-   :config
+  :config
   (modern-c++-font-lock-mode t))
 
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))

@@ -1,10 +1,11 @@
 ;; json
 
 (use-package json-mode
-   :config
-   (setq show-trailing-whitespace t)
-   (setq indent-tabs-mode nil)
-   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  :config
+  (setq
+	 show-trailing-whitespace t
+	 indent-tabs-mode nil)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
 )
 
 ;; LaTeX
