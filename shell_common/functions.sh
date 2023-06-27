@@ -74,16 +74,27 @@ function cn
     cd $DIRNAME
 }
 
-# git last 10 modified branches
-function glmb
-{
-    for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | head -n 10
-}
-
 # git conflicted
 function gconflicted
 {
     for i in `git status -s | awk '/^UU / { print $2} '`; do emacsclient -n $i; done
+}
+
+# git grep
+function gg
+{
+		if [ -z "$1" ]
+		then
+				echo "A string/regex should be passed as first argument of this command"
+		fi
+
+		git grep $1 $(git rev-list --all)
+}
+
+# git last 10 modified branches
+function glmb
+{
+    for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | head -n 10
 }
 
 # git modified
