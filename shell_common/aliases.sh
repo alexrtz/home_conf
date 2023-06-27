@@ -28,6 +28,7 @@ alias dfr="df -Ph | grep LOCAL | cut -d' ' -f '9'"
 
 alias v="vim"
 alias e="emacs"
+alias ec="emacsclient -n"
 
 alias p=python3
 alias pg_data_dump="pg_dump -a bss |grep -v '^\(--\)\?$'|grep -v 'PostgreSQL database dump' | grep -v '^SET' | grep -v '^--Name' | grep -v '^SELECT'"
