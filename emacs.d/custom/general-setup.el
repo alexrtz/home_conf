@@ -14,6 +14,8 @@
 
 (setq debug-on-error nil)
 
+(setq large-file-warning-threshold 100000000)
+
 (use-package company
   :config
   (progn
