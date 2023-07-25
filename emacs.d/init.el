@@ -40,6 +40,7 @@
 (require 'helm-setup)
 (require 'general-setup)
 (require 'ui-setup)
+(require 'lsp-setup)
 (require 'cpp-setup)
 (require 'python-setup)
 
