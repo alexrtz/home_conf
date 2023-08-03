@@ -31,6 +31,8 @@ alias e="emacs"
 alias ec="emacsclient -n"
 
 alias p=python3
+alias mvenv="python3 -m venv venv && . venv/bin/activate && python -m pip install  --upgrade pip setuptools"
+
 alias pg_data_dump="pg_dump -a bss |grep -v '^\(--\)\?$'|grep -v 'PostgreSQL database dump' | grep -v '^SET' | grep -v '^--Name' | grep -v '^SELECT'"
 
 alias qm="qmake \"CONFIG += silent\" -r"
