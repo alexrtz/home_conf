@@ -16,6 +16,8 @@
 
 (setq large-file-warning-threshold 100000000)
 
+(run-with-timer 60 1000000 'save-current-configuration)
+
 (use-package company
   :config
   (progn
