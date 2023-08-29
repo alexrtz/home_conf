@@ -1,5 +1,7 @@
 ;; CMake
 
+(use-package cmake-mode)
+
 (defun my-cmake-mode-hook()
   (setq tab-width 2)
   (setq c-basic-offset 2)
