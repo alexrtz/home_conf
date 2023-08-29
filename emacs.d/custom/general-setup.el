@@ -67,8 +67,17 @@
   (when buffer-file-name (save-buffer)))
 
 
-(global-set-key [f6] 'compile)
-(global-set-key [f7] 'next-error)
+;(global-set-key [f6] 'compile)
+;(global-set-key [f7] 'next-error)
+
+(defun touch-trigger ()
+  "Run a shell command."
+  (interactive)
+  (save-some-buffers t)
+  (shell-command "touch ~/tmp/trigger"))
+
+;; Define a keybinding to trigger the function
+(global-set-key (kbd "<f7>") 'touch-trigger)
 
 (setq compilation-ask-about-save nil)
 (setq compilation-read-command nil)

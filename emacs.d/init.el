@@ -35,6 +35,9 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mine")
 
+(use-package tree-sitter)
+(use-package 'tree-sitter-langs)
+
 (defun risky-local-variable-p (sym &optional _ignored) nil)
 
 (require 'helm-setup)
