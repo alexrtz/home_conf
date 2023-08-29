@@ -67,6 +67,8 @@
   (when buffer-file-name (save-buffer)))
 
 
+(setq mouse-yank-at-point t)
+
 ;(global-set-key [f6] 'compile)
 ;(global-set-key [f7] 'next-error)
 
