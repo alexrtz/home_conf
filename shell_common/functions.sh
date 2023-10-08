@@ -77,7 +77,7 @@ function cn
 # git conflicted
 function gconflicted
 {
-    for i in `git status -s | awk '/^UU / { print $2} '`; do emacsclient -n $i; done
+    for i in `git status -s | grep -v "^\#" | awk '/^(UU|AA) / { print $2} '`; do emacsclient -n $i; done
 }
 
 # git grep
