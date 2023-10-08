@@ -1,4 +1,4 @@
-(require 'org-install)
+;(require 'org-install)
 
 (defun my-org-mode-hook()
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -61,12 +61,12 @@
   (global-set-key (kbd "C-c r") 'org-capture)
 
   (setq org-todo-keywords
-	(quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+	(quote ((sequence "TODO(t)" "DOING(p)" "|" "DONE(d!/!)")
 		(sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE"))))
 
   (setq org-todo-keyword-faces
 	(quote (("TODO" :foreground "red" :weight bold)
-		("NEXT" :foreground "pink" :weight bold)
+		("DOING" :foreground "pink" :weight bold)
 		("DONE" :foreground "forest green" :weight bold)
 		("WAITING" :foreground "orange" :weight bold)
 		("HOLD" :foreground "magenta" :weight bold)
