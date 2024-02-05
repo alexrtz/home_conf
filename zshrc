@@ -27,6 +27,7 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+plugins=(sudo git fzf)
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.zsh_custom
@@ -68,7 +69,6 @@ autoload bashcompinit
 bashcompinit
 
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
-
 
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
