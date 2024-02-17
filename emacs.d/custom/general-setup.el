@@ -29,7 +29,7 @@
   (progn
     (global-flycheck-mode)))
 
-(require 'path-completion)
+;(require 'path-completion)
 
 (electric-pair-mode)
 
@@ -97,8 +97,23 @@
         ;; Always return the anticipated result of compilation-exit-message-function
         (cons msg code)))
 
-(autoload 'save-current-configuration "revive" "Save status" t)
-(autoload 'resume "revive" "Resume Emacs" t)
+(if (projectile-project-root)
+    (progn
+      (setq desktop-dirname (projectile-project-root))
+      (desktop-save-mode 1)
+      )
+  )
+
+(defun my-desktop-read-global ()
+  "Load the global desktop save (useful when emacs has not been started from inside a versioned directory)"
+  (desktop-read "~/.config/mine/")
+  )
+
+
+(defun my-desktop-save-global ()
+  "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
+  (desktop-save "~/.config/mine/")
+  )
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
 (defun my-increment-number-decimal (&optional arg)

@@ -14,8 +14,11 @@
 (global-set-key "\C-l" 'goto-line)
 (global-set-key "\C-xk" 'kill-this-buffer)
 
-(define-key ctl-x-map "S" 'save-current-configuration)
-(define-key ctl-x-map "F" 'resume)
+
+;(global-set-key (kbd "C-S") 'my-desktop-save-global)
+;(global-set-key (kbd "C-F") 'my-desktop-read-global)
+;(define-key ctl-x-map "F" 'resume)
+
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 
