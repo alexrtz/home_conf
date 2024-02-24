@@ -15,10 +15,8 @@
 (global-set-key "\C-xk" 'kill-this-buffer)
 
 
-;(global-set-key (kbd "C-S") 'my-desktop-save-global)
-;(global-set-key (kbd "C-F") 'my-desktop-read-global)
-;(define-key ctl-x-map "F" 'resume)
-
+(global-set-key (kbd "C-S-S") (lambda () (interactive) (my-desktop-save-global)))
+(global-set-key (kbd "C-S-F") (lambda () (interactive) (my-desktop-read-global)))
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 
