@@ -75,7 +75,7 @@ bashcompinit
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-rvm use ruby > /dev/null
+#rvm use ruby > /dev/null
 
 which direnv > /dev/null 2>&1
 [ $? -eq 0 ] && eval "$(direnv hook zsh)"
