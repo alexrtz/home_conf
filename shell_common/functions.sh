@@ -1,3 +1,19 @@
+function cb
+{
+		luminosity=$1
+
+		if [ -z "$luminosity" ]
+		then
+				echo "Pass the desired luminosity percentage (1 - 100) as the first argument"
+				return 1
+		fi
+
+		for i in $(ddccontrol -p 2> /dev/null | grep " - Device" | cut -d: -f3)
+		do
+				ddccontrol -r 0x10 -w $luminosity dev:$i > /dev/null 2>&1
+		done
+}
+
 function mkcd
 {
 		mkdir -p $1
