@@ -1,5 +1,17 @@
 ;(require 'org-install)
 
+(use-package org-journal
+  :ensure t
+  :defer t
+  :config
+  (setq
+   org-journal-date-format "%A, %d %B %Y"
+   org-journal-dir "~/Documents/journal/"
+   org-journal-file-type 'monthly)
+  :bind* ("C-c C-j" . org-journal-new-entry)
+  )
+
+
 (defun my-org-mode-hook()
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   (define-key global-map "\C-cl" 'org-store-link)
@@ -147,8 +159,8 @@
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
               ("n" "note" entry (file "~/Documents/org-files/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+datetree "~/Documents/org-files/diary.org")
-               "* %?\n%U\n" :clock-in t :clock-resume t)
+              ;("j" "Journal" entry (file+datetree "~/Documents/org-files/diary.org")
+              ; "* %?\n%U\n" :clock-in t :clock-resume t)
               ("w" "org-protocol" entry (file "~/Documents/org-files/refile.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
               ("m" "Meeting" entry (file "~/Documents/org-files/refile.org")
