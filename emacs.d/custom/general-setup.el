@@ -33,6 +33,12 @@
 
 (electric-pair-mode)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1)
+  )
+
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 100)

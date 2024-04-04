@@ -49,6 +49,7 @@
 (require 'lsp-setup)
 (require 'cpp-setup)
 (require 'python-setup)
+(require 'container-setup)
 
 (require 'setup-net-clients)
 (require 'setup-org)

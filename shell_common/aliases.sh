@@ -8,6 +8,9 @@ alias rm="rm -i"
 
 alias u=uncompress_file
 
+alias m=make
+alias n=ninja
+
 alias bi="b install"
 
 alias dpump="pump make -j 6"
