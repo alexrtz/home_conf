@@ -67,7 +67,7 @@
  pushc = push origin HEAD
 
  r = rebase
- rom = fetch; rebase origin/master
+ rom = !git fetch && git rebase origin/master
 
  # Clean remote deleted branches
  rdb = remote prune origin
