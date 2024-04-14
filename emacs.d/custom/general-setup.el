@@ -1,4 +1,4 @@
-;;; setup-general --- General cnfiguration
+;;; general-setup --- General configuration
 
 ;;; Commentary:
 
