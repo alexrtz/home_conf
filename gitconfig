@@ -47,6 +47,7 @@
  co = checkout
 
  cp = cherry-pick
+ cpc = cherry-pick --continue
 
  d = diff
  dif = diff --ignore-all-space
@@ -67,6 +68,7 @@
  pushc = push origin HEAD
 
  r = rebase
+ rc = rebase --continue
  rom = !git fetch && git rebase origin/master
 
  # Clean remote deleted branches
