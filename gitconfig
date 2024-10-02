@@ -38,6 +38,8 @@
  # add all changed (but not new) files to stage (index):
  au = add -u
 
+ ane = !git commit -a --amend --date=\"$(date)\" --no-edit
+
  b = branch -t
 
  ci = commit
@@ -50,9 +52,12 @@
  cpc = cherry-pick --continue
 
  d = diff
+ dc = diff -- '*.h' '*.hpp' '*.hh' '*.c' '*.cpp' '*.cc' '*.tpp'
+ dcm = diff -- 'CMakeLists.txt' '*.cmake'
  dif = diff --ignore-all-space
  dn = diff --name-only
  ds = diff --staged
+
  f = fetch
 
  info = remote show origin
@@ -67,12 +72,16 @@
  # push current branch
  pushc = push origin HEAD
 
+ pusho = push -u origin HEAD
+
  r = rebase
  rc = rebase --continue
  rom = !git fetch && git rebase origin/master
 
  # Clean remote deleted branches
  rdb = remote prune origin
+
+ reseto = reset --hard @{u}
 
  # Show Branches
  sb = branch -a
@@ -91,6 +100,9 @@
  sl = stash list
  sd = stash drop
  ss = stash show -p
+
+ # Submodule
+ sup = submodule update --init --recursive
 
  unmerged = branch --no-merge
  w = whatchanged
