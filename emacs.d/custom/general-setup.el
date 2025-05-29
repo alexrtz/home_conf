@@ -31,6 +31,11 @@
   (progn
     (global-flycheck-mode)))
 
+(use-package flycheck-inline)
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+
 ;(require 'path-completion)
 
 (electric-pair-mode)
