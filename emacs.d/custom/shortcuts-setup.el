@@ -12,7 +12,7 @@
 (global-set-key "\C-f" 'isearch-forward)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key "\C-l" 'goto-line)
-(global-set-key "\C-xk" 'kill-this-buffer)
+(global-set-key "\C-xk" 'kill-current-buffer)
 
 
 (global-set-key (kbd "C-S-S") (lambda () (interactive) (my-desktop-save-global)))
@@ -25,7 +25,7 @@
 (global-set-key (kbd "C--") 'my-decrement-number-decimal)
 
 
-(global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+;;; (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
 
 (global-set-key (kbd "M-f") 'helm-projectile-ag)
 

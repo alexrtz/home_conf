@@ -59,6 +59,7 @@
 ;;  Rust
 
 (use-package rust-mode)
+;(add-hook 'rust-mode-hook 'lsp-deferred)
 
 ;; Shell
 

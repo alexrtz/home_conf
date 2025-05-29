@@ -7,6 +7,7 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (column-number-mode t)
+(global-display-line-numbers-mode)
 (line-number-mode t)
 (global-font-lock-mode t)
 (setq visible-bell 'top-bottom)

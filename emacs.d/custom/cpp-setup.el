@@ -28,9 +28,9 @@
   (defun insert-quotes () "insert quotes and go between them" (interactive)
     (insert "\"\"" )
     (backward-char 1))
-  (setq c-basic-offset 2)
+  (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
-  (setq tab-width 2)
+  (setq tab-width 4)
 	;;(c-set-offset 'inline-open '+)
   (c-set-offset 'substatement-open '0)
   (c-set-offset 'brace-list-open '0)
@@ -51,7 +51,7 @@
 
 (use-package qml-mode)
 
-(use-package company-qml)
+;;;(use-package company-qml)
 
 (provide 'cpp-setup)
 ;;; cpp-setup.el ends here
