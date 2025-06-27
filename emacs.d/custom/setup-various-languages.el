@@ -59,12 +59,13 @@
 ;;  Rust
 
 (use-package rust-mode)
-;(add-hook 'rust-mode-hook 'lsp-deferred)
+(add-hook 'rust-mode-hook 'lsp-deferred)
 
 (use-package flycheck-rust)
 
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 
 ;; Shell
 
