@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 ;;; cpp-setup --- C and C++ config
 
 ;;; Commentary:
@@ -11,9 +14,6 @@
   (modern-c++-font-lock-mode t))
 
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
-
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
 
 (defun my-c-mode-hook()
   (defun insert-parentheses () "insert parentheses and go between them" (interactive)

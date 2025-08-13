@@ -1,4 +1,4 @@
-;; CMake
+;; CMake  -*- lexical-binding: t; -*-
 
 (use-package cmake-mode)
 

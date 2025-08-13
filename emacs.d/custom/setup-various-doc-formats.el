@@ -1,4 +1,4 @@
-;; json
+;; json  -*- lexical-binding: t; -*-
 
 (use-package json-mode
   :config

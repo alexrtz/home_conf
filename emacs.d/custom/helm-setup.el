@@ -1,4 +1,4 @@
-;;; helm-setup --- Helm setup
+;;; helm-setup --- Helm setup  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

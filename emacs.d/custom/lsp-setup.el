@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 ;;; lsp-setup --- lsp config
 
 ;;; Commentary:
@@ -26,6 +29,8 @@
     (setq lsp-ui-peek-enable nil)
     (setq lsp-ui-sideline-enable nil)))
 
+;; (add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
 
 (provide 'lsp-setup)
 ;;; lsp-setup.el ends here

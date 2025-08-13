@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;(require 'org-install)
 
 (use-package org-journal
@@ -147,6 +149,12 @@
           (lambda ()
             (local-set-key (kbd "C-c M-o") 'bh/mail-subtree))
           'append)
+
+(defun my/org-hide-done ()
+  "Fold all headlines marked as DONE."
+  (org-map-entries #'org-cycle-hide-drawers "/DONE" 'file))
+
+(add-hook 'org-mode-hook #'my/org-hide-done)
 
 ;; I use C-c c to start capture mode
 (global-set-key (kbd "C-c c") 'org-capture)

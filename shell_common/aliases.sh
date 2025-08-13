@@ -60,6 +60,8 @@ alias ackcpp="$ACK --cpp"
 
 alias agcpp="ag --cpp"
 
+alias c="touch /tmp/trigger"
+
 alias t=tmuxinator
 
 alias show_upgrades="apt-get -s upgrade| awk -F'[][() ]+' '/^Inst/{printf \"Prog: %s\tcur: %s\tavail: %s\n\", \$2,\$3,\$4}'"
@@ -69,5 +71,7 @@ alias dpc=docker_purge_containers
 
 alias lssh="grep -P \"^Host ([^*]+)$\" $HOME/.ssh/config | sed 's/Host //'"
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
+
+alias mm="micromamba"
 
 alias yt="yt-dlp -o \"%(upload_date)s_%(title)s\""

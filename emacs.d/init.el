@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 ;;; init -- emacs initialization
 
 ;;; Commentary:

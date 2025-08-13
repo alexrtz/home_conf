@@ -1,4 +1,4 @@
-;; TODO AOR: should I keep both egg and magit?
+;; TODO AOR: should I keep both egg and magit?  -*- lexical-binding: t; -*-
 
 (delete 'Git vc-handled-backends)
 (use-package egg)

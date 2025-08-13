@@ -1,4 +1,4 @@
-;;; general-setup --- General configuration
+;;; general-setup --- General configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

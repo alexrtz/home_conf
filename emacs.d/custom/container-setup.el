@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; container-setup --- Config for the formats used for containers
 
 ;;; Commentary:

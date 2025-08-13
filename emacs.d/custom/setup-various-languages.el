@@ -1,4 +1,4 @@
-;; General
+;; General  -*- lexical-binding: t; -*-
 
 
 (modify-coding-system-alist 'file "\\.php$" 'utf-8)

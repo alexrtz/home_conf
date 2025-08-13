@@ -1,4 +1,4 @@
-;;; shortcuts-setup --- Configure the shortcuts
+;;; shortcuts-setup --- Configure the shortcuts  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

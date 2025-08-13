@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; package -- summary
 
 ;;; Commentary:
