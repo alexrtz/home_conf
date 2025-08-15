@@ -59,6 +59,8 @@ alias ack="$ACK --smart-case -s"
 alias ackcpp="$ACK --cpp"
 
 alias agcpp="ag --cpp"
+alias agpy="ag --python"
+aluas agrs="ag --rust"
 
 alias c="touch /tmp/trigger"
 

@@ -79,3 +79,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 which direnv > /dev/null 2>&1
 [ $? -eq 0 ] && eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
