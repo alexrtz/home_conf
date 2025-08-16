@@ -58,6 +58,7 @@ which ack > /dev/null 2>&1 || ACK=ack-grep
 alias ack="$ACK --smart-case -s"
 alias ackcpp="$ACK --cpp"
 
+alias agcm="ag --cmake"
 alias agcpp="ag --cpp"
 alias agpy="ag --python"
 alias agrs="ag --rust"
