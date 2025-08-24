@@ -12,6 +12,7 @@
   (progn
     (setq lsp-enable-file-watchers nil)
     (setq lsp-enable-on-type-formatting nil)
+    (setq lsp-completion-ignore-case t)
     )
   )
 

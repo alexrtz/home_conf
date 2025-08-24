@@ -22,7 +22,12 @@
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-idle-delay 0)))
+    (setq company-idle-delay 0
+          company-dabbrev-ignore-case t
+          company-dabbrev-downcase nil
+          company-completion-ignore-case t)
+    )
+  )
 
 ;(completion-preview-mode t)
 
@@ -51,6 +56,17 @@
 (setq recentf-max-menu-items 100)
 
 (global-auto-revert-mode t)
+
+(add-hook 'isearch-mode-end-hook 'recenter)
+;(global-set-key (kbd "C-*") 'isearch-forward-symbol-at-point)
+
+(use-package symbol-overlay
+  :ensure t
+  :config
+  (global-set-key (kbd "C-*") 'symbol-overlay-put)
+  (global-set-key (kbd "C-n") 'symbol-overlay-jump-next)
+  (global-set-key (kbd "C-p") 'symbol-overlay-jump-prev)
+  )
 
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
@@ -110,23 +126,30 @@
         ;; Always return the anticipated result of compilation-exit-message-function
         (cons msg code)))
 
-(if (projectile-project-root)
-    (progn
-      (setq desktop-dirname (projectile-project-root))
-      (desktop-save-mode 1)
-      )
-  )
 
-(defun my-desktop-read-global ()
+(use-package desktop
+  :ensure t
+  :config
+
+  (defun my-desktop-read-global ()
   "Load the global desktop save (useful when emacs has not been started from inside a versioned directory)"
   (desktop-read "~/.config/mine/")
   )
 
+  (defun my-desktop-save-global ()
+    "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
+    (desktop-save "~/.config/mine/")
+    )
 
-(defun my-desktop-save-global ()
-  "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
-  (desktop-save "~/.config/mine/")
+  (desktop-save-mode 1)
+  (setq
+   desktop-save t
+   desktop-restore-frames t
+   desktop-load-locked-desktop t
+   desktop-dirname "~/.config/mine/"
+   )
   )
+
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
 (defun my-increment-number-decimal (&optional arg)

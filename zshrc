@@ -34,6 +34,8 @@ ZSH_CUSTOM=~/.zsh_custom
 
 . $ZSH/oh-my-zsh.sh
 
+setopt noglob
+
 # User configuration
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
