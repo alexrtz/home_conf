@@ -48,6 +48,21 @@
 ;; TODO AOR: is this necessary?
 (use-package popup)
 
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-below)
+  (recenter)             ;; center the current line in the first window
+  (other-window 1))
+
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-right)
+  (recenter)             ;; center the current line in the first window
+  (other-window 1))
+
+(global-set-key (kbd "C-x 2") 'split-and-follow-vertically)
+(global-set-key (kbd "C-x 3") 'split-and-follow-horizontally)
+
 
 ; http://scottmcpeak.com/elisp/scott.emacs.el
 ; ------------------- yes-or-no-p ---------------------

@@ -75,6 +75,7 @@
  pusho = push -u origin HEAD
 
  r = rebase
+ ra = rebase --abort
  rc = rebase --continue
  rom = !git fetch && git rebase origin/master
 

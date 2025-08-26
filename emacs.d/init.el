@@ -17,8 +17,26 @@
 
 (package-initialize)
 
-(when (not package-archive-contents)
-    (package-refresh-contents))
+(defvar my/package-refresh-timestamp-file
+  (expand-file-name "package-refresh-timestamp" user-emacs-directory)
+  "File to store last package refresh timestamp.")
+
+(defun my/package-refresh-if-needed ()
+  "Refresh package contents only if it hasn't been refreshed today."
+  (let* ((now (current-time))
+         (today (format-time-string "%Y-%m-%d" now))
+         (last-refresh
+          (when (file-exists-p my/package-refresh-timestamp-file)
+            (with-temp-buffer
+              (insert-file-contents my/package-refresh-timestamp-file)
+              (buffer-string)))))
+    (unless (and last-refresh (string= today last-refresh))
+      (message "Refreshing package archives...")
+      (package-refresh-contents)
+      (with-temp-file my/package-refresh-timestamp-file
+        (insert today)))))
+
+(my/package-refresh-if-needed)
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))

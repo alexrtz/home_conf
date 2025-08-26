@@ -8,7 +8,6 @@
 (global-set-key "\C-s" 'save-buffer)
 (global-set-key "\C-o" 'find-file)
 (global-set-key "\C-w" 'kill-region)
-(global-set-key "\C-v" 'yank)
 (global-set-key "\C-f" 'isearch-forward)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key "\C-l" 'goto-line)

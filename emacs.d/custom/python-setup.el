@@ -12,11 +12,17 @@
 (use-package highlight-indentation
   :ensure t)
 
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :hook (python-mode . (lambda ()
-;;                          (require 'lsp-pyright)
-;;                          (lsp))))  ; or lsp-deferred
+(use-package lsp-pyright
+  :if (executable-find "pyright")
+  :ensure t
+  :after lsp-mode
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp)
+                         )
+                     )
+  )
+
 
 (defun my-python-mode-hook()
   (set-face-background 'highlight-indentation-face "#ffcc99")
