@@ -36,7 +36,7 @@
       (with-temp-file my/package-refresh-timestamp-file
         (insert today)))))
 
-(my/package-refresh-if-needed)
+;;(my/package-refresh-if-needed)
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))

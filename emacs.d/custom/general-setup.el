@@ -57,8 +57,17 @@
 
 (global-auto-revert-mode t)
 
-(add-hook 'isearch-mode-end-hook 'recenter)
-;(global-set-key (kbd "C-*") 'isearch-forward-symbol-at-point)
+;(add-hook 'isearch-mode-end-hook 'recenter)
+(add-hook 'isearch-update-post-hook #'recenter)
+
+(defun goto-line-and-recenter (line)
+  "Go to LINE, then recenter window."
+  (interactive "nGoto line: ")
+  (goto-line line)
+  (recenter))
+
+(global-set-key (kbd "C-l") #'goto-line-and-recenter)
+
 
 (use-package symbol-overlay
   :ensure t
@@ -126,29 +135,46 @@
         ;; Always return the anticipated result of compilation-exit-message-function
         (cons msg code)))
 
+;; (use-package desktop
+;;   :ensure t
+;;   :config
+
+;;   (defun my-desktop-read-global ()
+;;   "Load the global desktop save (useful when emacs has not been started from inside a versioned directory)"
+;;   (desktop-read "~/.config/mine/")
+;;   )
+
+;;   (defun my-desktop-save-global ()
+;;     "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
+;;     (desktop-save "~/.config/mine/")
+;;     )
+
+;;   (desktop-save-mode 1)
+
+;;   (setq
+;;    desktop-save t
+;;    desktop-restore-frames t
+;;    desktop-load-locked-desktop t
+;;    desktop-dirname "~/.config/mine/"
+;;    )
+;;   )
 
 (use-package desktop
   :ensure t
   :config
+  ;; ensure the directory exists
+  (make-directory "~/.config/mine/" t)
 
-  (defun my-desktop-read-global ()
-  "Load the global desktop save (useful when emacs has not been started from inside a versioned directory)"
-  (desktop-read "~/.config/mine/")
-  )
-
-  (defun my-desktop-save-global ()
-    "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
-    (desktop-save "~/.config/mine/")
-    )
+  (setq desktop-dirname "~/.config/mine/"
+        desktop-path (list desktop-dirname)
+        desktop-base-file-name "emacs-desktop"
+        desktop-save t
+        desktop-restore-frames t
+        desktop-load-locked-desktop t)
 
   (desktop-save-mode 1)
-  (setq
-   desktop-save t
-   desktop-restore-frames t
-   desktop-load-locked-desktop t
-   desktop-dirname "~/.config/mine/"
-   )
   )
+
 
 
 ; http://www.emacswiki.org/emacs/IncrementNumber

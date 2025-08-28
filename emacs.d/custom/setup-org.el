@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;(require 'org-install)
-
 (use-package org-journal
   :ensure t
   :defer t
@@ -101,7 +99,7 @@
   (interactive)
   (save-excursion
     (org-back-to-heading 'invisible-ok)
-    (hide-other)
+    (outline-hide-other)
     (org-cycle)
     (org-cycle)
     (org-cycle)))
@@ -152,7 +150,12 @@
 
 (defun my/org-hide-done ()
   "Fold all headlines marked as DONE."
-  (org-map-entries #'org-cycle-hide-drawers "/DONE" 'file))
+  (org-map-entries
+   (lambda ()
+     (org-cycle-hide-drawers 'all))
+   "/DONE" 'file)
+  )
+
 
 (add-hook 'org-mode-hook #'my/org-hide-done)
 
@@ -213,5 +216,8 @@
                             "#+title: %<%Y-%m-%d>\n"))))
 
 (setq org-roam-v2-ack t)
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-j") #'helm-for-files))
 
 (provide 'setup-org)

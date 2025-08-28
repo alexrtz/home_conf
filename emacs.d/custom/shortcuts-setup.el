@@ -19,6 +19,20 @@
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+(global-set-key (kbd "C-*") 'comment-or-uncomment-region)
+
+; helm
+(global-set-key (kbd "C-o") 'helm-find-files)
+;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-j") 'helm-for-files)
+
+
+(define-key helm-find-files-map (kbd "<left>") 'backward-char)
+(define-key helm-find-files-map (kbd "<forward>") 'forward-char)
+
+
 ; TODO AOR: bindings does not work
 (global-set-key (kbd "C-+") 'my-increment-number-decimal)
 (global-set-key (kbd "C--") 'my-decrement-number-decimal)

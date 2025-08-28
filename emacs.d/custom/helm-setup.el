@@ -25,13 +25,6 @@
     (global-set-key (kbd "M-x") 'helm-M-x)
     (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-
-    (global-set-key (kbd "C-x b") 'helm-mini)
-    (global-set-key (kbd "C-x w") 'helm-for-files)
-
     (setq helm-buffers-fuzzy-matching t
           helm-recentf-fuzzy-match t)
 
@@ -54,8 +47,7 @@
            (rx "\*")
            (rx "*helm")
            )
-      )
-
+          )
 
     (helm-mode 1)
     ))
@@ -75,8 +67,6 @@
     (setq projectile-completion-system 'helm)
     (helm-projectile-on)
     ))
-
-(use-package helm-ag)
 
 (provide 'helm-setup)
 ;;; helm-setup.el ends here
