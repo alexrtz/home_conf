@@ -32,14 +32,6 @@
 (define-key helm-find-files-map (kbd "<left>") 'backward-char)
 (define-key helm-find-files-map (kbd "<forward>") 'forward-char)
 
-
-; TODO AOR: bindings does not work
-(global-set-key (kbd "C-+") 'my-increment-number-decimal)
-(global-set-key (kbd "C--") 'my-decrement-number-decimal)
-
-
-;;; (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
-
 (global-set-key (kbd "M-f") 'helm-projectile-ag)
 
 (provide 'shortcuts-setup)
