@@ -19,7 +19,7 @@
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 
-(global-set-key (kbd "C-*") 'comment-or-uncomment-region)
+(global-set-key (kbd "M-*") 'comment-or-uncomment-region)
 
 ; helm
 (global-set-key (kbd "C-o") 'helm-find-files)
