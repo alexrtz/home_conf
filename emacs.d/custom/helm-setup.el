@@ -52,6 +52,16 @@
     (helm-mode 1)
     ))
 
+;; (defun my/helm-ff-filter-dot-dots (files)
+;;   "Remove `.' and `..' from helm-find-files candidates."
+;;   (cl-remove-if (lambda (file)
+;;                   (member (file-name-nondirectory file) '("." "..")))
+;;                 files))
+
+;; (with-eval-after-load 'helm-files
+;;   (advice-add 'helm-find-files-get-candidates :filter-return #'my/helm-ff-filter-dot-dots))
+
+
 ;; Use Helm in Projectile.
 (use-package projectile
   :config

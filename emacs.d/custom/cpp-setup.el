@@ -49,6 +49,8 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
+(add-hook 'c++-mode-hook 'lsp)
+
 (use-package qml-mode)
 
 ;;;(use-package company-qml)

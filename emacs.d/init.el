@@ -67,11 +67,13 @@
 (require 'helm-setup)
 (require 'general-setup)
 (require 'ui-setup)
+
 (require 'lsp-setup)
+
 (require 'cpp-setup)
 (require 'python-setup)
-(require 'container-setup)
 
+(require 'container-setup)
 (require 'setup-net-clients)
 (require 'setup-org)
 (require 'setup-spelling)

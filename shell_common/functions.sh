@@ -1,47 +1,7 @@
-function cb
-{
-		luminosity=$1
-
-		if [ -z "$luminosity" ]
-		then
-				echo "Pass the desired luminosity percentage (1 - 100) as the first argument"
-				return 1
-		fi
-
-		for i in $(ddccontrol -p 2> /dev/null | grep " - Device" | cut -d: -f3)
-		do
-				ddccontrol -r 0x10 -w $luminosity dev:$i > /dev/null 2>&1
-		done
-}
-
 function mkcd
 {
 		mkdir -p $1
 		cd  $1
-}
-
-function uncompress_file
-{
-  local file="$1"
-  local filename="$(basename "$file")"
-  local extension="${filename##*.}"
-
-  case "$extension" in
-    "tar")
-      tar xf "$file" ;;
-    "tar.gz"|"tgz")
-      tar xzf "$file" ;;
-    "tar.bz2"|"tbz2")
-      tar xjf "$file" ;;
-    "tar.xz"|"txz")
-      tar xJf "$file" ;;
-    "zip")
-      unzip "$file" ;;
-    "rar")
-      unrar x "$file" ;;
-    *)
-      echo "Unsupported file format: $file" ;;
-  esac
 }
 
 function b
@@ -58,6 +18,46 @@ function b
 		[ -f build.ninja ] && ninja -j 10 && return
 		[ -f build/build.ninja ] && ninja -C build -j 10 && return
 }
+
+function c
+{
+    if [ $# -lt 1 ]
+		then
+        echo "Usage: tarfzstd <file-or-directory> [output.zst|output.tar.zst]"
+        return 1
+    fi
+
+    local input="$1"
+    local outfile="$2"
+
+    if [ ! -e "$input" ]
+		then
+        echo "Error: '$input' does not exist."
+        return 1
+    fi
+
+    if [ -z "$outfile" ]
+		then
+        if [ -d "$input" ]
+				then
+            outfile="${input%/}.tar.zst"
+        else
+            outfile="${input}.zst"
+        fi
+    fi
+
+    if [ -d "$input" ]
+		then
+        tar -cf - "$input" | zstd -T0 -19 -o "$outfile"
+    elif [ -f "$input" ]
+		then
+        zstd -T0 -19 -o "$outfile" "$input"
+    else
+        echo "Error: '$input' is neither a file nor a directory."
+        return 1
+    fi
+}
+
 
 function f
 {
@@ -136,7 +136,8 @@ function docker_purge_containers
     for i in `docker ps -a | grep -v 'CONTAINER ID' | cut -d' ' -f1`; do docker stop $i; docker rm $i; done
 }
 
-man() {
+function man
+{
       env \
          LESS_TERMCAP_mb=$(printf "\e[1;31m") \
          LESS_TERMCAP_md=$(printf "\e[1;31m") \
@@ -146,4 +147,37 @@ man() {
          LESS_TERMCAP_ue=$(printf "\e[0m") \
          LESS_TERMCAP_us=$(printf "\e[1;32m") \
                man "$@"
+}
+
+function x
+{
+    if [ -z "$1" ]; then
+        echo "Usage: extract <archive>"
+        return 1
+    elif [ ! -f "$1" ]; then
+        echo "Error: '$1' is not a valid file"
+        return 1
+    fi
+
+    case "$1" in
+        *.tar.bz2)   tar xjf "$1"    ;;
+        *.tar.gz)    tar xzf "$1"    ;;
+        *.tar.xz)    tar xJf "$1"    ;;
+        *.tar.zst)   unzstd "$1" && tar xf "${1%.zst}" ;;
+        *.tar)       tar xf "$1"     ;;
+        *.tbz2)      tar xjf "$1"    ;;
+        *.tgz)       tar xzf "$1"    ;;
+        *.bz2)       bunzip2 "$1"    ;;
+        *.gz)        gunzip "$1"     ;;
+        *.xz)        unxz "$1"       ;;
+        *.zst)       unzstd "$1"     ;;
+        *.zip)       unzip "$1"      ;;
+        *.rar)       unrar x "$1"    ;;
+        *.7z)        7z x "$1"       ;;
+        *.tar.lz)    lzip -d "$1" && tar xf "${1%.lz}" ;;
+        *.lzma)      unlzma "$1"     ;;
+        *.lz)        lzip -d "$1"    ;;
+        *.Z)         uncompress "$1" ;;
+        *)           echo "Error: cannot extract '$1' — unsupported format" ;;
+    esac
 }

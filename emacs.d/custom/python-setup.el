@@ -34,5 +34,13 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
+(defun my/python-lsp-maybe-start ()
+  "Start lsp in `python-mode' only if pyright is available."
+  (when (executable-find "pyright")
+    (lsp-deferred))
+  )
+
+(add-hook 'python-mode-hook #'my/python-lsp-maybe-start)
+
 (provide 'python-setup)
 ;;; python-setup.el ends here
