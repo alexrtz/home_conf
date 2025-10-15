@@ -13,6 +13,8 @@
 (add-hook 'cmake-mode-hook 'my-cmake-mode-hook)
 
 
+(use-package bazel)
+
 ;; Docker
 (use-package dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))

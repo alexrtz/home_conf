@@ -25,6 +25,7 @@
     (setq company-idle-delay 0
           company-dabbrev-ignore-case t
           company-dabbrev-downcase nil
+          completion-ignore-case t
           company-completion-ignore-case t)
     )
   )
