@@ -72,15 +72,15 @@ function f
     done
 }
 
-# function en
-# {
-#     [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
+function en
+{
+    [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
 
-#     for i in $*; do
-# 				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
-# 				emacsclient -n "$FILENAME"
-#     done
-# }
+    for i in $*; do
+				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
+				emacsclient -n "$FILENAME"
+    done
+}
 
 function cn
 {
