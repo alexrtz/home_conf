@@ -1,9 +1,6 @@
 [submodule "emacs.d/emacs-clang-complete-async"]
 	path = emacs.d/emacs-clang-complete-async
 	url = https://github.com/Golevka/emacs-clang-complete-async.git
-[submodule "emacs.d/ack-and-a-half"]
-	path = emacs.d/ack-and-a-half
-	url = https://github.com/mgalgs/ack-and-a-half
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
