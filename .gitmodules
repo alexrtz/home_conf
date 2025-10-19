@@ -7,9 +7,6 @@
 [submodule "git.d/git-number"]
 	path = git.d/git-number
 	url = https://github.com/holygeek/git-number.git
-[submodule "emacs.d/highlight-indentation"]
-	path = emacs.d/highlight-indentation
-	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
 [submodule "tmux-resurrect"]
 	path = tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
