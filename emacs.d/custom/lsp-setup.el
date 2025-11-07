@@ -15,10 +15,11 @@
     (setq lsp-log-io nil)
     (setq lsp-enable-file-watchers t)
 
-    (setq lsp-file-watch-ignored
+    (setq lsp-file-watch-ignored-directories
           '("[/\\\\]\\.git$"
             "[/\\\\]node_modules$"
             "[/\\\\]build$"
+            "[/\\\\]buck-out$"
             "[/\\\\]dist$"))
 
     (setq lsp-enable-on-type-formatting nil)
@@ -49,7 +50,7 @@
     (setq lsp-ui-doc-enable t)
     (setq lsp-ui-doc-position 'bottom)
     (setq lsp-ui-doc-delay 0.2)
-    (setq lsp-ui-doc-show-with-cursor t)
+    (setq lsp-ui-doc-show-with-cursor nil)
     (setq lsp-ui-doc-show-with-mouse nil)
     (setq lsp-ui-sideline-enable nil)
     (setq lsp-ui-sideline-show-diagnostics nil)
@@ -59,13 +60,6 @@
     (setq lsp-ui-imenu-enable t)
     (setq lsp-ui-imenu-kind-position 'top)
     (setq lsp-ui-flycheck-enable t)
-
-    ;; (setq lsp-ui-doc-enable t)
-    ;; (setq lsp-ui-sideline-enable nil)
-    ;; (setq lsp-ui-doc-position 'bottom)
-
-    ;; (setq lsp-ui-imenu-enable t)
-    ;; (setq lsp-ui-peek-enable nil)
   )
 )
 ;; (add-hook 'c-mode-hook 'lsp)
