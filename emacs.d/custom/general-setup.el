@@ -4,6 +4,11 @@
 
 ;;; Code:
 
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+
 (setq
  backup-by-copying t ; don't clobber symlinks
  backup-directory-alist '(("." . "~/.saves/"))
@@ -20,6 +25,7 @@
 
 (use-package company
   :config
+
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-idle-delay 0

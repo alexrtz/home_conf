@@ -34,8 +34,6 @@ ZSH_CUSTOM=~/.zsh_custom
 
 . $ZSH/oh-my-zsh.sh
 
-setopt noglob
-
 # User configuration
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -66,6 +64,8 @@ SHELL_CONFIG_DIR=~/.config/mine/shell_common
 [ -f $SHELL_CONFIG_DIR/aliases.sh ] && . $SHELL_CONFIG_DIR/aliases.sh
 [ -f $SHELL_CONFIG_DIR/functions.sh ] && . $SHELL_CONFIG_DIR/functions.sh
 #[ -f $SHELL_CONFIG_DIR/ssh.sh ] && . $SHELL_CONFIG_DIR/ssh.sh
+
+alias find="noglob find"
 
 autoload bashcompinit
 bashcompinit
