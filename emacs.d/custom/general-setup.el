@@ -142,30 +142,6 @@
         ;; Always return the anticipated result of compilation-exit-message-function
         (cons msg code)))
 
-;; (use-package desktop
-;;   :ensure t
-;;   :config
-
-;;   (defun my-desktop-read-global ()
-;;   "Load the global desktop save (useful when emacs has not been started from inside a versioned directory)"
-;;   (desktop-read "~/.config/mine/")
-;;   )
-
-;;   (defun my-desktop-save-global ()
-;;     "Save the current desktop at the global level (useful when emacs has not been started from inside a versioned directory)"
-;;     (desktop-save "~/.config/mine/")
-;;     )
-
-;;   (desktop-save-mode 1)
-
-;;   (setq
-;;    desktop-save t
-;;    desktop-restore-frames t
-;;    desktop-load-locked-desktop t
-;;    desktop-dirname "~/.config/mine/"
-;;    )
-;;   )
-
 (use-package desktop
   :ensure t
   :config

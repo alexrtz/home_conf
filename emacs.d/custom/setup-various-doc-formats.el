@@ -50,6 +50,11 @@
 ;; YAML
 
 (use-package yaml-mode)
+
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.clang-tidy$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.clang-format$" . yaml-mode))
+
 
 (provide 'setup-various-doc-formats)
