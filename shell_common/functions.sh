@@ -1,28 +1,28 @@
 function mkcd
 {
-		mkdir -p $1
-		cd  $1
+    mkdir -p $1
+    cd  $1
 }
 
 function b
 {
-		nb_processes=10
+    nb_processes=10
 
-		if [[ "$1" =~ ^[1-9][0-9]*$ ]]
-		then
-				nb_processes=$1
-		fi
+    if [[ "$1" =~ ^[1-9][0-9]*$ ]]
+    then
+        nb_processes=$1
+    fi
 
-		[ -f Makefile ] && make -j 10 && return
-		[ -f build/Makefile ] && make -C build -j 10 && return
-		[ -f build.ninja ] && ninja -j 10 && return
-		[ -f build/build.ninja ] && ninja -C build -j 10 && return
+    [ -f Makefile ] && make -j 10 && return
+    [ -f build/Makefile ] && make -C build -j 10 && return
+    [ -f build.ninja ] && ninja -j 10 && return
+    [ -f build/build.ninja ] && ninja -C build -j 10 && return
 }
 
 function c
 {
     if [ $# -lt 1 ]
-		then
+    then
         echo "Usage: tarfzstd <file-or-directory> [output.zst|output.tar.zst]"
         return 1
     fi
@@ -31,15 +31,15 @@ function c
     local outfile="$2"
 
     if [ ! -e "$input" ]
-		then
+    then
         echo "Error: '$input' does not exist."
         return 1
     fi
 
     if [ -z "$outfile" ]
-		then
+    then
         if [ -d "$input" ]
-				then
+        then
             outfile="${input%/}.tar.zst"
         else
             outfile="${input}.zst"
@@ -47,10 +47,10 @@ function c
     fi
 
     if [ -d "$input" ]
-		then
+    then
         tar -cf - "$input" | zstd -T0 -19 -o "$outfile"
     elif [ -f "$input" ]
-		then
+    then
         zstd -T0 -19 -o "$outfile" "$input"
     else
         echo "Error: '$input' is neither a file nor a directory."
@@ -58,6 +58,21 @@ function c
     fi
 }
 
+function cb
+{
+    luminosity=$1
+
+    if [ -z "$luminosity" ]
+    then
+        echo "Pass the desired luminosity percentage (1 - 100) as the first argument"
+        return 1
+    fi
+
+    for i in $(ddccontrol -p 2> /dev/null |  grep " - Device" | cut -d: -f3)
+    do
+        ddccontrol -r 0x10 -w $luminosity dev:$i > /dev/null 2>&1
+    done
+}
 
 function f
 {
@@ -66,9 +81,9 @@ function f
     n=1;
 
     for i in $(find . -iname \*$1\*); do
-				echo "$n $i"
-				echo "$n $i" >> ~/.config/mine/tmp_find_results
-				n=$(($n+1))
+        echo "$n $i"
+        echo "$n $i" >> ~/.config/mine/tmp_find_results
+        n=$(($n+1))
     done
 }
 
@@ -77,8 +92,8 @@ function en
     [ -f ~/.config/mine/tmp_find_results ] || (printf "No find results to look into\n" && exit 1)
 
     for i in $*; do
-				FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
-				emacsclient -n "$FILENAME"
+        FILENAME=$(awk "/^$i / { print \$2 }" ~/.config/mine/tmp_find_results)
+        emacsclient -n "$FILENAME"
     done
 }
 
@@ -99,12 +114,12 @@ function gconflicted
 # git grep
 function gg
 {
-		if [ -z "$1" ]
-		then
-				echo "A string/regex should be passed as first argument of this command"
-		fi
+    if [ -z "$1" ]
+    then
+        echo "A string/regex should be passed as first argument of this command"
+    fi
 
-		git grep $1 $(git rev-list --all)
+    git grep $1 $(git rev-list --all)
 }
 
 # git last 10 modified branches
