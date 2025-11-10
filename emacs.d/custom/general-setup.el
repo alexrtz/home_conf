@@ -158,8 +158,6 @@
   (desktop-save-mode 1)
   )
 
-
-
 ; http://www.emacswiki.org/emacs/IncrementNumber
 (defun my-increment-number-decimal (&optional arg)
   "Increment the number forward from point by 'arg'."
