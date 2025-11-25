@@ -1,6 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
-;;; container-setup --- Config for the formats used for containers
+;;; container-setup --- Config for the formats used for containers -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

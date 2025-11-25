@@ -1,7 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
-
-;;; lsp-setup --- lsp config
+;;; lsp-setup --- lsp config -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

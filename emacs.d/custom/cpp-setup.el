@@ -1,7 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
-
-;;; cpp-setup --- C and C++ config
+;;; cpp-setup --- C and C++ config -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

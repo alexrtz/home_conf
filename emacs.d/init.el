@@ -1,7 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
-
-;;; init -- emacs initialization
+;;; init -- emacs initialization -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

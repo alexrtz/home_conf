@@ -1,7 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
-
-;;; ui-setup --- Conf for various UI parameters
+;;; ui-setup --- Conf for various UI parameters -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

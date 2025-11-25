@@ -63,6 +63,7 @@ SHELL_CONFIG_DIR=~/.config/mine/shell_common
 [ -f $SHELL_CONFIG_DIR/variables.sh ] && . $SHELL_CONFIG_DIR/variables.sh
 [ -f $SHELL_CONFIG_DIR/aliases.sh ] && . $SHELL_CONFIG_DIR/aliases.sh
 [ -f $SHELL_CONFIG_DIR/functions.sh ] && . $SHELL_CONFIG_DIR/functions.sh
+[ -f $SHELL_CONFIG_DIR/init.sh ] && . $SHELL_CONFIG_DIR/init.sh
 #[ -f $SHELL_CONFIG_DIR/ssh.sh ] && . $SHELL_CONFIG_DIR/ssh.sh
 
 alias find="noglob find"
@@ -72,10 +73,10 @@ bashcompinit
 
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
 
-[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
+#[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#e xport PATH="$PATH:$HOME/.rvm/bin"
 
 #rvm use ruby > /dev/null
 
