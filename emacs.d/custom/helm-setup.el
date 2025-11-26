@@ -49,8 +49,11 @@
            )
           )
 
+    (setq helm-ag-base-command "rg --no-heading --line-number --color=never --smart-case")
+
     (helm-mode 1)
-    ))
+    )
+  )
 
 ;; (defun my/helm-ff-filter-dot-dots (files)
 ;;   "Remove `.' and `..' from helm-find-files candidates."

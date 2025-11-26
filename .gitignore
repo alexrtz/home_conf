@@ -2,10 +2,16 @@
 bash_profile
 *.rte
 *.elc
+emacs.d/.lsp-session-v1
 emacs.d/ac-comphist.dat
 emacs.d/ac-dict
 emacs.d/ede-projects
 emacs.d/ede-projects.el
+emacs.d/eln-cache
+emacs.d/org-roam.db
+emacs.d/projectile-bookmarks.eld
 emacs.d/session*
 emacs.d/srecode-map.el
 emacs.d/semanticdb
+emacs.d/*.desktop
+emacs.d/transient
