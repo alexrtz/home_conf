@@ -8,5 +8,5 @@
 	path = git.d/git-number
 	url = https://github.com/holygeek/git-number.git
 [submodule "tmux-resurrect"]
-	path = tmux-resurrect
+	path = config/tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
