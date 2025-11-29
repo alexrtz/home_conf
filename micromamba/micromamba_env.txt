@@ -1,14 +1,14 @@
-List of packages in environment: "/home/alex/Documents/Programmes/micromamba/envs/dev"
+List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/dev"
 
-  Name                               Version       Build                           Channel    
+  Name                               Version       Build                           Channel
 ────────────────────────────────────────────────────────────────────────────────────────────────
   _libgcc_mutex                      0.1           conda_forge                     conda-forge
   _openmp_mutex                      4.5           7_kmp_llvm                      conda-forge
   _x86_64-microarch-level            3             3_x86_64_v3                     conda-forge
   absl-py                            2.3.1         pyhd8ed1ab_0                    conda-forge
-  aiohappyeyeballs                   2.6.1         pypi_0                          pypi       
-  aiohttp                            3.13.2        pypi_0                          pypi       
-  aiosignal                          1.4.0         pypi_0                          pypi       
+  aiohappyeyeballs                   2.6.1         pypi_0                          pypi
+  aiohttp                            3.13.2        pypi_0                          pypi
+  aiosignal                          1.4.0         pypi_0                          pypi
   alsa-lib                           1.2.14        hb9d3cd8_0                      conda-forge
   anyio                              4.11.0        pyhcf101f3_0                    conda-forge
   argon2-cffi                        25.1.0        pyhd8ed1ab_0                    conda-forge
@@ -27,6 +27,8 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   bleach                             6.3.0         pyhcf101f3_0                    conda-forge
   bleach-with-css                    6.3.0         h5f6438b_0                      conda-forge
   boost-cpp                          1.85.0        h3c6214e_4                      conda-forge
+  brotli                             1.2.0         hed03a55_1                      conda-forge
+  brotli-bin                         1.2.0         hb03c661_1                      conda-forge
   brotli-python                      1.2.0         py311h66f275b_1                 conda-forge
   bzip2                              1.0.8         hda65f42_8                      conda-forge
   c-ares                             1.34.5        hb9d3cd8_0                      conda-forge
@@ -42,12 +44,14 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   clang-format                       21.1.0        default_hddf928d_0              conda-forge
   clang-format-21                    21.1.0        default_hddf928d_0              conda-forge
   clang-tools                        21.1.0        default_hddf928d_0              conda-forge
+  clangxx                            21.1.0        default_h363a0c9_1              conda-forge
   click                              8.3.1         pyh707e725_0                    conda-forge
   cmake                              3.30.0        hf8c4bd3_0                      conda-forge
   comm                               0.2.3         pyhe01879c_0                    conda-forge
   compiler-rt21                      21.1.6        hb700be7_0                      conda-forge
   compiler-rt21_linux-64             21.1.6        hffcefe0_0                      conda-forge
   conda-gcc-specs                    14.3.0        he8ccf15_12                     conda-forge
+  contourpy                          1.3.3         py311hdf67eae_3                 conda-forge
   cpython                            3.11.14       py311hd8ed1ab_2                 conda-forge
   cuda-crt-tools                     12.9.86       ha770c72_2                      conda-forge
   cuda-cudart                        12.9.79       h5888daf_0                      conda-forge
@@ -61,9 +65,10 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   cuda-nvvm-tools                    12.9.86       h4bc722e_2                      conda-forge
   cuda-version                       12.9          h4f385c5_3                      conda-forge
   cudnn                              9.10.2.21     hbcb9cd8_0                      conda-forge
+  cycler                             0.12.1        pyhd8ed1ab_1                    conda-forge
   cyrus-sasl                         2.1.28        hd9c7081_0                      conda-forge
-  databento                          0.66.0        pypi_0                          pypi       
-  databento-dbn                      0.44.0        pypi_0                          pypi       
+  databento                          0.66.0        pypi_0                          pypi
+  databento-dbn                      0.44.0        pypi_0                          pypi
   dbus                               1.16.2        h3c4dab8_0                      conda-forge
   debugpy                            1.8.17        py311hc665b79_0                 conda-forge
   decorator                          5.2.1         pyhd8ed1ab_0                    conda-forge
@@ -80,9 +85,11 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   fontconfig                         2.15.0        h7e30c49_1                      conda-forge
   fonts-conda-ecosystem              1             0                               conda-forge
   fonts-conda-forge                  1             hc364b38_1                      conda-forge
+  fonttools                          4.60.1        py311h3778330_0                 conda-forge
   fqdn                               1.5.1         pyhd8ed1ab_1                    conda-forge
   freetype                           2.14.1        ha770c72_0                      conda-forge
-  frozenlist                         1.8.0         pypi_0                          pypi       
+  fribidi                            1.0.16        hb03c661_0                      conda-forge
+  frozenlist                         1.8.0         pypi_0                          pypi
   fsspec                             2025.10.0     pyhd8ed1ab_0                    conda-forge
   gast                               0.6.0         pyhd8ed1ab_0                    conda-forge
   gcc                                14.3.0        h0dff253_12                     conda-forge
@@ -95,6 +102,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   glib-tools                         2.86.2        hf516916_1                      conda-forge
   gmp                                6.3.0         hac33072_2                      conda-forge
   gmpy2                              2.2.1         py311h92a432a_2                 conda-forge
+  gnuplot                            5.4.10        hb1719d7_0                      conda-forge
   google-pasta                       0.2.0         pyhd8ed1ab_2                    conda-forge
   graphite2                          1.3.14        hecca717_2                      conda-forge
   greenlet                           3.2.4         py311h1ddb823_1                 conda-forge
@@ -144,9 +152,11 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   keras                              3.12.0        pyh753f3f9_0                    conda-forge
   kernel-headers_linux-64            6.12.0        he073ed8_3                      conda-forge
   keyutils                           1.6.3         hb9d3cd8_0                      conda-forge
+  kiwisolver                         1.4.9         py311h724c32c_2                 conda-forge
   krb5                               1.21.3        h659f571_0                      conda-forge
   lame                               3.100         h166bdaf_1003                   conda-forge
   lark                               1.3.1         pyhd8ed1ab_0                    conda-forge
+  lcms2                              2.17          h717163a_0                      conda-forge
   ld_impl_linux-64                   2.45          default_hbd61a6d_104            conda-forge
   lerc                               4.0.0         h0aef613_1                      conda-forge
   libabseil                          20250512.1    cxx17_hba17884_0                conda-forge
@@ -157,6 +167,9 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   libboost                           1.85.0        h0ccab89_4                      conda-forge
   libboost-devel                     1.85.0        h00ab1b0_4                      conda-forge
   libboost-headers                   1.85.0        ha770c72_4                      conda-forge
+  libbrotlicommon                    1.2.0         hb03c661_1                      conda-forge
+  libbrotlidec                       1.2.0         hb03c661_1                      conda-forge
+  libbrotlienc                       1.2.0         hb03c661_1                      conda-forge
   libcap                             2.77          h3ff7636_0                      conda-forge
   libcblas                           3.11.0        2_hfef963f_mkl                  conda-forge
   libclang-cpp20.1                   20.1.8        default_h99862b1_4              conda-forge
@@ -187,6 +200,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   libgcc                             15.2.0        he0feb66_12                     conda-forge
   libgcc-devel_linux-64              14.3.0        hf649bbc_112                    conda-forge
   libgcc-ng                          15.2.0        h69a702a_12                     conda-forge
+  libgd                              2.3.3         h6f5c62b_11                     conda-forge
   libgettextpo                       0.25.1        h3f43e3d_1                      conda-forge
   libgettextpo-devel                 0.25.1        h3f43e3d_1                      conda-forge
   libgfortran                        15.2.0        h69a702a_12                     conda-forge
@@ -251,6 +265,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   markdown                           3.10          pyhcf101f3_1                    conda-forge
   markdown-it-py                     4.0.0         pyhd8ed1ab_0                    conda-forge
   markupsafe                         3.0.3         py311h3778330_0                 conda-forge
+  matplotlib-base                    3.10.8        py311h0f3be63_0                 conda-forge
   matplotlib-inline                  0.2.1         pyhd8ed1ab_0                    conda-forge
   maturin                            1.10.2        py310hb4e1661_0                 conda-forge
   mdurl                              0.1.2         pyhd8ed1ab_1                    conda-forge
@@ -260,8 +275,10 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   mpc                                1.3.1         h24ddda3_1                      conda-forge
   mpfr                               4.2.1         h90cbb55_3                      conda-forge
   mpg123                             1.32.9        hc50e24c_0                      conda-forge
+  mplfinance                         0.12.9b7      pyhd8ed1ab_0                    conda-forge
   mpmath                             1.3.0         pyhd8ed1ab_1                    conda-forge
-  multidict                          6.7.0         pypi_0                          pypi       
+  multidict                          6.7.0         pypi_0                          pypi
+  munkres                            1.1.4         pyhd8ed1ab_1                    conda-forge
   mypy_extensions                    1.1.0         pyha770c72_0                    conda-forge
   namex                              0.1.0         pyhd8ed1ab_0                    conda-forge
   nbclient                           0.10.2        pyhd8ed1ab_0                    conda-forge
@@ -278,6 +295,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   nspr                               4.38          h29cc59b_0                      conda-forge
   nss                                3.118         h445c969_0                      conda-forge
   numpy                              2.3.5         py311h2e04523_0                 conda-forge
+  openjpeg                           2.5.4         h55fea9a_0                      conda-forge
   openldap                           2.6.10        he970967_0                      conda-forge
   openssl                            3.6.0         h26f9b46_0                      conda-forge
   opt_einsum                         3.4.0         pyhd8ed1ab_1                    conda-forge
@@ -286,29 +304,32 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   packaging                          25.0          pyh29332c3_1                    conda-forge
   pandas                             2.3.3         py311hed34c8f_1                 conda-forge
   pandocfilters                      1.5.0         pyhd8ed1ab_0                    conda-forge
+  pango                              1.56.4        hadf4263_0                      conda-forge
   parso                              0.8.5         pyhcf101f3_0                    conda-forge
   pathspec                           0.12.1        pyhd8ed1ab_1                    conda-forge
   pcre2                              10.47         haa7fec5_0                      conda-forge
   pexpect                            4.9.0         pyhd8ed1ab_1                    conda-forge
+  pillow                             12.0.0        py311h267f063_1                 conda-forge
   pip                                25.3          pyh8b19718_0                    conda-forge
   pixman                             0.46.4        h54a6638_1                      conda-forge
   platformdirs                       4.5.0         pyhcf101f3_0                    conda-forge
   prometheus_client                  0.23.1        pyhd8ed1ab_0                    conda-forge
   prompt-toolkit                     3.0.52        pyha770c72_0                    conda-forge
   prompt_toolkit                     3.0.52        hd8ed1ab_0                      conda-forge
-  propcache                          0.4.1         pypi_0                          pypi       
+  propcache                          0.4.1         pypi_0                          pypi
   protobuf                           6.31.1        py311h425ed32_2                 conda-forge
   psutil                             7.1.3         py311haee01d2_0                 conda-forge
   pthread-stubs                      0.4           hb9d3cd8_1002                   conda-forge
   ptyprocess                         0.7.0         pyhd8ed1ab_1                    conda-forge
   pulseaudio-client                  17.0          h9a6aba3_3                      conda-forge
   pure_eval                          0.2.3         pyhd8ed1ab_1                    conda-forge
-  pyarrow                            22.0.0        pypi_0                          pypi       
+  pyarrow                            22.0.0        pypi_0                          pypi
   pybind11                           3.0.1         pyh7a1b43c_0                    conda-forge
   pybind11-abi                       11            hc364b38_1                      conda-forge
   pybind11-global                    3.0.1         pyhc7ab6ef_0                    conda-forge
   pycparser                          2.22          pyh29332c3_1                    conda-forge
   pygments                           2.19.2        pyhd8ed1ab_0                    conda-forge
+  pyparsing                          3.2.5         pyhcf101f3_0                    conda-forge
   pyright                            1.1.407       py311haee01d2_0                 conda-forge
   pysocks                            1.7.1         pyha55dd90_7                    conda-forge
   python                             3.11.14       hd63d673_2_cpython              conda-forge
@@ -322,6 +343,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   pytz                               2025.2        pyhd8ed1ab_0                    conda-forge
   pyyaml                             6.0.3         py311h3778330_0                 conda-forge
   pyzmq                              27.1.0        py311h2315fbb_0                 conda-forge
+  qhull                              2020.2        h434a139_5                      conda-forge
   qt                                 5.15.15       h57362cc_0                      conda-forge
   qt-main                            5.15.15       h3a7ef08_5                      conda-forge
   qt-webengine                       5.15.15       h2da670d_3                      conda-forge
@@ -372,6 +394,7 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   typing_extensions                  4.15.0        pyhcf101f3_0                    conda-forge
   typing_utils                       0.1.0         pyhd8ed1ab_1                    conda-forge
   tzdata                             2025b         h78e105d_0                      conda-forge
+  unicodedata2                       17.0.0        py311h49ec1c0_1                 conda-forge
   uri-template                       1.3.0         pyhd8ed1ab_1                    conda-forge
   urllib3                            2.5.0         pyhd8ed1ab_0                    conda-forge
   valgrind                           3.25.1        h629725b_0                      conda-forge
@@ -409,9 +432,11 @@ List of packages in environment: "/home/alex/Documents/Programmes/micromamba/env
   xz-gpl-tools                       5.8.1         hbcc6ac9_2                      conda-forge
   xz-tools                           5.8.1         hb9d3cd8_2                      conda-forge
   yaml                               0.2.5         h280c20c_3                      conda-forge
-  yarl                               1.22.0        pypi_0                          pypi       
+  yarl                               1.22.0        pypi_0                          pypi
+  yt-dlp                             2025.11.12    pypi_0                          pypi
   zeromq                             4.3.5         h387f397_9                      conda-forge
   zipp                               3.23.0        pyhd8ed1ab_0                    conda-forge
   zlib                               1.3.1         hb9d3cd8_2                      conda-forge
+  zlib-ng                            2.2.5         hde8ca8f_1                      conda-forge
   zstandard                          0.25.0        py311haee01d2_1                 conda-forge
   zstd                               1.5.7         hb8e6e7a_2                      conda-forge

@@ -4,6 +4,40 @@ function mkcd
     cd  $1
 }
 
+function _detect_latest_build_dir
+{
+    local latest_file=""
+    local latest_time=0
+
+    if [ ! -d "build" ]
+		then
+        return
+    fi
+
+    is_latest_build_file() {
+        local file="$1"
+        if [ -f "$file" ]
+				then
+            local file_time=$(stat -c %Y "$file" 2>/dev/null || stat -f %m "$file" 2>/dev/null)
+            if [ "$file_time" -gt "$latest_time" ]
+						then
+                latest_time=$file_time
+                latest_file="$file"
+            fi
+        fi
+    }
+
+		for build_file in `find build -name Makefile -o -name build.ninja`
+		do
+				is_latest_build_file $build_file
+		done
+
+    if [ -n "$latest_file" ]
+		then
+        dirname "$latest_file"
+    fi
+}
+
 function b
 {
     nb_processes=10
@@ -13,10 +47,15 @@ function b
         nb_processes=$1
     fi
 
-    [ -f Makefile ] && make -j 10 && return
-    [ -f build/Makefile ] && make -C build -j 10 && return
-    [ -f build.ninja ] && ninja -j 10 && return
-    [ -f build/build.ninja ] && ninja -C build -j 10 && return
+    local build_dir=$(_detect_latest_build_dir)
+
+		if [ -n "$build_dir" ]
+		then
+				[ -f "$build_dir/build.ninja" ] && ninja -C "$build_dir" -j $nb_processes && return
+				[ -f "$build_dir/Makefile" ] && make -C "$build_dir" -j $nb_processes && return
+		else
+				echo "No build file found"
+		fi
 }
 
 function c

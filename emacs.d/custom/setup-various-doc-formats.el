@@ -1,4 +1,10 @@
-;; json  -*- lexical-binding: t; -*-
+;; setup-various-doc-formats --- Some documentation formats configuration  -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+
+;;; Code:
+
 
 (use-package json-mode
   :config
@@ -20,9 +26,10 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 (defun my-markdown-hook ()
- (setq show-trailing-whitespace t)
- (remove-hook 'before-save-hook 'delete-trailing-whitespace)
- (setq indent-tabs-mode nil)
+  (setq show-trailing-whitespace t)
+  (setq markdown-indent-function nil)
+  (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq indent-tabs-mode nil)
  )
 
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
@@ -58,3 +65,4 @@
 
 
 (provide 'setup-various-doc-formats)
+;;; setup-various-doc-formats.el ends here

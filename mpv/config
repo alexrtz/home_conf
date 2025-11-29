@@ -4,7 +4,7 @@ fs=yes
 ao=pulse
 #ao=alsa
 hwdec=vaapi
-vo=xv,x11,
+vo=gpu,xv,x11
 vd-lavc-threads=4
 cache=yes
 demuxer-max-bytes=1120400KiB
@@ -18,6 +18,15 @@ index=recreate
 slang=fr,fra
 # son, langue par défaut
 alang=jpn,en
+
+# Disable subtitles for French and English videos
+[audio-lang-fr]
+profile-cond=get("audio-params/hr-channels", ""):find("fr") or get("current-tracks/audio/lang", ""):find("fr")
+sid=no
+
+[audio-lang-en]
+profile-cond=get("audio-params/hr-channels", ""):find("en") or get("current-tracks/audio/lang", ""):find("en")
+sid=no
 
 fs-screen=1
 

@@ -2,7 +2,7 @@
 	path = emacs.d/emacs-clang-complete-async
 	url = https://github.com/Golevka/emacs-clang-complete-async.git
 [submodule "oh-my-zsh"]
-	path = oh-my-zsh
+	path = config/zsh/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule "git.d/git-number"]
 	path = git.d/git-number

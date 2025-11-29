@@ -1,17 +1,9 @@
 # Path to your oh-my-zsh installation.
 
-export ZSH=$HOME/.oh-my-zsh
-
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="alexrtz"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
@@ -29,15 +21,12 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(sudo git fzf)
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/.zsh_custom
 
-. $ZSH/oh-my-zsh.sh
+export ZSH=$HOME/.config/zsh/oh-my-zsh
+export ZSH_CUSTOM=~/.config/zsh/custom/
+ZSH_THEME="alexrtz"
+source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_CA.UTF-8
@@ -49,12 +38,6 @@ export LC_ALL=en_CA.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
@@ -73,14 +56,5 @@ bashcompinit
 
 [ -f ~/.bash_specific_config ] && . ~/.bash_specific_config
 
-#[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
-
-## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#e xport PATH="$PATH:$HOME/.rvm/bin"
-
-#rvm use ruby > /dev/null
-
 which direnv > /dev/null 2>&1
 [ $? -eq 0 ] && eval "$(direnv hook zsh)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
