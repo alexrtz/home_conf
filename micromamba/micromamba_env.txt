@@ -1,14 +1,14 @@
-List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/dev"
+List of packages in environment: "/home/alex/Documents/Programmes/micromamba/envs/dev"
 
-  Name                               Version       Build                           Channel
+  Name                               Version       Build                           Channel    
 ────────────────────────────────────────────────────────────────────────────────────────────────
   _libgcc_mutex                      0.1           conda_forge                     conda-forge
   _openmp_mutex                      4.5           7_kmp_llvm                      conda-forge
   _x86_64-microarch-level            3             3_x86_64_v3                     conda-forge
   absl-py                            2.3.1         pyhd8ed1ab_0                    conda-forge
-  aiohappyeyeballs                   2.6.1         pypi_0                          pypi
-  aiohttp                            3.13.2        pypi_0                          pypi
-  aiosignal                          1.4.0         pypi_0                          pypi
+  aiohappyeyeballs                   2.6.1         pypi_0                          pypi       
+  aiohttp                            3.13.2        pypi_0                          pypi       
+  aiosignal                          1.4.0         pypi_0                          pypi       
   alsa-lib                           1.2.14        hb9d3cd8_0                      conda-forge
   anyio                              4.11.0        pyhcf101f3_0                    conda-forge
   argon2-cffi                        25.1.0        pyhd8ed1ab_0                    conda-forge
@@ -67,8 +67,8 @@ List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/
   cudnn                              9.10.2.21     hbcb9cd8_0                      conda-forge
   cycler                             0.12.1        pyhd8ed1ab_1                    conda-forge
   cyrus-sasl                         2.1.28        hd9c7081_0                      conda-forge
-  databento                          0.66.0        pypi_0                          pypi
-  databento-dbn                      0.44.0        pypi_0                          pypi
+  databento                          0.66.0        pypi_0                          pypi       
+  databento-dbn                      0.44.0        pypi_0                          pypi       
   dbus                               1.16.2        h3c4dab8_0                      conda-forge
   debugpy                            1.8.17        py311hc665b79_0                 conda-forge
   decorator                          5.2.1         pyhd8ed1ab_0                    conda-forge
@@ -89,7 +89,7 @@ List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/
   fqdn                               1.5.1         pyhd8ed1ab_1                    conda-forge
   freetype                           2.14.1        ha770c72_0                      conda-forge
   fribidi                            1.0.16        hb03c661_0                      conda-forge
-  frozenlist                         1.8.0         pypi_0                          pypi
+  frozenlist                         1.8.0         pypi_0                          pypi       
   fsspec                             2025.10.0     pyhd8ed1ab_0                    conda-forge
   gast                               0.6.0         pyhd8ed1ab_0                    conda-forge
   gcc                                14.3.0        h0dff253_12                     conda-forge
@@ -277,7 +277,7 @@ List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/
   mpg123                             1.32.9        hc50e24c_0                      conda-forge
   mplfinance                         0.12.9b7      pyhd8ed1ab_0                    conda-forge
   mpmath                             1.3.0         pyhd8ed1ab_1                    conda-forge
-  multidict                          6.7.0         pypi_0                          pypi
+  multidict                          6.7.0         pypi_0                          pypi       
   munkres                            1.1.4         pyhd8ed1ab_1                    conda-forge
   mypy_extensions                    1.1.0         pyha770c72_0                    conda-forge
   namex                              0.1.0         pyhd8ed1ab_0                    conda-forge
@@ -316,14 +316,14 @@ List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/
   prometheus_client                  0.23.1        pyhd8ed1ab_0                    conda-forge
   prompt-toolkit                     3.0.52        pyha770c72_0                    conda-forge
   prompt_toolkit                     3.0.52        hd8ed1ab_0                      conda-forge
-  propcache                          0.4.1         pypi_0                          pypi
+  propcache                          0.4.1         pypi_0                          pypi       
   protobuf                           6.31.1        py311h425ed32_2                 conda-forge
   psutil                             7.1.3         py311haee01d2_0                 conda-forge
   pthread-stubs                      0.4           hb9d3cd8_1002                   conda-forge
   ptyprocess                         0.7.0         pyhd8ed1ab_1                    conda-forge
   pulseaudio-client                  17.0          h9a6aba3_3                      conda-forge
   pure_eval                          0.2.3         pyhd8ed1ab_1                    conda-forge
-  pyarrow                            22.0.0        pypi_0                          pypi
+  pyarrow                            22.0.0        pypi_0                          pypi       
   pybind11                           3.0.1         pyh7a1b43c_0                    conda-forge
   pybind11-abi                       11            hc364b38_1                      conda-forge
   pybind11-global                    3.0.1         pyhc7ab6ef_0                    conda-forge
@@ -432,8 +432,8 @@ List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/
   xz-gpl-tools                       5.8.1         hbcc6ac9_2                      conda-forge
   xz-tools                           5.8.1         hb9d3cd8_2                      conda-forge
   yaml                               0.2.5         h280c20c_3                      conda-forge
-  yarl                               1.22.0        pypi_0                          pypi
-  yt-dlp                             2025.11.12    pypi_0                          pypi
+  yarl                               1.22.0        pypi_0                          pypi       
+  yt-dlp                             2025.11.12    pypi_0                          pypi       
   zeromq                             4.3.5         h387f397_9                      conda-forge
   zipp                               3.23.0        pyhd8ed1ab_0                    conda-forge
   zlib                               1.3.1         hb9d3cd8_2                      conda-forge

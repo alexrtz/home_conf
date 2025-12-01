@@ -1,4 +1,4 @@
-List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/dev"
+List of packages in environment: "/home/alex/Documents/Programmes/micromamba/envs/dev"
 
 https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
 https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-7_kmp_llvm.conda
