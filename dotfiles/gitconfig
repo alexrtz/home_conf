@@ -1,5 +1,5 @@
 [include]
-	path=~/.config/mine/git/user
+	path=~/.config/mine/gituser
 
 [core]
  pager = less -FRSX -x4

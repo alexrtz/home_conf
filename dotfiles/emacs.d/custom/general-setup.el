@@ -121,7 +121,7 @@
   "Run a shell command."
   (interactive)
   (save-some-buffers t)
-  (shell-command "touch /tmp/trigger"))
+  (shell-command "touch ~/tmp/trigger"))
 
 ;; Define a keybinding to trigger the function
 (global-set-key (kbd "<f7>") 'touch-trigger)
