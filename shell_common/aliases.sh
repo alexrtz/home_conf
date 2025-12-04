@@ -63,7 +63,7 @@ alias agcpp="ag --cpp"
 alias agpy="ag --python"
 alias agrs="ag --rust"
 
-alias c="touch /tmp/trigger"
+alias c="touch ~/tmp/trigger"
 
 alias t=tmuxinator
 
