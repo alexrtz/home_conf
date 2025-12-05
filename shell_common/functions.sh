@@ -178,8 +178,6 @@ function svn_conflicted
     for i in `svn st | grep -E '^[ ]?C' | cut -d' ' -f8`; do emacsclient -n $i; done
 }
 
-
-
 function docker_purge_images
 {
     for i in `docker images|grep none|awk -F" " '{print $3}'`; do docker rmi $i; done
@@ -202,6 +200,37 @@ function man
          LESS_TERMCAP_us=$(printf "\e[1;32m") \
                man "$@"
 }
+
+function resize_image
+{
+    if [ $# -lt 3 ]
+    then
+        echo "Usage: resize_image <image-file> <factor> <output-file>"
+        echo "Example: resize_image a.jpg 50 a_output.jpg"
+        return 1
+    fi
+
+    local input="$1"
+    local factor="$2"
+    local output="$3"
+
+    if [ ! -f "$input" ]
+    then
+        echo "Error: '$input' is not a valid file"
+        return 1
+    fi
+
+    convert "$input" -resize ${factor}% "$output"
+
+    if [ $? -eq 0 ]
+    then
+        echo "Created: $output"
+    else
+        echo "Error: Failed to resize image"
+        return 1
+    fi
+}
+
 
 function x
 {
