@@ -1,12 +1,8 @@
 List of packages in environment: "/home/alex/Documents/Programs/micromamba/envs/dev"
 
 _openmp_mutex=4.5=7_kmp_llvm
-_x86_64-microarch-level=3=3_x86_64_v3
 absl-py=2.3.1=pyhd8ed1ab_0
 adwaita-icon-theme=49.0=unix_0
-aiohappyeyeballs=2.6.1=pypi_0
-aiohttp=3.13.2=pypi_0
-aiosignal=1.4.0=pypi_0
 alsa-lib=1.2.14=hb9d3cd8_0
 anyio=4.11.0=pyhcf101f3_0
 argon2-cffi=25.1.0=pyhd8ed1ab_0
@@ -84,8 +80,6 @@ cuda-version=12.9=h4f385c5_3
 cudnn=9.10.2.21=hbcb9cd8_0
 cycler=0.12.1=pyhcf101f3_2
 cyrus-sasl=2.1.28=hd9c7081_0
-databento=0.66.0=pypi_0
-databento-dbn=0.44.0=pypi_0
 dbus=1.16.2=h3c4dab8_0
 debugpy=1.8.17=py311hc665b79_0
 decorator=5.2.1=pyhd8ed1ab_0
@@ -108,7 +102,6 @@ fonttools=4.60.1=py311h3778330_0
 fqdn=1.5.1=pyhd8ed1ab_1
 freetype=2.14.1=ha770c72_0
 fribidi=1.0.16=hb03c661_0
-frozenlist=1.8.0=pypi_0
 fsspec=2025.10.0=pyhd8ed1ab_0
 gast=0.6.0=pyhd8ed1ab_0
 gcc=14.3.0=h0dff253_14
@@ -140,7 +133,7 @@ h11=0.16.0=pyhd8ed1ab_0
 h2=4.3.0=pyhcf101f3_0
 h5py=3.15.1=nompi_py311h0b2f468_101
 harfbuzz=11.5.1=h15599e2_0
-hdf5=1.14.6=nompi_h6e4c0c1_103
+hdf5=1.14.6=nompi_h1b119a7_104
 hicolor-icon-theme=0.17=ha770c72_2
 hpack=4.1.0=pyhd8ed1ab_0
 httpcore=1.0.9=pyh29332c3_0
@@ -287,7 +280,7 @@ libtree-sitter=0.25.9=h280c20c_0
 libudev1=258.2=h6569c3e_1
 libunistring=0.9.10=h7f98852_0
 libutf8proc=2.8.0=hf23e847_1
-libuuid=2.41.2=he9a06e4_0
+libuuid=2.41.2=h5347b49_1
 libuv=1.51.0=hb03c661_1
 libvorbis=1.3.7=h54a6638_2
 libwebp=1.6.0=h9635ea4_0
@@ -317,7 +310,6 @@ mpfr=4.2.1=h90cbb55_3
 mpg123=1.32.9=hc50e24c_0
 mplfinance=0.12.9b7=pyhd8ed1ab_0
 mpmath=1.3.0=pyhd8ed1ab_1
-multidict=6.7.0=pypi_0
 munkres=1.1.4=pyhd8ed1ab_1
 mypy_extensions=1.1.0=pyha770c72_0
 namex=0.1.0=pyhd8ed1ab_0
@@ -361,14 +353,12 @@ platformdirs=4.5.0=pyhcf101f3_0
 prometheus_client=0.23.1=pyhd8ed1ab_0
 prompt-toolkit=3.0.52=pyha770c72_0
 prompt_toolkit=3.0.52=hd8ed1ab_0
-propcache=0.4.1=pypi_0
 protobuf=4.24.4=py311h46cbc50_0
 psutil=7.1.3=py311haee01d2_0
 pthread-stubs=0.4=hb9d3cd8_1002
 ptyprocess=0.7.0=pyhd8ed1ab_1
 pulseaudio-client=17.0=h9a8bead_2
 pure_eval=0.2.3=pyhd8ed1ab_1
-pyarrow=22.0.0=pypi_0
 pybind11=3.0.1=pyh7a1b43c_0
 pybind11-abi=11=hc364b38_1
 pybind11-global=3.0.1=pyhc7ab6ef_0
@@ -475,15 +465,14 @@ xorg-libxshmfence=1.3.3=hb9d3cd8_0
 xorg-libxtst=1.2.5=hb9d3cd8_3
 xorg-libxxf86vm=1.1.6=hb9d3cd8_0
 xorg-xorgproto=2024.1=hb9d3cd8_1
+xsimd=14.0.0=h171cf75_0
 xz=5.8.1=hbcc6ac9_2
 xz-gpl-tools=5.8.1=hbcc6ac9_2
 xz-tools=5.8.1=hb9d3cd8_2
 yaml=0.2.5=h280c20c_3
-yarl=1.22.0=pypi_0
-yt-dlp=2025.11.12=pypi_0
 zeromq=4.3.5=h387f397_9
 zipp=3.23.0=pyhcf101f3_1
 zlib=1.3.1=hb9d3cd8_2
 zlib-ng=2.2.5=hde8ca8f_1
 zstandard=0.25.0=py311haee01d2_1
-zstd=1.5.7=h3691f8a_5
+zstd=1.5.7=hb78ec9c_6

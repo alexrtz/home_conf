@@ -154,8 +154,6 @@
         desktop-save t
         desktop-restore-frames t
         desktop-load-locked-desktop t)
-
-  (desktop-save-mode 1)
   )
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
