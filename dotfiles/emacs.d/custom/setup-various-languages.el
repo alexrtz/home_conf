@@ -59,6 +59,13 @@
 ;;  Rust
 
 (use-package rust-mode)
+
+(defun my-rust-mode-hook()
+  (setq rust-indent-offset 4)
+  (setq indent-tabs-mode nil)
+  )
+
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
 (add-hook 'rust-mode-hook 'lsp-deferred)
 
 (use-package flycheck-rust)

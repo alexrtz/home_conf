@@ -153,7 +153,9 @@
         desktop-base-file-name "emacs-desktop"
         desktop-save t
         desktop-restore-frames t
-        desktop-load-locked-desktop t)
+        desktop-load-locked-desktop t
+        desktop-save-mode t
+        )
   )
 
 ; http://www.emacswiki.org/emacs/IncrementNumber
