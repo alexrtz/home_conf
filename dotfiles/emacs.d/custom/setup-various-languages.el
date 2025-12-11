@@ -1,5 +1,8 @@
-;; General  -*- lexical-binding: t; -*-
+;; setup-various-languages --- Various languages configuration  -*- lexical-binding: t; -*-
 
+;;; Commentary:
+
+;;; Code:
 
 (modify-coding-system-alist 'file "\\.php$" 'utf-8)
 (modify-coding-system-alist 'file "\\.plant$" 'utf-8)
@@ -86,3 +89,4 @@
 (yas-global-mode 1)
 
 (provide 'setup-various-languages)
+;;; setup-various-languages.el ends here
