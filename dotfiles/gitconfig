@@ -124,7 +124,7 @@
  sup = submodule update
  oops = reset --soft "HEAD^"
  unadd = reset HEAD
-# lol = log --graph --pretty=format:'%C(red)%h%C(reset) %C(yellow)%d%C(reset)%s %C(green)%an %C(bold black)%cr%C(reset)' --abbrev-commit --date=relative
+
 
 [diff]
 ignoreSubmodules = dirty

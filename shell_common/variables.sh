@@ -1,12 +1,14 @@
 EDITOR="emacs -nw -q"
 SHELL_USERNAME=alex
 
-NPM_PACKAGES_DIR=~/Documents/Programs/root/usr/npm_packages
+NPM_PACKAGES_DIR=$HOME/Documents/Programs/root/usr/npm_packages
 
-PATH=~/.config/mine/git/git.d/git-number:$HOME/.local/bin:$PATH:$HOME/Documents/Programs/root/usr/bin:~/.cargo/bin:$NPM_PACKAGES_DIR/bin:/usr/local/bin
-export PATH=$HOME/Documents/Programs/root/usr/bin:$PATH
+export GOPATH=$HOME/Documents/Programs/root/go
 
-PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH:/home/alex/Documents/Programs/root/usr/lib/pkgconfig:$PKG_CONFIG_PATH
+PATH=~/.config/mine/git/git.d/git-number:$HOME/.local/bin:$PATH:$HOME/Documents/Programs/root/usr/bin:$GOPATH/bin:~/.cargo/bin:$NPM_PACKAGES_DIR/bin:/usr/local/bin
+export PATH
+
+PKG_CONFIG_PATH=$MY_PKG_CONFIG_PATH:$HOME/Documents/Programs/root/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 
 export QT_SELECT=5
 
