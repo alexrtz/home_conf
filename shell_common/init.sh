@@ -17,5 +17,5 @@ micromamba env list | grep " dev " > /dev/null
 if [ $? -eq 0 ]
 then
 		micromamba activate dev
-		export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu/:$CONDA_PREFIX/lib
 fi
