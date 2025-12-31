@@ -27,9 +27,8 @@
 
 (defun my-markdown-hook ()
   (setq show-trailing-whitespace t)
-  (setq markdown-indent-function nil)
-  (remove-hook 'before-save-hook 'delete-trailing-whitespace)
   (setq indent-tabs-mode nil)
+  (remove-hook 'before-save-hook 'delete-trailing-whitespace)
  )
 
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
