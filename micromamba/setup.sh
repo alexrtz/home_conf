@@ -35,7 +35,6 @@ fi
 pip install -r requirements.txt
 
 go install github.com/google/pprof@latest
-go install github.com/gohugoio/hugo@latest
 
 echo ""
 echo "Setup complete! To activate this environment in your shell, run:"
