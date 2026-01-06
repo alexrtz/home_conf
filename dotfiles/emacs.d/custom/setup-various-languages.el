@@ -50,6 +50,19 @@
 
 (add-hook 'css-mode-hook 'my-css-mode-hook)
 
+;; Go
+
+(use-package go-mode
+  :ensure t
+  :hook (go-mode . lsp)
+  :config
+  (setq gofmt-command "goimports"))
+
+(use-package lsp-mode
+  :ensure t
+  :hook (go-mode . lsp)
+  :commands lsp)
+
 ;; Lisp
 
 (defun my-lisp-mode-hook()
@@ -66,6 +79,7 @@
 (defun my-rust-mode-hook()
   (setq rust-indent-offset 4)
   (setq indent-tabs-mode nil)
+  (face-remap-add-relative 'font-lock-keyword-face :weight 'normal)
   )
 
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)
