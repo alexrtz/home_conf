@@ -60,7 +60,7 @@
 
  f = fetch
 
- force-delete= "!f() { git branch -D $1 && git push origin --delete $1; }; f"
+ force-delete= "!f() { git branch -D $1; git push origin --delete $1; }; f"
 
  info = remote show origin
 
