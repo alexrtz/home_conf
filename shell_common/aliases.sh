@@ -78,8 +78,8 @@ alias lssh="grep -P \"^Host ([^*]+)$\" $HOME/.ssh/config | sed 's/Host //'"
 alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
 
 alias mm="micromamba"
-alias mm_export="mm env export > $HOME/Documents/home_conf/micromamba/environment.yml"
-alias mm_update="mm env update --file $HOME/Documents/home_conf/micromamba/environment.yml"
+alias mm_export="micromamba env export --no-build > $HOME/Documents/home_conf/micromamba/environment.yml"
+alias mm_update="micromamba env update --file $HOME/Documents/home_conf/micromamba/environment.yml"
 alias pip_export="python3 -m pip freeze | grep -v '@ file:' > $HOME/Documents/home_conf/micromamba/requirements.txt"
 alias pip_install="python3 -m pip install -r $HOME/Documents/home_conf/micromamba/requirements.txt"
 
