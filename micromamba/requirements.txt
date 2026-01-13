@@ -22,7 +22,7 @@ parquet_tools==0.2.16
 propcache==0.4.1
 protobuf==6.33.2
 pyarrow==22.0.0
-pypdf==6.4.2
+pypdf==6.6.0
 reportlab==4.4.6
 s3transfer==0.16.0
 scikit-learn==1.8.0
