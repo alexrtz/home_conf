@@ -389,6 +389,7 @@ dependencies:
   - pycparser=2.22
   - pygments=2.19.2
   - pyparsing=3.2.5
+  - pypdf=6.6.0
   - pyright=1.1.407
   - pysocks=1.7.1
   - python=3.11.14
@@ -535,7 +536,6 @@ dependencies:
     - propcache==0.4.1
     - protobuf==6.33.2
     - pyarrow==22.0.0
-    - pypdf==6.4.2
     - reportlab==4.4.6
     - s3transfer==0.16.0
     - scikit-learn==1.8.0
