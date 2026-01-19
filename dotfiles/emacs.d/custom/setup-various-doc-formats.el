@@ -19,6 +19,24 @@
 ;(use-package auctex)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
+;; Typst
+
+(use-package typst-ts-mode
+  :mode "\\.typ\\'"
+  :hook ((typst-ts-mode . flyspell-mode)
+         (typst-ts-mode . eglot-ensure))
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '(typst-ts-mode . ("tinymist")))))
+
+(add-to-list 'treesit-language-source-alist
+             '(typst "https://github.com/uben0/tree-sitter-typst"))
+
+(unless (treesit-language-available-p 'typst)
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (&rest _) t)))
+    (treesit-install-language-grammar 'typst)))
+
 ;; Markdown
 
 (use-package markdown-mode)
@@ -61,7 +79,6 @@
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.clang-tidy$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.clang-format$" . yaml-mode))
-
 
 (provide 'setup-various-doc-formats)
 ;;; setup-various-doc-formats.el ends here

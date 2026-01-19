@@ -61,5 +61,18 @@
 )
 ;; (add-hook 'c-mode-hook 'lsp)
 
+(use-package eglot
+  :ensure t
+  :config
+  (setq eglot-autoshutdown t)
+  (setq eglot-events-buffer-size 0)
+  (setq eglot-sync-connect nil)
+  (setq eglot-extend-to-xref t)
+  (setq eglot-ignored-server-capabilities '(:workspace/didChangeConfiguration))
+  :bind (:map eglot-mode-map
+              ("C-c l r" . eglot-rename)
+              ("C-c l f" . eglot-format)
+              ("C-c l a" . eglot-code-actions)))
+
 (provide 'lsp-setup)
 ;;; lsp-setup.el ends here
