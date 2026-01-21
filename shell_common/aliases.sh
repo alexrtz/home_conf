@@ -38,6 +38,8 @@ alias mvenv="python3 -m venv venv && . venv/bin/activate && python -m pip instal
 
 alias pg_data_dump="pg_dump -a bss |grep -v '^\(--\)\?$'|grep -v 'PostgreSQL database dump' | grep -v '^SET' | grep -v '^--Name' | grep -v '^SELECT'"
 
+alias pt="parquet-tools"
+
 alias qm="qmake \"CONFIG += silent\" -r"
 
 alias g="git"

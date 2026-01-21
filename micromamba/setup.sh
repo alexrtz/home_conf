@@ -31,8 +31,9 @@ else
 fi
 
 # Python and go, maybe this should be moved elsewhere
-
-pip install -r requirements.txt
+# We should not need to install these packages independently as they are also listed
+# in environment.yml in the "pip" section
+# pip install -r requirements.txt
 
 go install github.com/google/pprof@latest
 
