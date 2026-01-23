@@ -71,8 +71,8 @@
 (require 'python-setup)
 
 (require 'container-setup)
+(require 'org-setup)
 (require 'setup-net-clients)
-(require 'setup-org)
 (require 'setup-spelling)
 (require 'setup-various-build-systems)
 (require 'setup-various-doc-formats)

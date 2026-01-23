@@ -194,7 +194,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/Documents/org-roam"))
+  (org-roam-directory (file-truename "~/Documents/notes/zettels"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
@@ -205,19 +205,60 @@
   :config
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
+  (require 'org-roam-protocol)
 
-(setq-default org-roam-dailies-directory "daily")
+  (setq org-roam-capture-templates
+        '(
+          ("d" "default" plain "%?"
+           :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
 
-(setq-default org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         "* %?"
-         :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
+          ("c" "computers")
+          ("cp" "computers/programming" plain "%?"
+           :target (file+head "computers/programming/%<%Y%m%d%H%M%S>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+          )
+        )
+
+  (setq-default org-roam-dailies-capture-templates
+                '(("d" "default" entry
+                   "* %?"
+                   :target (file+head "%<%Y-%m-%d>.org"
+                                      "#+title: %<%Y-%m-%d>\n"))))
+
+  (setq org-journal-dir "~/Documents/notes/journal/")
+
+  (defun my/org-roam-create-directory ()
+    "Create parent directory if it doesn't exist."
+    (when-let* ((path (buffer-file-name))
+                (dir (file-name-directory path)))
+      (unless (file-exists-p dir)
+        (make-directory dir t))))
+  )
+
 
 (setq org-roam-v2-ack t)
+
+(add-hook 'org-roam-capture-new-node-hook #'my/org-roam-create-directory)
+
+(use-package ox-hugo
+  :ensure t
+  :after ox
+  :config
+  (setq org-hugo-link-org-files-as-md t)
+  (setq org-hugo-auto-set-lastmod t))
+
+(defun my/export-zettels-to-hugo ()
+  "Export all org-roam files to Hugo."
+  (interactive)
+  (dolist (f (org-roam-list-files))
+    (with-current-buffer (find-file-noselect f)
+      (unless (string-match-p "daily/" f)
+        (org-hugo-export-to-md)))))
 
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-j") #'helm-for-files))
 
-(provide 'setup-org)
+(provide 'org-setup)

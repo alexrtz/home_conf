@@ -79,7 +79,7 @@
 (defun my-rust-mode-hook()
   (setq rust-indent-offset 4)
   (setq indent-tabs-mode nil)
-  (face-remap-add-relative 'font-lock-keyword-face :weight 'normal)
+  (face-remap-add-relative 'font-lock-keyword-face :weight 'bold)
   )
 
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)

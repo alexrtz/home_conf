@@ -52,6 +52,7 @@
 (add-hook 'markdown-mode-hook 'my-markdown-hook)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 
+
 ;; XML
 
 (defun my-nxml-hook ()

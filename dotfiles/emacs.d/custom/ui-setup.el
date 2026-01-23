@@ -31,6 +31,10 @@
 (use-package solarized-theme)
 (use-package color-theme-sanityinc-solarized)
 
+(set-face-attribute 'default nil :foreground "#e0e8e8")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "#82afff")
+(set-face-attribute 'font-lock-function-name-face nil :foreground "#82afff")
+
 (set-face-background 'show-paren-match "#002b36")
 (set-face-attribute 'show-paren-match nil
         :weight 'bold :underline nil :overline nil :slant 'normal)
