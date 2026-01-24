@@ -4,6 +4,16 @@
 
 ;;; Code:
 
+;; Automatically remove non-existent files from agenda without prompting
+(defun my/org-check-agenda-file-silent (orig-fun file)
+  "Advice to silently remove non-existent agenda files."
+  (if (file-exists-p file)
+      (funcall orig-fun file)
+    (org-remove-file file)
+    (throw 'nextfile t)))
+
+(advice-add 'org-check-agenda-file :around #'my/org-check-agenda-file-silent)
+
 (use-package org-journal
   :ensure t
   :defer t
