@@ -19,3 +19,4 @@ dotfiles/emacs.d/semanticdb
 dotfiles/emacs.d/*.desktop
 dotfiles/emacs.d/tramp
 dotfiles/emacs.d/transient
+dotfiles/emacs.d/tree-sitter

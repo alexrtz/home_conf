@@ -1,4 +1,8 @@
-;; -*- lexical-binding: t; -*-
+;;; org-setup --- org config -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Code:
 
 (use-package org-journal
   :ensure t
@@ -191,6 +195,66 @@
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
 
+(use-package yaml :ensure t)
+
+(defcustom my/org-roam-categories-file "~/Documents/notes/zettels/categories.yaml"
+  "Path to the YAML file containing org-roam capture template categories."
+  :type 'file
+  :group 'org-roam)
+
+(defun my/org-roam-parse-categories-file (file)
+  "Parse categories YAML FILE and return org-roam-capture-templates."
+  (with-temp-buffer
+    (insert-file-contents file)
+    (let* ((content (buffer-string))
+           (yaml-data (yaml-parse-string content :object-type 'alist :sequence-type 'list))
+           (categories (alist-get 'categories yaml-data)))
+      (my/org-roam-build-templates categories ""))))
+
+(defun my/org-roam-build-templates (categories parent-key)
+  "Build capture templates from CATEGORIES list, prepending PARENT-KEY to keys."
+  (let (templates)
+    (dolist (cat categories)
+      (let* ((key (alist-get 'key cat))
+             (label (alist-get 'label cat))
+             (path (alist-get 'path cat))
+             (children (alist-get 'children cat))
+             (full-key (concat parent-key key)))
+        (if path
+            ;; Leaf node: create full capture template
+            (let* ((file-path (if (string-empty-p path)
+                                  "%<%Y%m%d%H%M%S>-${slug}.org"
+                                (concat path "/%<%Y%m%d%H%M%S>-${slug}.org")))
+                   (display-label (if (string-empty-p path) label path)))
+              (push `(,full-key ,display-label plain "%?"
+                      :target (file+head ,file-path "#+title: ${title}\n")
+                      :unnarrowed t)
+                    templates))
+          ;; Parent node: create menu header
+          (push `(,full-key ,label) templates))
+        ;; Process children recursively
+        (when children
+          (setq templates (append templates
+                                  (my/org-roam-build-templates children full-key))))))
+    templates))
+
+(defvar my/org-roam-categories-default-file "~/.emacs.d/categories.yaml"
+  "Path to the default categories template file.")
+
+(defun my/org-roam-load-categories ()
+  "Load categories from YAML file and set org-roam-capture-templates.
+If the categories file doesn't exist, copy the default template from
+`my/org-roam-categories-default-file' and create missing directories."
+  (let ((categories-file (expand-file-name my/org-roam-categories-file))
+        (default-file (expand-file-name my/org-roam-categories-default-file)))
+    (unless (file-exists-p categories-file)
+      (when (file-exists-p default-file)
+        (make-directory (file-name-directory categories-file) t)
+        (copy-file default-file categories-file)))
+    (when (file-exists-p categories-file)
+      (setq org-roam-capture-templates
+            (my/org-roam-parse-categories-file categories-file)))))
+
 (use-package org-roam
   :ensure t
   :custom
@@ -201,26 +265,16 @@
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
          ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+         ("C-c n j" . org-roam-dailies-capture-today)
+         :map org-mode-map
+         ("C-c C-q" . org-roam-tag-add))
   :config
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol)
 
-  (setq org-roam-capture-templates
-        '(
-          ("d" "default" plain "%?"
-           :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-
-          ("c" "computers")
-          ("cp" "computers/programming" plain "%?"
-           :target (file+head "computers/programming/%<%Y%m%d%H%M%S>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-          )
-        )
+  ;; Load categories from YAML file
+  (my/org-roam-load-categories)
 
   (setq-default org-roam-dailies-capture-templates
                 '(("d" "default" entry
@@ -243,6 +297,10 @@
 
 (add-hook 'org-roam-capture-new-node-hook #'my/org-roam-create-directory)
 
+
+(use-package htmlize)
+(use-package org-preview-html)
+
 (use-package ox-hugo
   :ensure t
   :after ox
@@ -251,14 +309,23 @@
   (setq org-hugo-auto-set-lastmod t))
 
 (defun my/export-zettels-to-hugo ()
-  "Export all org-roam files to Hugo."
+  "Export all org-roam files to Hugo, preserving directory structure."
   (interactive)
-  (dolist (f (org-roam-list-files))
-    (with-current-buffer (find-file-noselect f)
+  (let ((roam-dir (expand-file-name org-roam-directory)))
+    (dolist (f (org-roam-list-files))
       (unless (string-match-p "daily/" f)
-        (org-hugo-export-to-md)))))
+        (with-current-buffer (find-file-noselect f)
+          (let* ((file-dir (file-name-directory (expand-file-name f)))
+                 (relative-dir (file-relative-name file-dir roam-dir))
+                 (section (if (string= relative-dir "./")
+                              "notes"
+                            (concat "notes/" (directory-file-name relative-dir)))))
+            (org-set-property "EXPORT_HUGO_SECTION" section)
+            (org-hugo-export-to-md)))))))
 
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-j") #'helm-for-files))
 
 (provide 'org-setup)
+
+;;; org-setup.el ends here

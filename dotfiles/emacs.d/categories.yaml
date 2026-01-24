@@ -1,0 +1,20 @@
+categories:
+  - key: d
+    label: default
+    path: ""
+
+  - key: c
+    label: computers
+    children:
+      - key: p
+        label: programming
+        children:
+          - key: g
+            label: general
+            path: computers/programming
+          - key: p
+            label: cpp
+            path: computers/programming/cpp
+          - key: r
+            label: rust
+            path: computers/programming/rust
