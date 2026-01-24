@@ -195,56 +195,63 @@
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
 
-(use-package yaml :ensure t)
-
-(defcustom my/org-roam-categories-file "~/Documents/notes/zettels/categories.yaml"
-  "Path to the YAML file containing org-roam capture template categories."
+(defcustom my/org-roam-categories-file "~/Documents/notes/zettels/categories.txt"
+  "Path to the file containing org-roam capture template categories."
   :type 'file
   :group 'org-roam)
 
-(defun my/org-roam-parse-categories-file (file)
-  "Parse categories YAML FILE and return org-roam-capture-templates."
-  (with-temp-buffer
-    (insert-file-contents file)
-    (let* ((content (buffer-string))
-           (yaml-data (yaml-parse-string content :object-type 'alist :sequence-type 'list))
-           (categories (alist-get 'categories yaml-data)))
-      (my/org-roam-build-templates categories ""))))
-
-(defun my/org-roam-build-templates (categories parent-key)
-  "Build capture templates from CATEGORIES list, prepending PARENT-KEY to keys."
-  (let (templates)
-    (dolist (cat categories)
-      (let* ((key (alist-get 'key cat))
-             (label (alist-get 'label cat))
-             (path (alist-get 'path cat))
-             (children (alist-get 'children cat))
-             (full-key (concat parent-key key)))
-        (if path
-            ;; Leaf node: create full capture template
-            (let* ((file-path (if (string-empty-p path)
-                                  "%<%Y%m%d%H%M%S>-${slug}.org"
-                                (concat path "/%<%Y%m%d%H%M%S>-${slug}.org")))
-                   (display-label (if (string-empty-p path) label path)))
-              (push `(,full-key ,display-label plain "%?"
-                      :target (file+head ,file-path "#+title: ${title}\n")
-                      :unnarrowed t)
-                    templates))
-          ;; Parent node: create menu header
-          (push `(,full-key ,label) templates))
-        ;; Process children recursively
-        (when children
-          (setq templates (append templates
-                                  (my/org-roam-build-templates children full-key))))))
-    templates))
-
-(defvar my/org-roam-categories-default-file "~/.emacs.d/categories.yaml"
+(defvar my/org-roam-categories-default-file "~/.emacs.d/categories.txt"
   "Path to the default categories template file.")
 
+(defun my/org-roam-parse-categories-file (file)
+  "Parse categories FILE and return org-roam-capture-templates.
+Format: KEY | LABEL | PATH (one per line, # for comments).
+Indentation (2 spaces) indicates hierarchy.
+PATH is optional - entries without PATH are parent menu headers."
+  (let ((templates nil)
+        (parent-keys (make-vector 10 "")))  ; Support up to 10 levels of nesting
+    (with-temp-buffer
+      (insert-file-contents file)
+      (goto-char (point-min))
+      (while (not (eobp))
+        (let ((line (buffer-substring-no-properties
+                     (line-beginning-position) (line-end-position))))
+          (unless (or (string-match-p "^\\s-*#" line)    ; Skip comments
+                      (string-match-p "^\\s-*$" line))   ; Skip blank lines
+            (let* ((indent (if (string-match "^\\( *\\)" line)
+                               (/ (length (match-string 1 line)) 2)
+                             0))
+                   (content (string-trim line))
+                   (parts (split-string content "|"))
+                   (key (string-trim (nth 0 parts)))
+                   (label (string-trim (or (nth 1 parts) "")))
+                   (path (when (nth 2 parts) (string-trim (nth 2 parts)))))
+              ;; Store this key at current indent level
+              (aset parent-keys indent key)
+              ;; Build full key from parent keys
+              (let ((full-key ""))
+                (dotimes (i (1+ indent))
+                  (setq full-key (concat full-key (aref parent-keys i))))
+                (if path
+                    ;; Leaf node: create full capture template
+                    (let* ((file-path (if (string-empty-p path)
+                                          "%<%Y%m%d%H%M%S>-${slug}.org"
+                                        (concat path "/%<%Y%m%d%H%M%S>-${slug}.org")))
+                           (display-label (if (string-empty-p path) label path)))
+                      (push `(,full-key ,display-label plain "%?"
+                              :target (file+head ,file-path "#+title: ${title}\n")
+                              :unnarrowed t)
+                            templates))
+                  ;; Parent node: create menu header
+                  (push `(,full-key ,label) templates))))))
+        (forward-line 1)))
+    (nreverse templates)))
+
 (defun my/org-roam-load-categories ()
-  "Load categories from YAML file and set org-roam-capture-templates.
+  "Load categories from file and set org-roam-capture-templates.
 If the categories file doesn't exist, copy the default template from
 `my/org-roam-categories-default-file' and create missing directories."
+  (interactive)
   (let ((categories-file (expand-file-name my/org-roam-categories-file))
         (default-file (expand-file-name my/org-roam-categories-default-file)))
     (unless (file-exists-p categories-file)

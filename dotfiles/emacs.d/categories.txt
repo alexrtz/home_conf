@@ -1,0 +1,12 @@
+# Org-roam capture template categories
+# Format: KEY | LABEL | PATH
+# PATH is optional - entries without PATH are parent menu headers
+# Indentation (2 spaces) indicates hierarchy
+
+d | default |
+
+c | computers
+  p | programming
+    g | general | computers/programming
+    p | cpp | computers/programming/cpp
+    r | rust | computers/programming/rust
