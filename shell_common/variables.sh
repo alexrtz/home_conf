@@ -15,6 +15,10 @@ ANDROID_SDK_VERSION=36
 ANDROID_NDK_VERSION=29.0.14206865
 export ANDROID_NDK_ROOT=$HOME/Documents/Programs/android-sdk/ndk/$ANDROID_NDK_VERSION
 
+export QT_ROOT=$HOME/Documents/Programs/Qt
+
+export QT_ANDROID_KEYSTORE_PATH="$HOME/.android/debug.keystore"
+export QT_ANDROID_KEYSTORE_ALIAS="androiddebugkey"
 
 PATH=~/.config/mine/git/git.d/git-number:$HOME/.local/bin:$PATH:$HOME/Documents/Programs/root/usr/bin:$GOPATH/bin:~/.cargo/bin:$NPM_PACKAGES_DIR/bin:/usr/local/bin
 PATH=$ANDROID_SDK_CMD_LINE_TOOLS_BINARIES_PATH:$ANDROID_SDK_PLATFORM_TOOLS:$PATH

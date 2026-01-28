@@ -2,17 +2,19 @@
 
 ;;; Commentary:
 
-
 ;;; Code:
 
+(defun my-json-hook ()
+  (setq show-trailing-whitespace t)
+	(setq indent-tabs-mode nil)
+  (setq js-indent-level 4)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  )
 
 (use-package json-mode
-  :config
-  (setq
-	 show-trailing-whitespace t
-	 indent-tabs-mode nil)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  :hook (json-mode . my-json-hook)
 )
+
 
 ;; LaTeX
 

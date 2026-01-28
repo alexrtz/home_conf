@@ -201,6 +201,38 @@ function man
                man "$@"
 }
 
+
+function merge_json_files
+{
+    if [ "$#" -ne 3 ]; then
+        echo "Usage: merge_json_files <file1.json> <file2.json> <output.json>"
+        return 1
+    fi
+
+    local file1="$1"
+    local file2="$2"
+    local output_file="$3"
+
+    if [ ! -f "$file1" ]; then
+        echo "Error: Input file '$file1' not found."
+        return 1
+    fi
+
+    if [ ! -f "$file2" ]; then
+        echo "Error: Input file '$file2' not found."
+        return 1
+    fi
+
+    # Check if jq is installed
+    if ! command -v jq &> /dev/null
+    then
+        echo "Error: jq is not installed. Please install jq to use this function."
+        return 1
+    fi
+
+    jq -s 'add | unique_by(.file)' "$file1" "$file2" > "$output_file"
+}
+
 function resize_image
 {
     if [ $# -lt 3 ]
