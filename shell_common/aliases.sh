@@ -13,6 +13,9 @@ alias n=ninja
 
 alias bi="b install"
 
+alias claude-local-fast="export ANTHROPIC_AUTH_TOKEN=ollama; export ANTHROPIC_BASE_URL=http://localhost:11434; export ANTHROPIC_MODEL=qwen2.5-coder:7b && claude"
+alias claude-local-smart="export ANTHROPIC_AUTH_TOKEN=ollama; export ANTHROPIC_BASE_URL=http://localhost:11434; export ANTHROPIC_MODEL=qwen2.5-coder:14b && claude"
+
 alias dpump="pump make -j 6"
 
 alias cmkae="cmake"

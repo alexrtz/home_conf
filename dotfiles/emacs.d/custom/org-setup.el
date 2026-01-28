@@ -14,6 +14,11 @@
 
 (advice-add 'org-check-agenda-file :around #'my/org-check-agenda-file-silent)
 
+(use-package org
+  :config
+  (require 'org-tempo)
+  )
+
 (use-package org-journal
   :ensure t
   :defer t

@@ -102,5 +102,16 @@ Does nothing if no project root is found before reaching /."
     (helm-projectile-on)
     ))
 
+(defun my/helm-find-files-in-file-dir (orig-fun &rest args)
+  "Advise `helm-find-files' to start in the current file's directory.
+This preserves the original behavior even when `default-directory'
+has been changed to the project root."
+  (let ((default-directory (if buffer-file-name
+                               (file-name-directory buffer-file-name)
+                             default-directory)))
+    (apply orig-fun args)))
+
+(advice-add 'helm-find-files :around #'my/helm-find-files-in-file-dir)
+
 (provide 'helm-setup)
 ;;; helm-setup.el ends here
