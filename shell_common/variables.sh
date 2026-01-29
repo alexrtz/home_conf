@@ -36,3 +36,6 @@ export CMAKE_GENERATOR=Ninja
 
 # To fix the claude install script with encrypted filesystems
 export BUN_CONFIG_DISABLE_COPY_FILE_RANGE=true
+
+export ANTHROPIC_AUTH_TOKEN=ollama
+export ANTHROPIC_BASE_URL=http://localhost:11434
