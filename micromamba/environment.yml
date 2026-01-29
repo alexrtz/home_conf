@@ -69,7 +69,7 @@ dependencies:
   - comm=0.2.3
   - compiler-rt21=21.1.6
   - compiler-rt21_linux-64=21.1.6
-  - conda-gcc-specs=14.3.0
+  - conda-gcc-specs=15.1.0
   - contourpy=1.3.3
   - cpython=3.11.14
   - cuda-crt-tools=13.1.115
@@ -112,8 +112,8 @@ dependencies:
   - fribidi=1.0.16
   - fsspec=2025.10.0
   - gast=0.6.0
-  - gcc=14.3.0
-  - gcc_impl_linux-64=14.3.0
+  - gcc=15.1.0
+  - gcc_impl_linux-64=15.1.0
   - gdbm=1.18
   - gdk-pixbuf=2.42.12
   - gettext=0.25.1
@@ -140,8 +140,8 @@ dependencies:
   - gtest=1.17.0
   - gtk3=3.24.43
   - gtk4=4.14.1
-  - gxx=14.3.0
-  - gxx_impl_linux-64=14.3.0
+  - gxx=15.1.0
+  - gxx_impl_linux-64=15.1.0
   - h11=0.16.0
   - h2=4.3.0
   - h5py=3.15.1
@@ -237,7 +237,7 @@ dependencies:
   - libfreetype=2.14.1
   - libfreetype6=2.14.1
   - libgcc=15.2.0
-  - libgcc-devel_linux-64=14.3.0
+  - libgcc-devel_linux-64=15.1.0
   - libgcc-ng=15.2.0
   - libgd=2.3.3
   - libgettextpo=0.25.1
@@ -282,13 +282,13 @@ dependencies:
   - libprotobuf=4.24.4
   - libre2-11=2023.09.01
   - librsvg=2.58.4
-  - libsanitizer=14.3.0
+  - libsanitizer=15.1.0
   - libsndfile=1.2.2
   - libsodium=1.0.20
   - libsqlite=3.51.0
   - libssh2=1.11.1
   - libstdcxx=15.2.0
-  - libstdcxx-devel_linux-64=14.3.0
+  - libstdcxx-devel_linux-64=15.1.0
   - libstdcxx-ng=15.2.0
   - libsystemd0=258.2
   - libtasn1=4.20.0
@@ -330,7 +330,6 @@ dependencies:
   - mpc=1.3.1
   - mpfr=4.2.1
   - mpg123=1.32.9
-  - mplfinance=0.12.9b7
   - mpmath=1.3.0
   - munkres=1.1.4
   - mypy_extensions=1.1.0
@@ -352,7 +351,6 @@ dependencies:
   - nspr=4.38
   - nss=3.118
   - numpy=1.26.4
-  - ollama=0.15.2
   - oniguruma=6.9.10
   - openjpeg=2.5.4
   - openldap=2.6.10
@@ -363,7 +361,6 @@ dependencies:
   - overrides=7.7.0
   - p11-kit=0.24.1
   - packaging=25.0
-  - pandas=2.3.3
   - pandocfilters=1.5.0
   - pango=1.56.4
   - parquet-cpp=1.5.1
@@ -455,7 +452,7 @@ dependencies:
   - tomli=2.3.0
   - tornado=6.5.2
   - traitlets=5.14.3
-  - triton=3.6.0
+  - triton=3.5.1
   - typing-extensions=4.15.0
   - typing_extensions=4.15.0
   - typing_utils=0.1.0
@@ -539,15 +536,17 @@ dependencies:
     - mplfinance==0.12.10b0
     - multidict==6.7.0
     - numpy==2.4.1
+    - pandas==2.3.3
     - parquet_tools==0.2.16
     - propcache==0.4.1
-    - protobuf==6.33.2
+    - protobuf==6.33.4
     - pyarrow==23.0.0
-    - pypdf==6.4.2
+    - python-dateutil==2.9.0.post0
+    - pytz==2025.2
     - reportlab==4.4.6
     - s3transfer==0.16.0
     - scikit-learn==1.8.0
-    - shellingham==1.5.4
+    - six==1.17.0
     - spinners==0.0.24
     - tabulate==0.9.0
     - tensorboard==2.20.0
@@ -557,10 +556,8 @@ dependencies:
     - threadpoolctl==3.6.0
     - thrift==0.16.0
     - tinycss2==1.4.0
-    - typer==0.21.1
     - tzdata==2025.3
     - urllib3==2.6.3
     - yarl==1.22.0
-    - yt-dlp==2025.11.12
 
 prefix: "/home/alex/Documents/Programs/micromamba/envs/dev"
