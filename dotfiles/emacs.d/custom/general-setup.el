@@ -76,6 +76,14 @@
 
 (global-set-key (kbd "C-l") #'goto-line-and-recenter)
 
+(use-package string-inflection
+  :ensure t
+  ;:config
+ ; bind (("C-c c_s" . string-inflection-toggle)
+  ;       ;("C-c C-s" . string-inflection-underscore)
+         ;("c_c C-c" . string-inflection-camelcase)
+  ;       )
+  )
 
 (use-package symbol-overlay
   :ensure t

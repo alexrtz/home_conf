@@ -15,7 +15,7 @@ alias bi="b install"
 
 # These models do not work with my GPU
 # TODO aor: find the right ones for my machine
-#alias claude-local-fast="export ANTHROPIC_MODEL=qwen2.5-coder:7b && claude"
+alias claude-local-q3-8b="export ANTHROPIC_MODEL=qwen3:8b && claude"
 #alias claude-local-smart="export ANTHROPIC_MODEL=qwen2.5-coder:14b && claude"
 
 alias dpump="pump make -j 6"
