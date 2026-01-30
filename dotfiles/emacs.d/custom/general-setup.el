@@ -8,6 +8,8 @@
 (unless (server-running-p)
   (server-start))
 
+; clang-tidy does not like the .# files
+(setq create-lockfiles nil)
 
 (setq
  backup-by-copying t ; don't clobber symlinks
