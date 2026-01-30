@@ -15,6 +15,11 @@ ANDROID_SDK_VERSION=36
 ANDROID_NDK_VERSION=29.0.14206865
 export ANDROID_NDK_ROOT=$HOME/Documents/Programs/android-sdk/ndk/$ANDROID_NDK_VERSION
 
+# Because the emulator performs way too much disk i/o
+export ANDROID_EMULATOR_TMPDIR=/dev/shm/android-emulator
+
+mkdir -p /dev/shm/android-avd
+
 export QT_ROOT=$HOME/Documents/Programs/Qt
 
 export QT_ANDROID_KEYSTORE_PATH="$HOME/.android/debug.keystore"
