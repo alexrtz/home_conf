@@ -22,7 +22,7 @@ numpy==2.4.1
 pandas==2.3.3
 parquet_tools==0.2.16
 propcache==0.4.1
-protobuf==6.33.2
+protobuf==6.33.5
 pyarrow==23.0.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
