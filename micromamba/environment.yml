@@ -448,6 +448,7 @@ dependencies:
   - send2trash=1.8.3
   - setuptools=80.9.0
   - setuptools-rust=1.12.0
+  - simdjson=4.2.4
   - six=1.17.0
   - sleef=3.9.0
   - slirp4netns=1.1.8
