@@ -649,7 +649,6 @@ dependencies:
     - tensorflow-estimator==2.15.0
     - termcolor==3.3.0
     - threadpoolctl==3.6.0
-    - thrift==0.22.0
     - tinycss2==1.5.1
     - tomli==2.4.0
     - torch==2.10.0
@@ -662,5 +661,3 @@ dependencies:
     - yarl==1.22.0
     - yt-dlp==2026.1.29
     - yt-dlp-ejs==0.4.0
-
-prefix: "/media/s376/Programs/micromamba/envs/dev"

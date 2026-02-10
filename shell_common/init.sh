@@ -7,7 +7,6 @@ __mamba_setup="$("$MAMBA_EXE" shell hook --shell "$SHELL_NAME" --root-prefix "$M
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
-		echo OOPSIE
     alias micromamba="$MAMBA_EXE"  # Fallback on help from micromamba activate
 fi
 unset __mamba_setup
