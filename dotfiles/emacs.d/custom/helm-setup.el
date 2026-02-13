@@ -72,27 +72,27 @@
     (projectile-mode)
     ))
 
-(defun my/set-default-directory-to-project-root ()
-  "Set `default-directory' to project root if found.
-Walks up from the file's directory looking for markers in
-`projectile-project-root-files-bottom-up'.
-Does nothing if no project root is found before reaching /."
-  (when buffer-file-name
-    (let ((dir (file-name-directory (expand-file-name buffer-file-name)))
-          (root nil))
-      (while (and dir (not root))
-        (dolist (marker projectile-project-root-files-bottom-up)
-          (when (file-exists-p (expand-file-name marker dir))
-            (setq root dir)))
-        (unless root
-          (let ((parent (file-name-directory (directory-file-name dir))))
-            (if (string= parent dir)
-                (setq dir nil)
-              (setq dir parent)))))
-      (when root
-        (setq default-directory root)))))
+;; (defun my/set-default-directory-to-project-root ()
+;;   "Set `default-directory' to project root if found.
+;; Walks up from the file's directory looking for markers in
+;; `projectile-project-root-files-bottom-up'.
+;; Does nothing if no project root is found before reaching /."
+;;   (when buffer-file-name
+;;     (let ((dir (file-name-directory (expand-file-name buffer-file-name)))
+;;           (root nil))
+;;       (while (and dir (not root))
+;;         (dolist (marker projectile-project-root-files-bottom-up)
+;;           (when (file-exists-p (expand-file-name marker dir))
+;;             (setq root dir)))
+;;         (unless root
+;;           (let ((parent (file-name-directory (directory-file-name dir))))
+;;             (if (string= parent dir)
+;;                 (setq dir nil)
+;;               (setq dir parent)))))
+;;       (when root
+;;         (setq default-directory root)))))
 
-(add-hook 'find-file-hook #'my/set-default-directory-to-project-root)
+;; (add-hook 'find-file-hook #'my/set-default-directory-to-project-root)
 
 (use-package helm-projectile
 ;  :require helm projectile
@@ -102,16 +102,16 @@ Does nothing if no project root is found before reaching /."
     (helm-projectile-on)
     ))
 
-(defun my/helm-find-files-in-file-dir (orig-fun &rest args)
-  "Advise `helm-find-files' to start in the current file's directory.
-This preserves the original behavior even when `default-directory'
-has been changed to the project root."
-  (let ((default-directory (if buffer-file-name
-                               (file-name-directory buffer-file-name)
-                             default-directory)))
-    (apply orig-fun args)))
+;; (defun my/helm-find-files-in-file-dir (orig-fun &rest args)
+;;   "Advise `helm-find-files' to start in the current file's directory.
+;; This preserves the original behavior even when `default-directory'
+;; has been changed to the project root."
+;;   (let ((default-directory (if buffer-file-name
+;;                                (file-name-directory buffer-file-name)
+;;                              default-directory)))
+;;     (apply orig-fun args)))
 
-(advice-add 'helm-find-files :around #'my/helm-find-files-in-file-dir)
+;; (advice-add 'helm-find-files :around #'my/helm-find-files-in-file-dir)
 
 (provide 'helm-setup)
 ;;; helm-setup.el ends here
