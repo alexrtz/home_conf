@@ -550,6 +550,7 @@ dependencies:
     - async-lru==2.1.0
     - beautifulsoup4==4.14.3
     - black==26.1.0
+    - bleach==4.1.0
     - boto3==1.42.39
     - botocore==1.42.39
     - brotli==1.2.0
@@ -649,6 +650,7 @@ dependencies:
     - tensorflow-estimator==2.15.0
     - termcolor==3.3.0
     - threadpoolctl==3.6.0
+    - thrift==0.16.0
     - tinycss2==1.5.1
     - tomli==2.4.0
     - torch==2.10.0
@@ -661,3 +663,4 @@ dependencies:
     - yarl==1.22.0
     - yt-dlp==2026.2.4
     - yt-dlp-ejs==0.4.0
+

@@ -17,4 +17,5 @@ dependencies:
   - lcov=1.16
   - libsodium=1.0.20
   - quill=11.0.2
+  - simdjson=4.2.4
   - zlib=1.3.1

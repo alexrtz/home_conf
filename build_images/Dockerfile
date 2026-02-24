@@ -9,8 +9,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
-# Install micromamba
-RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
+# Install micromamba (architecture-aware: linux-64 for x86_64, linux-aarch64 for aarch64)
+RUN case "$(uname -m)" in \
+      aarch64) MAMBA_ARCH="linux-aarch64" ;; \
+      *)       MAMBA_ARCH="linux-64" ;; \
+    esac \
+    && curl -Ls "https://micro.mamba.pm/api/micromamba/${MAMBA_ARCH}/latest" \
     | tar -xvj -C /usr/local bin/micromamba
 
 # Create non-root user with passwordless sudo
@@ -33,7 +37,7 @@ RUN micromamba create -n dev --file /tmp/environment.yml --yes \
 
 ENV CONDA_PREFIX=$MAMBA_ROOT_PREFIX/envs/dev
 ENV PATH=$CONDA_PREFIX/bin:$PATH
-ENV LD_LIBRARY_PATH=/lib/x86_64-linux-gnu/:$CONDA_PREFIX/lib
+ENV LD_LIBRARY_PATH=$CONDA_PREFIX/lib
 
 # Create libtbb symlink if needed (matches setup.sh)
 RUN if [ -f "$MAMBA_ROOT_PREFIX/envs/dev/lib/libtbb.so.12" ] \
