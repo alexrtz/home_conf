@@ -71,6 +71,10 @@ alias agpy="ag --python"
 alias agrs="ag --rust"
 
 alias rg="rg -i"
+alias rgcm="rg -i --type cmake"
+alias rgcpp="rg -i --type cpp"
+alias rgpy="rg -i --type python"
+alias rgrs="rg -i --type rust"
 
 alias c="touch ~/tmp/trigger"
 
