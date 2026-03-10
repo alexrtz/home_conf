@@ -7,6 +7,7 @@
  editor = emacs -q -nw
  excludesfile = ~/.config/mine/git/gitignore
  autocrlf = false
+ longpaths = true
 
 [color]
  diff = auto
