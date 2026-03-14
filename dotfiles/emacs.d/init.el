@@ -6,6 +6,15 @@
 
 (require 'package)
 
+(defun my/insert-unicode-hex ()
+  "Insert a Unicode character by hex code, like Ctrl-Shift-U in GTK."
+  (interactive)
+  (let* ((code (read-string "Unicode hex code: "))
+         (char (string (decode-char 'ucs (string-to-number code 16)))))
+    (insert char)))
+
+(global-set-key (kbd "C-S-u") 'my/insert-unicode-hex)
+
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 

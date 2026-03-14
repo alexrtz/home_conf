@@ -1,6 +1,8 @@
 EDITOR="emacs -nw -q"
 SHELL_USERNAME=alex
 
+#export CCACHE_PREFIX=distcc
+
 NPM_PACKAGES_DIR=$HOME/Documents/Programs/root/usr/npm_packages
 
 export GOPATH=$HOME/Documents/Programs/root/go

@@ -570,6 +570,7 @@ dependencies:
     - fsspec==2026.1.0
     - gast==0.7.0
     - gmpy2==2.2.2
+    - gprof2dot==2025.4.14
     - greenlet==3.3.1
     - grpcio==1.76.0
     - halo==0.0.31
