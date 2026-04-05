@@ -90,7 +90,8 @@ alias killsshagent="killall ssh-agent; rm -f ~/.ssh/sock"
 
 alias mm="micromamba"
 alias mm_export="micromamba env export --no-build | grep -v \"^prefix: \" > $HOME/Documents/home_conf/micromamba/environment.yml"
-alias mm_update="micromamba env update --file $HOME/Documents/home_conf/micromamba/environment.yml"
+alias mm_file_udate="micromamba env update --file $HOME/Documents/home_conf/micromamba/environment.yml"
+alias mm_update_all="micromamba update --all --no-allow-downgrade"
 alias pip_export="python3 -m pip freeze | grep -v '@ file:' > $HOME/Documents/home_conf/micromamba/requirements.txt"
 alias pip_install="python3 -m pip install -r $HOME/Documents/home_conf/micromamba/requirements.txt"
 
