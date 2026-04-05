@@ -40,6 +40,7 @@
               (save-buffer))))
 
 (use-package lsp-ui
+  :ensure t
   :commands lsp-ui-mode
   :after lsp-mode
   :init

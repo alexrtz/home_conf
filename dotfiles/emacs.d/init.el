@@ -87,6 +87,7 @@
 (require 'setup-various-doc-formats)
 (require 'setup-various-languages)
 (require 'setup-vcs)
+(require 'various-other-modes)
 
 (require 'shortcuts-setup)
 

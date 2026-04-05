@@ -58,11 +58,6 @@
   :config
   (setq gofmt-command "goimports"))
 
-(use-package lsp-mode
-  :ensure t
-  :hook (go-mode . lsp)
-  :commands lsp)
-
 ;; Lisp
 
 (defun my-lisp-mode-hook()
@@ -80,6 +75,7 @@
   (setq rust-indent-offset 4)
   (setq indent-tabs-mode nil)
   (face-remap-add-relative 'font-lock-keyword-face :weight 'bold)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
   )
 
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)
@@ -90,6 +86,14 @@
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
+
+;; SQL
+
+(use-package sqlup-mode)
+
+(use-package sql-indent
+  :ensure t
+  :after sql)
 
 ;; Shell
 

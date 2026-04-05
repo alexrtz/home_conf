@@ -81,6 +81,7 @@
  ra = rebase --abort
  rc = rebase --continue
  rom = !git fetch && git rebase origin/master
+ romain = !git fetch && git rebase origin/main
 
  # Clean remote deleted branches
  rdb = remote prune origin
@@ -114,6 +115,7 @@
  graph = log --graph --oneline --decorate
 
  wa = worktree add
+ wip = commit -am wip
  wr = worktree remove
 
  # number

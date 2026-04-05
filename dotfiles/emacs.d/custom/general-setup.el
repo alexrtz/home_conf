@@ -11,6 +11,11 @@
 ; clang-tidy does not like the .# files
 (setq create-lockfiles nil)
 
+; TODO aor: move elsewhere
+(use-package mermaid-mode
+  :mode ("\\.mmd\\'" . mermaid-mode))
+
+
 (setq
  backup-by-copying t ; don't clobber symlinks
  backup-directory-alist '(("." . "~/.saves/"))
