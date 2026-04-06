@@ -87,6 +87,14 @@
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 
+;; Kotlin
+
+(use-package kotlin-mode
+  :ensure t
+  :hook (kotlin-mode . lsp-deferred)
+  :config
+  (setq kotlin-tab-width 4))
+
 ;; SQL
 
 (use-package sqlup-mode)
