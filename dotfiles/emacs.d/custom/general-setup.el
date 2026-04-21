@@ -15,6 +15,7 @@
 (use-package mermaid-mode
   :mode ("\\.mmd\\'" . mermaid-mode))
 
+(setq create-lockfiles nil)
 
 (setq
  backup-by-copying t ; don't clobber symlinks

@@ -10,6 +10,7 @@
   :init
   (progn
     (setq lsp-log-io nil)
+    (setq lsp-keep-workspace-alive nil)
     (setq lsp-enable-file-watchers t)
 
     (setq lsp-file-watch-ignored-directories
