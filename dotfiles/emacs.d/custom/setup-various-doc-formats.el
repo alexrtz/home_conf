@@ -80,6 +80,22 @@
 
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
+
+;; Doxygen
+
+(use-package doxymacs
+  :config
+  (progn
+    (add-hook 'c-mode-common-hook 'doxymacs-mode)
+    (add-hook 'c-mode-common-hook 'flyspell-prog-mode)
+    )
+)
+
+(add-to-list 'auto-mode-alist '("Doxyfile" . conf-mode))
+
+;; Clang tools
+
 (add-to-list 'auto-mode-alist '("\\.clang-tidy$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.clang-format$" . yaml-mode))
 
