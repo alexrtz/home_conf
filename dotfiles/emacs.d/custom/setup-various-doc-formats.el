@@ -93,6 +93,7 @@
 )
 
 (add-to-list 'auto-mode-alist '("Doxyfile" . conf-mode))
+(add-hook 'conf-mode-hook (lambda () (setq indent-tabs-mode nil)))
 
 ;; Clang tools
 
