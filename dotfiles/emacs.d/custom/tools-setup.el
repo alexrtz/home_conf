@@ -19,9 +19,7 @@
     (copilot-accept-completion))
   (global-set-key (kbd "C-S-<tab>")       #'my/copilot-accept)
   (global-set-key (kbd "C-<iso-lefttab>") #'my/copilot-accept)
-  (bind-keys :map copilot-completion-overlay-map
-             ("M-n" . copilot-next-completion)
-             ("M-p" . copilot-previous-completion)))
+  )
 
 (provide 'tools-setup)
 ;;; tools-setup.el ends here
