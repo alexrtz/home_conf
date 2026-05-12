@@ -132,13 +132,14 @@
 
 
 [diff]
-ignoreSubmodules = dirty
+ ignoreSubmodules = dirty
 
 [merge]
-tool = meld
+ tool = meld
 
 [push]
-default = simple
+ default = simple
+ autoSetupRemote = true
 
 [rerere]
 enabled = true
