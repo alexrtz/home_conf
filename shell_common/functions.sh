@@ -188,6 +188,14 @@ function docker_purge_containers
     for i in `docker ps -a | grep -v 'CONTAINER ID' | cut -d' ' -f1`; do docker stop $i; docker rm $i; done
 }
 
+function mm_show_versions
+{
+		micromamba search "^$1$" --json \
+				| jq -r '.result.pkgs[].version' \
+				| sort -V \
+				| uniq
+}
+
 function man
 {
       env \
