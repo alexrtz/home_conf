@@ -3,8 +3,11 @@ bash_profile
 *.rte
 *.elc
 
+dotfiles/emacs.d/.cache
 dotfiles/emacs.d/.lsp-session-v1
+dotfiles/emacs.d/.org-id-locations
 dotfiles/emacs.d/ac-comphist.dat
+dotfiles/emacs.d/bookmarks
 dotfiles/emacs.d/ac-dict
 dotfiles/emacs.d/ede-projects
 dotfiles/emacs.d/ede-projects.el
@@ -20,3 +23,4 @@ dotfiles/emacs.d/*.desktop
 dotfiles/emacs.d/tramp
 dotfiles/emacs.d/transient
 dotfiles/emacs.d/tree-sitter
+dotfiles/emacs.d/url
