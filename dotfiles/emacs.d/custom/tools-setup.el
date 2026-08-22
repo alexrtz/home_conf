@@ -9,6 +9,7 @@
   :defer t
   :hook (prog-mode . copilot-mode)
   :config
+  (setq copilot-max-char-warning-disable t)
   (unless (file-exists-p
            (expand-file-name
             "lib/node_modules/@github/copilot-language-server/dist/language-server.js"
