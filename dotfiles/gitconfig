@@ -1,6 +1,9 @@
 [include]
 	path=~/.config/mine/gituser
 
+[init]
+	defaultBranch = main
+
 [core]
  pager = less -FRSX -x4
  whitespace = trailing-space,cr-at-eol,tabwidth=2
@@ -8,6 +11,9 @@
  excludesfile = ~/.config/mine/git/gitignore
  autocrlf = false
  longpaths = true
+
+#[http]
+# sslVerify = no
 
 [color]
  diff = auto
@@ -50,6 +56,7 @@
  co = checkout
 
  cp = cherry-pick
+ cpa = cherry-pick --abort
  cpc = cherry-pick --continue
 
  d = diff
@@ -80,8 +87,7 @@
  r = rebase
  ra = rebase --abort
  rc = rebase --continue
- rom = !git fetch && git rebase origin/master
- romain = !git fetch && git rebase origin/main
+ rom = !git fetch && git rebase origin/$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || (git rev-parse --verify origin/master >/dev/null 2>&1 && echo master) || echo main)
 
  # Clean remote deleted branches
  rdb = remote prune origin
@@ -143,6 +149,3 @@
 
 [rerere]
 enabled = true
-
-[http]
- sslVerify = no
