@@ -77,25 +77,24 @@ dependencies:
   - compiler-rt22=22.1.8
   - compiler-rt22_linux-64=22.1.8
   - compiler-rt_linux-64=22.1.8
-  - conda-gcc-specs=15.3.0
+  - conda-gcc-specs=16.1.0
   - conmon=2.2.1
   - containers-common=0.64.2
   - contourpy=1.3.3
   - cppcheck=2.21.0
-  - cpython=3.11.15
+  - cpython=3.11.16
   - cryptography=50.0.0
-  - cuda-crt-tools=13.3.73
-  - cuda-cudart=13.3.29
-  - cuda-cudart_linux-64=13.3.29
-  - cuda-cuobjdump=13.3.73
-  - cuda-cupti=13.3.75
-  - cuda-nvcc-tools=13.3.73
-  - cuda-nvdisasm=13.3.73
-  - cuda-nvrtc=13.3.33
-  - cuda-nvtx=13.3.29
-  - cuda-nvvm-tools=13.3.73
-  - cuda-version=13.3
-  - cudnn=9.25.0.15
+  - cuda-crt-tools=12.9.86
+  - cuda-cudart=12.9.79
+  - cuda-cudart_linux-64=12.9.79
+  - cuda-cuobjdump=12.9.82
+  - cuda-cupti=12.9.79
+  - cuda-nvdisasm=12.9.88
+  - cuda-nvrtc=12.9.86
+  - cuda-nvtx=12.9.79
+  - cuda-nvvm-tools=12.9.86
+  - cuda-version=12.9
+  - cudnn=8.9.7.29
   - cycler=0.12.1
   - cyrus-sasl=2.1.28
   - dbus=1.16.2
@@ -124,8 +123,8 @@ dependencies:
   - fribidi=1.0.16
   - fsspec=2026.7.0
   - gast=0.7.0
-  - gcc=15.3.0
-  - gcc_impl_linux-64=15.3.0
+  - gcc=16.1.0
+  - gcc_impl_linux-64=16.1.0
   - gdb=17.2
   - gdbm=1.18
   - gdk-pixbuf=2.44.8
@@ -153,8 +152,8 @@ dependencies:
   - gtest=1.18.0
   - gtk3=3.24.43
   - gtk4=4.20.3
-  - gxx=15.3.0
-  - gxx_impl_linux-64=15.3.0
+  - gxx=16.1.0
+  - gxx_impl_linux-64=16.1.0
   - h11=0.16.0
   - h2=4.4.1
   - h5py=3.16.0
@@ -164,7 +163,7 @@ dependencies:
   - hpack=4.2.0
   - httpcore=1.0.9
   - httpx=0.28.1
-  - hugo=0.164.0
+  - hugo=0.165.0
   - hyperframe=6.1.0
   - icu=75.1
   - idna=3.19
@@ -232,17 +231,17 @@ dependencies:
   - libclang13=22.1.8
   - libcompiler-rt=22.1.8
   - libcrc32c=1.1.2
-  - libcublas=13.6.0.2
-  - libcudnn=9.25.0.15
-  - libcudnn-dev=9.25.0.15
+  - libcublas=12.9.2.10
+  - libcudnn=9.10.2.21
+  - libcudnn-dev=9.10.2.21
   - libcudss=0.8.0.10
-  - libcufft=12.3.0.29
-  - libcufile=1.18.1.6
+  - libcufft=11.4.1.4
+  - libcufile=1.14.1.1
   - libcups=2.3.3
-  - libcurand=10.4.3.29
+  - libcurand=10.3.10.19
   - libcurl=8.18.0
-  - libcusolver=12.2.6.9
-  - libcusparse=12.8.2.51
+  - libcusolver=11.7.5.82
+  - libcusparse=12.5.10.65
   - libdeflate=1.25
   - libdrm=2.4.129
   - libedit=3.1.20250104
@@ -257,7 +256,7 @@ dependencies:
   - libfreetype6=2.14.3
   - libfyaml=0.9.6
   - libgcc=16.1.0
-  - libgcc-devel_linux-64=15.3.0
+  - libgcc-devel_linux-64=16.1.0
   - libgcc-ng=16.1.0
   - libgd=2.3.3
   - libgettextpo=0.25.1
@@ -281,20 +280,23 @@ dependencies:
   - libjemalloc=5.3.1
   - libjpeg-turbo=3.2.0
   - liblapack=3.11.0
+  - libllvm14=14.0.6
   - libllvm20=20.1.8
   - libllvm21=21.1.8
   - libllvm22=22.1.8
   - liblzma=5.8.3
   - liblzma-devel=5.8.3
   - libmagic=5.48
-  - libmagma=2.10.0
+  - libmagma=2.7.2
+  - libmagma_sparse=2.7.2
   - libml_dtypes-headers=0.5.4
+  - libmlir14=14.0.6
   - libmpdec=4.0.0
   - libnghttp2=1.68.1
   - libnl=3.11.0
   - libnsl=2.0.1
   - libntlm=1.8
-  - libnvjitlink=13.3.33
+  - libnvjitlink=12.9.86
   - libogg=1.3.5
   - libopenblas=0.3.34
   - libopus=1.6.1
@@ -304,7 +306,7 @@ dependencies:
   - libprotobuf=4.24.4
   - libre2-11=2023.09.01
   - librsvg=2.60.2
-  - libsanitizer=15.3.0
+  - libsanitizer=16.1.0
   - libseccomp=2.6.1
   - libslirp=4.4.0
   - libsndfile=1.2.2
@@ -312,7 +314,7 @@ dependencies:
   - libsqlite=3.53.4
   - libssh2=1.11.1
   - libstdcxx=16.1.0
-  - libstdcxx-devel_linux-64=15.3.0
+  - libstdcxx-devel_linux-64=16.1.0
   - libstdcxx-ng=16.1.0
   - libsystemd0=261.2
   - libtasn1=4.21.0
@@ -340,6 +342,7 @@ dependencies:
   - libxmlb=0.3.29
   - libxslt=1.1.43
   - libzlib=1.3.2
+  - lit=22.1.8
   - lldb=22.1.8
   - llvm=22.1.8
   - llvm-openmp=22.1.8
@@ -348,6 +351,7 @@ dependencies:
   - llvm-tools-22=22.1.8
   - lxml=6.1.2
   - lz4-c=1.9.4
+  - magma=2.7.2
   - markdown=3.10.3
   - markdown-it-py=4.2.0
   - markupsafe=3.0.3
@@ -391,7 +395,7 @@ dependencies:
   - openldap=2.6.10
   - openssl=3.6.3
   - opt_einsum=3.4.0
-  - optree=0.19.1
+  - optree=0.20.0
   - orc=1.9.2
   - overrides=7.7.0
   - p11-kit=0.26.4
@@ -441,7 +445,7 @@ dependencies:
   - pytorch=2.1.2
   - pytz=2026.3.post1
   - pyyaml=6.0.3
-  - pyzmq=27.1.0
+  - pyzmq=27.2.0
   - qhull=2020.2
   - qt6-main=6.10.1
   - quill=12.1.0
@@ -497,7 +501,7 @@ dependencies:
   - tomli=2.4.1
   - tornado=6.5.8
   - traitlets=5.16.1
-  - triton=3.7.1
+  - triton=2.0.0
   - typing-extensions=4.16.0
   - typing_extensions=4.16.0
   - typing_utils=0.1.0
@@ -632,7 +636,6 @@ dependencies:
     - tensorflow-estimator==2.15.0
     - threadpoolctl==3.6.0
     - thrift==0.16.0
-    - torch==2.10.0
     - urllib3==2.6.3
     - yarl==1.22.0
     - yt-dlp-ejs==0.4.0
