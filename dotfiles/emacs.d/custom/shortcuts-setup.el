@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(global-set-key [C-tab] 'dabbrev-expand)
+(global-set-key [C-tab] 'dabbrev-iexpand)
 (global-set-key "\C-s" 'save-buffer)
 (global-set-key "\C-o" 'find-file)
 (global-set-key "\C-w" 'kill-region)
@@ -12,10 +12,6 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key "\C-l" 'goto-line)
 (global-set-key "\C-xk" 'kill-current-buffer)
-
-
-(global-set-key (kbd "C-S-S") (lambda () (interactive) (my-desktop-save-global)))
-(global-set-key (kbd "C-S-F") (lambda () (interactive) (my-desktop-read-global)))
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 

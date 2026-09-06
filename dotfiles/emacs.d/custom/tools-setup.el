@@ -18,6 +18,7 @@
   (defun my/copilot-accept ()
     (interactive)
     (copilot-accept-completion))
+  (setq copilot-indent-offset-warning-disable t)
   (global-set-key (kbd "C-S-<tab>")       #'my/copilot-accept)
   (global-set-key (kbd "C-<iso-lefttab>") #'my/copilot-accept)
   )
