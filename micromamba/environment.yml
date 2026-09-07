@@ -7,7 +7,7 @@ dependencies:
   - absl-py=2.5.0
   - adwaita-icon-theme=49.0
   - alsa-lib=1.2.16.1
-  - anyio=4.14.2
+  - anyio=4.15.1
   - appdirs=1.4.4
   - appstream=1.1.1
   - argon2-cffi=25.1.0
@@ -56,7 +56,7 @@ dependencies:
   - cairo=1.18.4
   - cargo-nextest=0.9.143
   - ccache=4.14
-  - certifi=2026.2.25
+  - certifi=2026.7.22
   - cffi=2.1.1
   - charset-normalizer=3.5.1
   - clang=23.1.0
@@ -88,7 +88,7 @@ dependencies:
   - contourpy=1.3.3
   - cppcheck=2.21.0
   - cpython=3.11.16
-  - cryptography=50.0.0
+  - cryptography=50.0.1
   - cuda-crt-tools=12.9.86
   - cuda-cudart=12.9.79
   - cuda-cudart_linux-64=12.9.79
@@ -106,13 +106,13 @@ dependencies:
   - debugpy=1.8.21
   - defusedxml=0.7.1
   - double-conversion=3.4.0
-  - doxygen=1.17.0
+  - doxygen=1.18.0
   - duckdb=1.5.5
-  - emacs=30.2
+  - emacs=31.1
   - epoxy=1.5.10
   - exceptiongroup=1.3.1
   - executing=2.2.1
-  - filelock=3.32.4
+  - filelock=3.32.5
   - flatbuffers=25.12.19
   - fmt=12.2.0
   - font-ttf-dejavu-sans-mono=2.37
@@ -122,7 +122,7 @@ dependencies:
   - fontconfig=2.18.3
   - fonts-conda-ecosystem=1
   - fonts-conda-forge=1
-  - fonttools=4.62.0
+  - fonttools=4.63.0
   - fqdn=1.5.1
   - freetype=2.14.3
   - fribidi=1.0.16
@@ -136,27 +136,27 @@ dependencies:
   - gettext=0.25.1
   - gettext-tools=0.25.1
   - gflags=2.2.2
-  - giflib=5.2.2
+  - giflib=6.1.3
   - glib=2.88.3
   - glib-tools=2.88.3
   - glog=0.6.0
   - gmock=1.18.0
   - gmp=6.3.0
-  - gmpy2=2.3.0
+  - gmpy2=2.3.1
   - gnutls=3.8.13
-  - go=1.26.7
+  - go=1.27.1
   - google-pasta=0.2.0
-  - gopls=0.20.0
-  - gperftools=2.18.1
-  - gpgme=2.1.2
+  - gopls=0.23.0
+  - gperftools=2.18.90
+  - gpgme=2.2.0
   - graphite2=1.3.15
   - greenlet=3.5.5
   - grpcio=1.59.3
-  - gst-plugins-base=1.28.5
-  - gstreamer=1.28.5
+  - gst-plugins-base=1.28.6
+  - gstreamer=1.28.6
   - gtest=1.18.0
-  - gtk3=3.24.43
-  - gtk4=4.20.3
+  - gtk3=3.24.52
+  - gtk4=4.22.4
   - gxx=16.2.0
   - gxx_impl_linux-64=16.2.0
   - h11=0.16.0
@@ -175,7 +175,7 @@ dependencies:
   - importlib-metadata=9.0.1
   - importlib_resources=7.1.0
   - ipykernel=7.3.0
-  - ipython=9.10.1
+  - ipython=9.17.1
   - ipython_pygments_lexers=1.1.1
   - ipywidgets=8.1.9
   - isoduration=20.11.0
@@ -190,7 +190,7 @@ dependencies:
   - jsonschema-specifications=2025.9.1
   - jsonschema-with-format-nongpl=4.26.0
   - jupyter=1.1.1
-  - jupyter-builder=1.2.2
+  - jupyter-builder=1.2.3
   - jupyter-lsp=2.3.1
   - jupyter_client=8.10.0
   - jupyter_console=6.6.3
@@ -209,13 +209,13 @@ dependencies:
   - krb5=1.21.3
   - lame=4.0
   - lark=1.3.1
-  - lazygit=0.64.1
+  - lazygit=0.65.0
   - lcms2=2.19.1
   - lcov=2.5
   - ld_impl_linux-64=2.46.1
   - lerc=4.2.0
   - libabseil=20230802.1
-  - libadwaita=1.8.4
+  - libadwaita=1.9.3
   - libaec=1.1.5
   - libasprintf=0.25.1
   - libasprintf-devel=0.25.1
@@ -314,8 +314,9 @@ dependencies:
   - libpng=1.6.58
   - libpq=18.2
   - libprotobuf=4.24.4
+  - libraqm=0.11.0
   - libre2-11=2023.09.01
-  - librsvg=2.60.2
+  - librsvg=2.62.3
   - libsanitizer=16.2.0
   - libseccomp=2.6.1
   - libslirp=4.9.4
@@ -337,7 +338,7 @@ dependencies:
   - libunistring=0.9.10
   - libunwind=1.8.3
   - libutf8proc=2.8.0
-  - libuuid=2.42.2
+  - libuuid=2.42.3
   - libuv=1.52.1
   - libvorbis=1.3.7
   - libvulkan-headers=1.4.357.0
@@ -347,10 +348,10 @@ dependencies:
   - libxcb=1.17.0
   - libxcrypt=4.4.38
   - libxkbcommon=1.13.2
-  - libxml2=2.15.3
-  - libxml2-16=2.15.3
+  - libxml2=2.15.4
+  - libxml2-16=2.15.4
   - libxmlb=0.3.29
-  - libxslt=1.1.43
+  - libxslt=1.1.45
   - libzlib=1.3.2
   - lit=23.1.0
   - lldb=22.1.8
@@ -366,13 +367,15 @@ dependencies:
   - markdown=3.10.3
   - markdown-it-py=4.2.0
   - markupsafe=3.0.3
-  - matplotlib-base=3.10.9
+  - matplotlib-base=3.11.1
   - matplotlib-inline=0.2.2
   - maturin=1.15.0
   - mdurl=0.1.2
+  - mimalloc=3.1.5
   - mistune=3.3.4
   - mkl=2023.2.0
   - ml_dtypes=0.5.4
+  - mold=2.40.4
   - mpc=1.4.0
   - mpfr=4.2.2
   - mpg123=1.33.7
@@ -395,7 +398,7 @@ dependencies:
   - nlohmann_json=3.12.0
   - nodeenv=1.10.0
   - nodejs=22.23.2
-  - notebook=7.5.5
+  - notebook=7.6.2
   - notebook-shim=0.2.4
   - nspr=4.40
   - nss=3.118
@@ -412,7 +415,7 @@ dependencies:
   - p11-kit=0.26.4
   - packaging=26.3
   - pandocfilters=1.5.0
-  - pango=1.56.4
+  - pango=1.58.2
   - parquet-cpp=1.5.1
   - parso=0.8.7
   - pathspec=1.1.1
@@ -422,10 +425,10 @@ dependencies:
   - perl-capture-tiny=0.48
   - perl-devel-stacktrace=2.04
   - pexpect=4.9.0
-  - pillow=12.2.0
+  - pillow=12.3.0
   - pip=26.2.1
   - pixman=0.46.4
-  - platformdirs=4.9.6
+  - platformdirs=4.11.6
   - prometheus_client=0.26.0
   - prompt-toolkit=3.0.53
   - prompt_toolkit=3.0.53
@@ -438,10 +441,10 @@ dependencies:
   - pybind11=3.1.0
   - pybind11-abi=12
   - pybind11-global=3.1.0
-  - pycparser=2.22
+  - pycparser=3.0
   - pygments=2.21.0
   - pyparsing=3.3.2
-  - pypdf=6.10.0
+  - pypdf=6.17.0
   - pyright=1.1.411
   - pyshark=0.6
   - pysocks=1.7.1
@@ -451,7 +454,7 @@ dependencies:
   - python-duckdb=1.5.5
   - python-fastjsonschema=2.22.2
   - python-flatbuffers=25.12.19
-  - python-json-logger=2.0.7
+  - python-json-logger=4.2.0
   - python-tzdata=2026.3
   - python_abi=3.11
   - pytokens=0.4.1
@@ -461,8 +464,8 @@ dependencies:
   - pyzmq=27.2.0
   - qhull=2020.2
   - qt6-main=6.10.2
-  - quill=12.2.2
-  - rdma-core=63.1
+  - quill=13.0.0
+  - rdma-core=65.0
   - re2=2023.09.01
   - readline=8.3
   - referencing=0.37.0
@@ -488,7 +491,7 @@ dependencies:
   - send2trash=2.1.0
   - setuptools=84.0.0
   - setuptools-rust=1.13.0
-  - simdjson=4.6.9
+  - simdjson=4.6.11
   - six=1.17.0
   - sleef=3.9.0
   - slirp4netns=1.3.5
@@ -508,7 +511,7 @@ dependencies:
   - the_silver_searcher=2.2.0
   - tig=2.6.1
   - tinycss2=1.5.1
-  - tinymist=0.15.4
+  - tinymist=0.15.6
   - tinyxml2=11.0.0
   - tk=8.6.13
   - tomli=2.4.1
@@ -527,14 +530,14 @@ dependencies:
   - vulkan-headers=1.3.231.1
   - vulkan-tools=1.4.357.0
   - wayland=1.26.0
-  - wcwidth=0.8.2
+  - wcwidth=0.8.3
   - webcolors=25.10.0
   - webencodings=0.5.1
-  - websocket-client=1.9.0
+  - websocket-client=1.9.2
   - werkzeug=3.1.8
   - wheel=0.48.0
   - widgetsnbextension=4.0.16
-  - wrapt=2.3.0
+  - wrapt=2.4.0
   - xcb-util=0.4.1
   - xcb-util-cursor=0.1.6
   - xcb-util-image=0.4.0
@@ -581,76 +584,18 @@ dependencies:
   - zstandard=0.25.0
   - zstd=1.5.7
   - pip:
-    - ImageIO==2.37.2
-    - Werkzeug==3.1.5
-    - aiohappyeyeballs==2.6.1
-    - aiohttp==3.13.3
+    - aiohappyeyeballs==2.7.1
+    - aiohttp==3.14.3
     - aiosignal==1.4.0
-    - async-lru==2.1.0
     - black==26.1.0
-    - bleach==4.1.0
-    - boto3==1.42.39
-    - botocore==1.42.39
-    - brotli==1.2.0
-    - certifi==2026.1.4
-    - colorama==0.4.6
-    - cuda-bindings==12.9.4
-    - cuda-pathfinder==1.3.3
     - databento==0.70.0
     - databento-dbn==0.48.0
-    - fonttools==4.61.1
     - frozenlist==1.8.0
-    - gmpy2==2.2.2
     - gprof2dot==2025.4.14
-    - grpcio==1.76.0
-    - halo==0.0.31
-    - ipython==9.9.0
-    - jmespath==1.1.0
-    - joblib==1.5.3
-    - libclang==18.1.1
-    - log-symbols==0.0.14
-    - mglearn==0.2.0
-    - mplfinance==0.12.10b0
     - multidict==6.7.1
-    - notebook==7.5.3
-    - numpy==2.4.1
-    - nvidia-cublas-cu12==12.8.4.1
-    - nvidia-cuda-cupti-cu12==12.8.90
-    - nvidia-cuda-nvrtc-cu12==12.8.93
-    - nvidia-cuda-runtime-cu12==12.8.90
-    - nvidia-cudnn-cu12==9.10.2.21
-    - nvidia-cufft-cu12==11.3.3.83
-    - nvidia-cufile-cu12==1.13.1.3
-    - nvidia-curand-cu12==10.3.9.90
-    - nvidia-cusolver-cu12==11.7.3.90
-    - nvidia-cusparse-cu12==12.5.8.93
-    - nvidia-cusparselt-cu12==0.7.1
-    - nvidia-nccl-cu12==2.27.5
-    - nvidia-nvjitlink-cu12==12.8.93
-    - nvidia-nvshmem-cu12==3.4.5
-    - nvidia-nvtx-cu12==12.8.90
-    - pandas==2.3.3
-    - parquet_tools==0.2.16
-    - pillow==12.1.0
-    - platformdirs==4.5.1
+    - pandas==3.0.5
     - podman-compose==1.5.0
-    - propcache==0.4.1
-    - protobuf==6.33.5
-    - pyarrow==23.0.0
-    - pycparser==3.0
-    - pypdf==6.6.2
-    - python-json-logger==4.0.0
-    - reportlab==4.4.9
-    - s3transfer==0.16.0
-    - scikit-learn==1.8.0
-    - scipy==1.17.0
-    - spinners==0.0.24
-    - tabulate==0.9.0
-    - tensorflow==2.20.0
-    - tensorflow-estimator==2.15.0
-    - threadpoolctl==3.6.0
-    - thrift==0.16.0
-    - urllib3==2.6.3
-    - yarl==1.22.0
-    - yt-dlp-ejs==0.4.0
+    - propcache==0.5.2
+    - pyarrow==25.0.1
+    - yarl==1.24.5
 
