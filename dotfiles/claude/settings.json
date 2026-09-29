@@ -9,5 +9,6 @@
   },
   "effortLevel": "medium",
   "tui": "fullscreen",
-  "theme": "light"
+  "theme": "light",
+  "model": "opus"
 }
